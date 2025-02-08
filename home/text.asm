@@ -93,6 +93,8 @@ PlaceNextChar::
 	dict "<⋯>",      SixDotsChar
 	dict "<DONE>",    DoneText
 	dict "<PROMPT>",  PromptText
+	dict "<GA>",      GaChar
+	dict "<DEXEND>",  PlaceDexEnd
 	dict "<TARGET>",  PlaceMoveTargetsName
 	dict "<USER>",    PlaceMoveUsersName
 
@@ -201,6 +203,7 @@ PCChar::      print_name PCCharText
 RocketChar::  print_name RocketCharText
 PlacePOKe::   print_name PlacePOKeText
 SixDotsChar:: print_name SixDotsCharText
+GaChar::      print_name GaCharText
 
 PlaceMoveTargetsName::
 	ldh a, [hWhoseTurn]
@@ -241,6 +244,7 @@ RocketCharText::  db "ロケットだん@"
 PlacePOKeText::   db "ポケモン@"
 SixDotsCharText:: db "⋯⋯@"
 EnemyText::       db "てきの　@"
+GaCharText::      db "が　@"
 
 ContText::
 	push de
@@ -257,6 +261,11 @@ ContText::
 ContCharText::
 	text "<_CONT>@"
 	text_end
+
+PlaceDexEnd::
+	ld [hl], "。"
+	pop hl
+	ret
 
 PromptText::
 	ld a, [wLinkState]
@@ -365,6 +374,8 @@ NextTextCommand::
 
 .TextCommand:
 	push hl
+	cp TX_SOUND_POKEDEX_RATING
+	jp nc, TextCommand_SOUND
 	ld hl, TextCommandJumpTable
 	push bc
 	add a
@@ -633,12 +644,3 @@ TextCommandJumpTable::
 	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1 (also handles other TX_SOUND_* commands)
 	dw TextCommand_DOTS          ; TX_DOTS
 	dw TextCommand_WAIT_BUTTON   ; TX_WAIT_BUTTON
-	dw TextCommand_SOUND         ; TX_SOUND_POKEDEX_RATING
-	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1_DUPLICATE
-	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_2
-	dw TextCommand_SOUND         ; TX_SOUND_GET_KEY_ITEM
-	dw TextCommand_SOUND         ; TX_SOUND_CAUGHT_MON
-	dw TextCommand_SOUND         ; TX_SOUND_DEX_PAGE_ADDED
-	dw TextCommand_SOUND         ; TX_SOUND_CRY_NIDORINA
-	dw TextCommand_SOUND         ; TX_SOUND_CRY_PIDGEOT
-	dw TextCommand_SOUND         ; TX_SOUND_CRY_DEWGONG

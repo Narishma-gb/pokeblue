@@ -8,50 +8,26 @@ NoThanksText:
 
 PrizeMenuMon1Entries:
 	db ABRA
-	db CLEFAIRY
-IF DEF(_RED)
-	db NIDORINA
-ENDC
-IF DEF(_GREEN)
-	db NIDORINO
-ENDC
+	db PIKACHU
+	db HORSEA
 	db "@"
 
 PrizeMenuMon1Cost:
-IF DEF(_RED)
-	bcd2 180
-	bcd2 500
-ENDC
-IF DEF(_GREEN)
-	bcd2 120
-	bcd2 750
-ENDC
-	bcd2 1200
+	bcd2 150
+	bcd2 620
+	bcd2 1000
 	db "@"
 
 PrizeMenuMon2Entries:
-IF DEF(_RED)
-	db DRATINI
-	db SCYTHER
-ENDC
-IF DEF(_GREEN)
-	db PINSIR
-	db DRATINI
-ENDC
+	db CLEFABLE
+	db DRAGONAIR
 	db PORYGON
 	db "@"
 
 PrizeMenuMon2Cost:
-IF DEF(_RED)
-	bcd2 2800
-	bcd2 5500
-	bcd2 9999
-ENDC
-IF DEF(_GREEN)
-	bcd2 2500
-	bcd2 4600
-	bcd2 6500
-ENDC
+	bcd2 2880
+	bcd2 5400
+	bcd2 8300
 	db "@"
 
 PrizeMenuTMsEntries:

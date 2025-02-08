@@ -5,7 +5,7 @@ RockTunnelB1FWildMons:
 	db 17, GEODUDE
 	db 15, MACHOP
 	db 16, GEODUDE
-	db 18, ZUBAT
+	db 18, DITTO
 	db 17, MACHOP
 	db 17, ONIX
 	db 13, ONIX

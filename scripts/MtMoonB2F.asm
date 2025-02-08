@@ -207,62 +207,11 @@ MtMoonB2FSuperNerdText:
 .done
 	jp TextScriptEnd
 
-MtMoonB2FSuperNerdTheyreBothMineText:
-	text "こら　まてよ！"
-
-	para "この　カセキは"
-	line "ぼくが　みつけたんだ"
-	cont "ふたつ　とも　ぼくのだ！"
-	done
-
-MtMoonB2FSuperNerdOkIllShareText:
-	text "わかった！"
-	line "おまえにも　わけて　やるよ"
-	prompt
-
-MtMoonB2fSuperNerdEachTakeOneText:
-	text "ぼくと　おまえで"
-	line "カセキを　１こ　ずつ　だ！"
-	cont "ひとり　じめは　ダメだぞ！"
-	done
-
-MtMoonB2FSuperNerdTheresAPokemonLabText:
-	text "ここから　すごく　とおいけど"
-	line "グレン　タウンに"
-	cont "#　けんきゅうじょが　ある"
-
-	para "カセキを　よみがえらせる"
-	line "けんきゅうも　してる　らしいぜ"
-	done
-
-MtMoonB2FSuperNerdThenThisIsMineText:
-	text "それじゃ"
-	line "これは　ぼくの　ものだ！@"
-	sound_get_key_item
-	text_end
-
 MtMoonB2FRocket1Text:
 	text_asm
 	ld hl, MtMoonB2F_TrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
-
-MtMoonB2FRocket1BattleText:
-	text "カセキは"
-	line "<ROCKET>が　みつけるのだ！"
-	cont "ふっかつ　させれば"
-	cont "いい　かねもうけに　なる！"
-	done
-
-MtMoonB2FRocket1EndBattleText:
-	text "うー　おこったぞ！"
-	prompt
-
-MtMoonB2FRocket1AfterBattleText:
-	text "おれを　おこらせた"
-	line "おまえは　<ROCKET>の"
-	cont "ブラック　リストに　のるぜ"
-	done
 
 MtMoonB2FRocket2Text:
 	text_asm
@@ -270,64 +219,17 @@ MtMoonB2FRocket2Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-MtMoonB2FRocket2BattleText:
-	text "#　マフィア"
-	line "<ROCKET>は"
-	cont "こわくて　つよい　のだ！"
-	done
-
-MtMoonB2FRocket2EndBattleText:
-	text "しくじったか！"
-	prompt
-
-MtMoonB2FRocket2AfterBattleText:
-	text "くそ！"
-	line "なかまが　だまっちゃ　いねえぞ"
-	done
-
 MtMoonB2FRocket3Text:
 	text_asm
 	ld hl, MtMoonB2F_TrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
 
-MtMoonB2FRocket3BattleText:
-	text "おれたちは"
-	line "だいじな　しごとを　してるんだ！"
-	cont "こどもは　おうちへ　かえりな"
-	done
-
-MtMoonB2FRocket3EndBattleText:
-	text "なかなか　やるな"
-	prompt
-
-MtMoonB2FRocket3AfterBattleText:
-	text "カセキを　みつけたら"
-	line "ばしょだけ　おしえて"
-	cont "さっさと　かえるんだな！"
-	done
-
 MtMoonB2FRocket4Text:
 	text_asm
 	ld hl, MtMoonB2F_TrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
-
-MtMoonB2FRocket4BattleText:
-	text "おうっ！"
-	line "おとなの　せかいに"
-	cont "くびを　つっこむと　あぶないぜ！"
-	done
-
-MtMoonB2FRocket4EndBattleText:
-	text "あたま　くるぜ"
-	prompt
-
-MtMoonB2FRocket4AfterBattleText:
-	text "にんげんが　うまれる　まえから"
-	line "この　あたりには"
-	cont "#が　すんでた　らしいぜ"
-	done
 
 MtMoonB2FDomeFossilText:
 	text_asm
@@ -407,3 +309,101 @@ MtMoonB2FYouHaveNoRoomText:
 	text "なーんだ　もう　もてないじゃん@"
 	text_waitbutton
 	text_end
+
+MtMoonB2FSuperNerdTheyreBothMineText:
+	text "こら　まてよ！"
+
+	para "この　カセキは"
+	line "ぼくが　みつけたんだ"
+	cont "ふたつ　とも　ぼくのだ！"
+	done
+
+MtMoonB2FSuperNerdOkIllShareText:
+	text "わかった！"
+	line "おまえにも　わけて　やるよ"
+	prompt
+
+MtMoonB2fSuperNerdEachTakeOneText:
+	text "ぼくと　おまえで"
+	line "カセキを　１こ　ずつ　だ！"
+	cont "ひとり　じめは　ダメだぞ！"
+	done
+
+MtMoonB2FSuperNerdTheresAPokemonLabText:
+	text "ここから　すごく　とおいけど"
+	line "グレン　タウンに"
+	cont "#　けんきゅうじょが　ある"
+
+	para "カセキを　よみがえらせる"
+	line "けんきゅうも　してる　らしいぜ"
+	done
+
+MtMoonB2FSuperNerdThenThisIsMineText:
+	text "それじゃ"
+	line "これは　ぼくの　ものだ！@"
+	sound_get_key_item
+	text_end
+
+MtMoonB2FRocket1BattleText:
+	text "カセキは"
+	line "<ROCKET>が　みつけるのだ！"
+	cont "ふっかつ　させれば"
+	cont "いい　かねもうけに　なる！"
+	done
+
+MtMoonB2FRocket1EndBattleText:
+	text "うー　おこったぞ！"
+	prompt
+
+MtMoonB2FRocket1AfterBattleText:
+	text "おれを　おこらせた"
+	line "おまえは　<ROCKET>の"
+	cont "ブラック　リストに　のるぜ"
+	done
+
+MtMoonB2FRocket2BattleText:
+	text "#　マフィア"
+	line "<ROCKET>は"
+	cont "こわくて　つよい　のだ！"
+	done
+
+MtMoonB2FRocket2EndBattleText:
+	text "しくじったか！"
+	prompt
+
+MtMoonB2FRocket2AfterBattleText:
+	text "くそ！"
+	line "なかまが　だまっちゃ　いねえぞ"
+	done
+
+MtMoonB2FRocket3BattleText:
+	text "おれたちは"
+	line "だいじな　しごとを　してるんだ！"
+	cont "こどもは　おうちへ　かえりな"
+	done
+
+MtMoonB2FRocket3EndBattleText:
+	text "なかなか　やるな"
+	prompt
+
+MtMoonB2FRocket3AfterBattleText:
+	text "カセキを　みつけたら"
+	line "ばしょだけ　おしえて"
+	cont "さっさと　かえるんだな！"
+	done
+
+MtMoonB2FRocket4BattleText:
+	text "おうっ！"
+	line "おとなの　せかいに"
+	cont "くびを　つっこむと　あぶないぜ！"
+	done
+
+MtMoonB2FRocket4EndBattleText:
+	text "あたま　くるぜ"
+	prompt
+
+MtMoonB2FRocket4AfterBattleText:
+	text "にんげんが　うまれる　まえから"
+	line "この　あたりには"
+	cont "#が　すんでた　らしいぜ"
+	done

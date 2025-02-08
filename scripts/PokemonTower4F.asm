@@ -34,6 +34,18 @@ PokemonTower4FChanneler1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+PokemonTower4FChanneler2Text:
+	text_asm
+	ld hl, PokemonTower4F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+PokemonTower4FChanneler3Text:
+	text_asm
+	ld hl, PokemonTower4F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
 PokemonTower4FChanneler1BattleText:
 	text "うぐぐ<⋯>　ゆうれいめ<⋯>"
 	line "<⋯>ケーッ！"
@@ -49,12 +61,6 @@ PokemonTower4FChanneler1AfterBattleText:
 	line "ゆめを　みてた　ようじゃ"
 	done
 
-PokemonTower4FChanneler2Text:
-	text_asm
-	ld hl, PokemonTower4F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 PokemonTower4FChanneler2BattleText:
 	text "イッ<⋯>　ショ<⋯>　ニ<⋯>"
 	line "<⋯>　ノロ<⋯>ワレ！"
@@ -68,12 +74,6 @@ PokemonTower4FChanneler2AfterBattleText:
 	text "<⋯>どうしても　ゆうれいの"
 	line "しょうたいが　わからない<⋯>"
 	done
-
-PokemonTower4FChanneler3Text:
-	text_asm
-	ld hl, PokemonTower4F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 PokemonTower4FChanneler3BattleText:
 	text "フフフッ<⋯>！"

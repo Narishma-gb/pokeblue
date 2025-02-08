@@ -60,6 +60,41 @@ RocketHideoutB1FRocket1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+RocketHideoutB1FRocket2Text:
+	text_asm
+	ld hl, RocketHideoutB1F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RocketHideoutB1FRocket3Text:
+	text_asm
+	ld hl, RocketHideoutB1F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RocketHideoutB1FRocket4Text:
+	text_asm
+	ld hl, RocketHideoutB1F_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RocketHideoutB1FRocket5Text:
+	text_asm
+	ld hl, RocketHideoutB1F_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RocketHideoutB1FRocket5EndBattleText:
+	text "なんで　じゃ@"
+	text_asm
+	SetEvent EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_4
+	ld hl, .prompt_end
+	ret
+
+.prompt_end:
+	text_promptbutton
+	text_end
+
 RocketHideoutB1FRocket1BattleText:
 	text "<⋯>　おまえは　だれだ？"
 	line "どうやって　ここに　はいった"
@@ -73,12 +108,6 @@ RocketHideoutB1FRocket1AfterBattleText:
 	text "くそう<⋯>　おまえ"
 	line "<ROCKET>を　なめてるな！"
 	done
-
-RocketHideoutB1FRocket2Text:
-	text_asm
-	ld hl, RocketHideoutB1F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 RocketHideoutB1FRocket2BattleText:
 	text "<ROCKET>に"
@@ -94,12 +123,6 @@ RocketHideoutB1FRocket2AfterBattleText:
 	line "すすめると　おもうな！"
 	done
 
-RocketHideoutB1FRocket3Text:
-	text_asm
-	ld hl, RocketHideoutB1F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
-
 RocketHideoutB1FRocket3BattleText:
 	text "しんにゅうしゃを　はっけん！"
 	done
@@ -113,12 +136,6 @@ RocketHideoutB1FRocket3AfterBattleText:
 	line "シルフスコープを　さがしてる？"
 	cont "<⋯>　おれは　しらねえよ"
 	done
-
-RocketHideoutB1FRocket4Text:
-	text_asm
-	ld hl, RocketHideoutB1F_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
 
 RocketHideoutB1FRocket4BattleText:
 	text "ここに　きた　ねらいは　なんだ？"
@@ -134,27 +151,10 @@ RocketHideoutB1FRocket4AfterBattleText:
 	cont "エレベータに　のるんだな"
 	done
 
-RocketHideoutB1FRocket5Text:
-	text_asm
-	ld hl, RocketHideoutB1F_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
-
 RocketHideoutB1FRocket5BattleText:
 	text "まいごの　まいごの<⋯>"
 	line "ぼうや　かな？"
 	done
-
-RocketHideoutB1FRocket5EndBattleText:
-	text "なんで　じゃ@"
-	text_asm
-	SetEvent EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_4
-	ld hl, .prompt_end
-	ret
-
-.prompt_end:
-	text_promptbutton
-	text_end
 
 RocketHideoutB1FRocket5AfterBattleText:
 	text "あれ？　いまの　さわぎで"

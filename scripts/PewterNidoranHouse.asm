@@ -10,12 +10,7 @@ PewterNidoranHouse_TextPointers:
 PewterNidoranHouseNidoranText:
 	text "ニドラン『バウバウ！@"
 	text_asm
-IF DEF(_RED)
 	ld a, NIDORAN_M
-ENDC
-IF DEF(_GREEN)
-	ld a, NIDORAN_F
-ENDC
 	call PlayCry
 	call WaitForSoundToFinish
 	jp TextScriptEnd

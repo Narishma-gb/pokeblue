@@ -4,7 +4,7 @@ CeruleanCave2FWildMons:
 	db 51, VENOMOTH
 	db 51, KADABRA
 	db 52, RHYDON
-	db 52, MAROWAK
+	db 52, RATICATE
 	db 52, ELECTRODE
 	db 56, CHANSEY
 	db 54, WIGGLYTUFF

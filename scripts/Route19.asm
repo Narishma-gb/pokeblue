@@ -46,6 +46,60 @@ Route19CooltrainerM1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+Route19CooltrainerM2Text:
+	text_asm
+	ld hl, Route19_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer1Text:
+	text_asm
+	ld hl, Route19_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer2Text:
+	text_asm
+	ld hl, Route19_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer3Text:
+	text_asm
+	ld hl, Route19_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer4Text:
+	text_asm
+	ld hl, Route19_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer5Text:
+	text_asm
+	ld hl, Route19_TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer6Text:
+	text_asm
+	ld hl, Route19_TrainerHeader7
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer7Text:
+	text_asm
+	ld hl, Route19_TrainerHeader8
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route19Swimmer8Text:
+	text_asm
+	ld hl, Route19_TrainerHeader9
+	call TalkToTrainer
+	jp TextScriptEnd
+
 Route19CooltrainerM1BattleText:
 	text "みずに　はいる　まえに"
 	line "じゅんび　たいそう　しなきゃ！"
@@ -59,12 +113,6 @@ Route19CooltrainerM1AfterBattleText:
 	text "よしッ！　おかげで"
 	line "いい　うんどうに　なった！"
 	done
-
-Route19CooltrainerM2Text:
-	text_asm
-	ld hl, Route19_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route19CooltrainerM2BattleText:
 	text "まて　あわてるな！"
@@ -80,12 +128,6 @@ Route19CooltrainerM2AfterBattleText:
 	line "きを　つけて　およげよ！"
 	done
 
-Route19Swimmer1Text:
-	text_asm
-	ld hl, Route19_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route19Swimmer1BattleText:
 	text "およぐの　だいすき！"
 	line "<⋯>　きみは　どうなの？"
@@ -99,12 +141,6 @@ Route19Swimmer1AfterBattleText:
 	text "およぎ　なら"
 	line "うみの　#にも　まけない！"
 	done
-
-Route19Swimmer2Text:
-	text_asm
-	ld hl, Route19_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route19Swimmer2BattleText:
 	text "すいへいせんの　むこう"
@@ -120,12 +156,6 @@ Route19Swimmer2AfterBattleText:
 	line "いくつか　しまが　みえるぞ！"
 	done
 
-Route19Swimmer3Text:
-	text_asm
-	ld hl, Route19_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route19Swimmer3BattleText:
 	text "もぐって<⋯>　うみ　#"
 	line "とろうとしたけど　だめ　みたいだ！"
@@ -140,12 +170,6 @@ Route19Swimmer3AfterBattleText:
 	line "つりで　とる　しか　ないや"
 	done
 
-Route19Swimmer4Text:
-	text_asm
-	ld hl, Route19_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route19Swimmer4BattleText:
 	text "あおい　うみを　みてれば"
 	line "いやな　ことも　わすれるぞ！"
@@ -159,12 +183,6 @@ Route19Swimmer4AfterBattleText:
 	text "あおい　うみを　みて<⋯>"
 	line "いやな　ことを　わすれよう"
 	done
-
-Route19Swimmer5Text:
-	text_asm
-	ld hl, Route19_TrainerHeader6
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route19Swimmer5BattleText:
 	text "ま！　いい　ものに　のってるわね"
@@ -181,12 +199,6 @@ Route19Swimmer5AfterBattleText:
 	cont "セキチクに　かえりたいわ"
 	done
 
-Route19Swimmer6Text:
-	text_asm
-	ld hl, Route19_TrainerHeader7
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route19Swimmer6BattleText:
 	text "およぐの　すき　だけど"
 	line "ひやけ　するのは　いやだわ！"
@@ -201,12 +213,6 @@ Route19Swimmer6AfterBattleText:
 	line "およごうって　いったのよ"
 	done
 
-Route19Swimmer7Text:
-	text_asm
-	ld hl, Route19_TrainerHeader8
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route19Swimmer7BattleText:
 	text "そこの　しょうねん！"
 	line "この　うみは　きけんだ！"
@@ -220,12 +226,6 @@ Route19Swimmer7AfterBattleText:
 	text "あ　あしが　つった！"
 	line "ぶく<⋯>　ぶくぶく<⋯>"
 	done
-
-Route19Swimmer8Text:
-	text_asm
-	ld hl, Route19_TrainerHeader9
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route19Swimmer8BattleText:
 	text "みんなで　ここまで　およいで"

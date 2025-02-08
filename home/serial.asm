@@ -78,18 +78,6 @@ Serial_ExchangeBytes::
 	ldh [hSerialIgnoringInitialData], a
 	jr .loop
 .storeReceivedByte
-IF DEF(_REV0)
-	push af
-	ld a, [wLinkState]
-	cp LINK_STATE_RESET
-	jr nz, .next
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	jr nz, .next
-	ld de, wNameBuffer
-.next
-	pop af
-ENDC
 	ld [de], a
 	inc de
 	dec bc
@@ -97,10 +85,6 @@ ENDC
 	or c
 	jr nz, .loop
 	ret
-
-IF DEF(_REV0)
-	INCLUDE "home/serial2.asm"
-ENDC	
 
 Serial_ExchangeByte::
 	xor a
@@ -212,9 +196,7 @@ SetUnknownCounterToFFFF::
 	ld [wUnknownSerialCounter + 1], a
 	ret
 
-IF DEF(_REV1)
-	INCLUDE "home/serial2.asm"
-ENDC
+INCLUDE "home/serial2.asm"
 
 Serial_ExchangeNybble::
 	call .doExchange

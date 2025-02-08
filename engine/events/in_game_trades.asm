@@ -3,8 +3,10 @@ DoInGameTradeDialogue:
 	call SaveScreenTilesToBuffer2
 	ld hl, TradeMons
 	ld a, [wWhichTrade]
+	ld b, a
 	swap a
 	srl a
+	sub b
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -15,10 +17,10 @@ DoInGameTradeDialogue:
 	ld a, [hli]
 	push af
 	ld de, wInGameTradeMonNick
-	ld bc, NAME_LENGTH
+	ld bc, NAME_LENGTH - 2
 	call CopyData
 	ld a, "@"
-	ld [wInGameTradeMonNick + 5], a
+	ld [de], a
 	pop af
 	ld l, a
 	ld h, 0
@@ -96,7 +98,7 @@ InGameTrade_DoTrade:
 	call InGameTrade_RestoreScreen
 	pop af
 	ld a, TEXT_NO_TRADE
-	jr c, .tradeFailed ; jump if the player didn't select a pokemon
+	jp c, .tradeFailed ; jump if the player didn't select a pokemon
 	ld a, [wInGameTradeGiveMonSpecies]
 	ld b, a
 	ld a, [wCurPartySpecies]
@@ -123,7 +125,6 @@ InGameTrade_DoTrade:
 	call LoadHpBarAndStatusTilePatterns
 	call InGameTrade_PrepareTradeData
 	predef InternalClockTradeAnim
-	call ClearScreen
 	pop af
 	ld [wCurEnemyLevel], a
 	pop af
@@ -137,9 +138,11 @@ InGameTrade_DoTrade:
 	ld a, $80 ; prevent the player from naming the mon
 	ld [wMonDataLocation], a
 	call AddPartyMon
+	call InGameTrade_CopyDataToReceivedMon
+	callfar InGameTrade_CheckForTradeEvo
+	call ClearScreen
 	call InGameTrade_RestoreScreen
 	farcall RedrawMapView
-	call InGameTrade_CopyDataToReceivedMon
 	and a
 	ld a, TEXT_THANKS
 	jr .tradeSucceeded
@@ -343,9 +346,9 @@ Thanks2Text:
 
 AfterTrade2Text:
 	text "こうかんした　@"
-	text_ram wInGameTradeReceiveMonName
-	text_start
-	line "つよくなったかい？"
+	text_ram wInGameTradeGiveMonName
+	text "が"
+	line "しんか　しおった"
 	done
 
 WannaTrade3Text:

@@ -201,6 +201,36 @@ Route24CooltrainerM2Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+Route24CooltrainerM3Text:
+	text_asm
+	ld hl, Route24_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route24CooltrainerF1Text:
+	text_asm
+	ld hl, Route24_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route24Youngster1Text:
+	text_asm
+	ld hl, Route24_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route24CooltrainerF2Text:
+	text_asm
+	ld hl, Route24_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route24Youngster2Text:
+	text_asm
+	ld hl, Route24_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
 Route24CooltrainerM2BattleText:
 	text "ふふ<⋯>ッ！　くさむらから"
 	line "きみの　かつやくを　みてたよ"
@@ -215,12 +245,6 @@ Route24CooltrainerM2AfterBattleText:
 	line "ずっと　ここに　かくれてたんだ"
 	done
 
-Route24CooltrainerM3Text:
-	text_asm
-	ld hl, Route24_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route24CooltrainerM3BattleText:
 	text "きえーいッ！　５にんめ！"
 	line "おれが　あいてだあ！"
@@ -234,12 +258,6 @@ Route24CooltrainerM3AfterBattleText:
 	text "ベストを　つくしたんだ"
 	line "くいは　ない！"
 	done
-
-Route24CooltrainerF1Text:
-	text_asm
-	ld hl, Route24_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route24CooltrainerF1BattleText:
 	text "４にんめは　わたしよ！"
@@ -256,12 +274,6 @@ Route24CooltrainerF1AfterBattleText:
 	line "くいは　ないわ！"
 	done
 
-Route24Youngster1Text:
-	text_asm
-	ld hl, Route24_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route24Youngster1BattleText:
 	text "３にんめ　とうじょう！"
 	line "そう　かんたんには　いかないぜ！"
@@ -276,12 +288,6 @@ Route24Youngster1AfterBattleText:
 	line "くいは　ない！"
 	done
 
-Route24CooltrainerF2Text:
-	text_asm
-	ld hl, Route24_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route24CooltrainerF2BattleText:
 	text "ふたりめは　わたし！"
 	line "これからが　ほんばん　よ！"
@@ -295,12 +301,6 @@ Route24CooltrainerF2AfterBattleText:
 	text "ベストを　つくしたんだから"
 	line "くいは　ないわ！"
 	done
-
-Route24Youngster2Text:
-	text_asm
-	ld hl, Route24_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route24Youngster2BattleText:
 	text "この　はしは　ひと　よんで"

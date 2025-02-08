@@ -56,6 +56,7 @@ DetectCollisionBetweenSprites:
 
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
+	add LOW(wSpriteStateData1)
 	ld l, a
 
 	ld a, [hl] ; a = [i#SPRITESTATEDATA1_PICTUREID] (0 if slot is unused)

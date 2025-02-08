@@ -24,7 +24,7 @@ Museum1FDefaultScript:
 	ret nz
 .continue
 	xor a
-	ld [hJoyHeld], a
+	ldh [hJoyHeld], a
 	ld a, TEXT_MUSEUM1F_SCIENTIST1
 	ldh [hTextID], a
 	jp DisplayTextID

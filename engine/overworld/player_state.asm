@@ -356,7 +356,7 @@ CheckForCollisionWhenPushingBoulder:
 	cp c
 	jr nz, .loop
 	ld hl, TilePairCollisionsLand
-	call CheckForTilePairCollisions
+	call CheckForTilePairCollisions2
 	ld a, $ff
 	jr c, .done ; if there is an elevation difference between the current tile and the one two steps ahead
 	ld a, [wTileInFrontOfBoulderAndBoulderCollisionResult]

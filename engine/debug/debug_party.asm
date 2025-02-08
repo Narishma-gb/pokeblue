@@ -18,7 +18,7 @@ DebugNewGameParty:
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db EXEGGUTOR, 90
-	db EKANS, 90
+	db CHANSEY, 100
 	db RHYDON, 5
 	db -1 ; end
 

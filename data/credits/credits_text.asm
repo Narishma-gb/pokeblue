@@ -3,7 +3,7 @@ CreditsTextPointers:
 	table_width 2
 	dw .CredStaff
 	dw .CredTajiri
-	dw .CredOota
+	dw .CredTaOota
 	dw .CredMorimoto
 	dw .CredWatanabe
 	dw .CredMasuda
@@ -44,138 +44,103 @@ CreditsTextPointers:
 	dw .CredSpecial
 	dw .CredProducers
 	dw .CredExecutive
+	dw .CredTamada
+	dw .CredSaOota
+	dw .CredYoshikawa
+	dw .CredToOota
 	assert_table_length NUM_CRED_STRINGS
 
 .CredStaff:
-	db "スタッフ@"
+	db -5, "ブルーバージョン　スタッフ@"
 .CredTajiri:
-	db "たじり　さとし@"
-.CredOota:
-	db "おおた　たけのり@"
+	db -3, "たじり　さとし@"
+.CredTaOota:
+	db -3, "おおた　たけのり@"
 .CredMorimoto:
-	db "もりもと　しげき@"
+	db -3, "もりもと　しげき@"
 .CredWatanabe:
-	db "わたなべ　てつや@"
+	db -3, "わたなべ　てつや@"
 .CredMasuda:
-	db "ますだ　じゅんいち@"
+	db -3, "ますだ　じゅんいち@"
 .CredNisino:
-	db "にしの　こうじ@"
+	db -3, "にしの　こうじ@"
 .CredSugimori:
-	db "すぎもり　けん@"
+	db -3, "すぎもり　けん@"
 .CredNishida:
-	db "にしだ　あつこ@"
+	db -3, "にしだ　あつこ@"
 .CredMiyamoto:
-	db "みやもと　しげる@"
+	db -3, "みやもと　しげる@"
 .CredKawaguchi:
-	db "かわぐち　たかし@"
+	db -3, "かわぐち　たかし@"
 .CredIshihara:
-	db "いしはら　つねかず@"
+	db -3, "いしはら　つねかず@"
 .CredYamauchi:
-	db "やまうち　ひろし@"
+	db -3, "やまうち　ひろし@"
 .CredZinnai:
-	db "じんない　ひろゆき@"
+	db -3, "じんない　ひろゆき@"
 .CredHishida:
-	db "ひしだ　たつや@"
+	db -3, "ひしだ　たつや@"
 .CredSakai:
-	db "さかい　やすひろ@"
+	db -3, "さかい　やすひろ@"
 .CredYamaguchi:
-	db "やまぐち　わたる@"
+	db -3, "やまぐち　わたる@"
 .CredYamamoto:
-	db "やまもと　かずゆき@"
+	db -3, "やまもと　かずゆき@"
 .CredTaniguchi:
-	db "たにぐち　りょうすけ@"
+	db -4, "たにぐち　りょうすけ@"
 .CredNonomura:
-	db "ののむら　ふみひろ@"
+	db -3, "ののむら　ふみひろ@"
 .CredFuziwara:
-	db "ふじわら　もとふみ@"
+	db -3, "ふじわら　もとふみ@"
 .CredMatsusima:
-	db "まつしま　けんじ@"
+	db -3, "まつしま　けんじ@"
 .CredTomisawa:
-	db "とみさわ　あきひと@"
+	db -3, "とみさわ　あきひと@"
 .CredKawamoto:
-	db "かわもと　ひろし@"
+	db -3, "かわもと　ひろし@"
 .CredKakei:
-	db "かけい　あきよし@"
+	db -3, "かけい　あきよし@"
 .CredTsuchiya:
-	db "つちや　かづき@"
+	db -3, "つちや　かづき@"
 .CredNakamura:
-	db "なかむら　たけお@"
+	db -3, "なかむら　たけお@"
 .CredYuda:
-	db "ゆだ　まさみつ@"
+	db -3, "ゆだ　まさみつ@"
 .CredMon:
-	db "ポケットモンスター@"
+	db -3, "ポケットモンスター@"
 .CredDirector:
-	db "ディレクター@"
+	db -3, "ディレクター@"
 .CredProgrammers:
-	db "プログラム@"
+	db -2, "プログラム@"
 .CredCharDesign:
-	db "キャラクターデザイン@"
+	db -4, "キャラクターデザイン@"
 .CredMusic:
-	db "おんがく@"
+	db -1, "おんがく@"
 .CredSoundEffects:
-	db "サウンド　エフェクト@"
+	db -4, "サウンド　エフェクト@"
 .CredGameDesign:
-	db "ゲームデザイン@"
+	db -3, "ゲームデザイン@"
 .CredMonsterDesign:
-	db "モンスター　デザイン@"
+	db -4, "モンスター　デザイン@"
 .CredGameScene:
-	db "シナリオ@"
+	db -2, "シナリオ@"
 .CredParam:
-	db "パラメータ　せってい@"
+	db -4, "パラメータ　せってい@"
 .CredMap:
-	db "マップ　デザイン@"
+	db -3, "マップ　デザイン@"
 .CredTest:
-	db "デバッグ　プレイ@"
+	db -3, "デバッグ　プレイ@"
 .CredSpecial:
-	db "スペシャル·サンクス@"
+	db -4, "スペシャル·サンクス@"
 .CredProducers:
-	db "プロデューサー@"
+	db -3, "プロデューサー@"
 .CredExecutive:
-	db "エグゼクティブ　プロデューサー@"
-
-CreditsTextOffsets:
-	table_width 1
-	db -1
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -4
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -3
-	db -2
-	db -4
-	db -1
-	db -4
-	db -3
-	db -4
-	db -2
-	db -4
-	db -3
-	db -3
-	db -4
-	db -3
-	db -6
-	assert_table_length NUM_CRED_STRINGS
+	db -6, "エグゼクティブ　プロデューサー@"
+.CredTamada:
+	db -3, "たまだ　そうすけ@"
+.CredSaOota:
+	db -3, "おおた　さとし@"
+.CredYoshikawa:
+	db -3, "よしかわ　れな@"
+.CredToOota:
+	db -3, "おおた　ともみち@"

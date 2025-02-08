@@ -61,13 +61,13 @@ ViridianCityCheckGotPokedexScript:
 
 ViridianCityOldManStartCatchTrainingScript:
 	ld a, [wSprite03StateData1YPixels]
-	ld [hSpriteScreenYCoord], a
+	ldh [hSpriteScreenYCoord], a
 	ld a, [wSprite03StateData1XPixels]
-	ld [hSpriteScreenXCoord], a
+	ldh [hSpriteScreenXCoord], a
 	ld a, [wSprite03StateData2MapY]
-	ld [hSpriteMapYCoord], a
+	ldh [hSpriteMapYCoord], a
 	ld a, [wSprite03StateData2MapX]
-	ld [hSpriteMapXCoord], a
+	ldh [hSpriteMapXCoord], a
 	xor a
 	ld [wListScrollOffset], a
 
@@ -83,13 +83,13 @@ ViridianCityOldManStartCatchTrainingScript:
 	ret
 
 ViridianCityOldManEndCatchTrainingScript:
-	ld a, [hSpriteScreenYCoord]
+	ldh a, [hSpriteScreenYCoord]
 	ld [wSprite03StateData1YPixels], a
-	ld a, [hSpriteScreenXCoord]
+	ldh a, [hSpriteScreenXCoord]
 	ld [wSprite03StateData1XPixels], a
-	ld a, [hSpriteMapYCoord]
+	ldh a, [hSpriteMapYCoord]
 	ld [wSprite03StateData2MapY], a
-	ld a, [hSpriteMapXCoord]
+	ldh a, [hSpriteMapXCoord]
 	ld [wSprite03StateData2MapX], a
 	call UpdateSprites
 	call Delay3

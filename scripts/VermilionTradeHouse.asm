@@ -3,9 +3,9 @@ VermilionTradeHouse_Script:
 
 VermilionTradeHouse_TextPointers:
 	def_text_pointers
-	dw_const VermilionTradeHouseGentlemanText, TEXT_VERMILIONTRADEHOUSE_GENTLEMAN
+	dw_const VermilionTradeHouseLittleGirlText, TEXT_VERMILIONTRADEHOUSE_LITTLE_GIRL
 
-VermilionTradeHouseGentlemanText:
+VermilionTradeHouseLittleGirlText:
 	text_asm
 	ld a, TRADE_FOR_DUX
 	ld [wWhichTrade], a

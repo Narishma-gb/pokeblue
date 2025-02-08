@@ -32,6 +32,18 @@ PokemonTower3FChanneler1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+PokemonTower3FChanneler2Text:
+	text_asm
+	ld hl, PokemonTower3F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+PokemonTower3FChanneler3Text:
+	text_asm
+	ld hl, PokemonTower3F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
 PokemonTower3FChanneler1BattleText:
 	text "<⋯>　<⋯>　ギ<⋯>"
 	line "<⋯>　グググッ<⋯>！"
@@ -48,12 +60,6 @@ PokemonTower3FChanneler1AfterBattleText:
 	cont "しょうたいを　みやぶる　というが<⋯>"
 	done
 
-PokemonTower3FChanneler2Text:
-	text_asm
-	ld hl, PokemonTower3F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 PokemonTower3FChanneler2BattleText:
 	text "<⋯>　<⋯>　<⋯>"
 	line "<⋯>　ケケーッ！"
@@ -68,12 +74,6 @@ PokemonTower3FChanneler2AfterBattleText:
 	text "すまぬ！　あくりょうが"
 	line "のりうつって　あばれてるのじゃ！"
 	done
-
-PokemonTower3FChanneler3Text:
-	text_asm
-	ld hl, PokemonTower3F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 PokemonTower3FChanneler3BattleText:
 	text "ええい　あくりょうめ！"

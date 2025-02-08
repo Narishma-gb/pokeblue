@@ -38,21 +38,20 @@ ROMX $1
 	"bank1"
 	"Garbage 1"
 ROMX $2
-	"Audio Engine 1"
-	"Music 1"
-	"Play Battle Music (Audio Engine 1)"
 	"Sound Effect Headers 1"
 	"Music Headers 1"
 	"Sound Effects 1"
+	"Play Battle Music (Audio Engine 1)"
+	"Audio Engine 1"
+	"Music 1"
 	"Garbage 2"
 ROMX $3
 	"bank3"
 	"Garbage 3"
 ROMX $4
 	"Move Names"
-	"Font Graphics"
-	"Start Menu"
 	"NPC Sprites 1"
+	"Font Graphics"
 	"Battle Engine 1"
 	"Garbage 4"
 ROMX $5
@@ -72,13 +71,13 @@ ROMX $7
 	"Hidden Objects 1"
 	"Garbage 7"
 ROMX $8
-	"Bill's PC"
-	"Audio Engine 2"
-	"Music 2"
-	"Low Health Alarm (Audio Engine 2)"
 	"Sound Effect Headers 2"
 	"Music Headers 2"
 	"Sound Effects 2"
+	"Low Health Alarm (Audio Engine 2)"
+	"Bill's PC"
+	"Audio Engine 2"
+	"Music 2"
 ROMX $9
 	"Pics 1"
 	"Battle Engine 3"
@@ -98,6 +97,7 @@ ROMX $C
 ROMX $D
 	"Pics 5"
 	"Slot Machines"
+	"Garbage 13"
 ROMX $E
 	"Battle Engine 7"
 	"Garbage 14"
@@ -130,34 +130,35 @@ ROMX $14
 ROMX $15
 	"Maps 11"
 	"Battle Engine 9"
+	"Maps 12"
 	"Diploma"
 	"Trainer Sight"
 	"Garbage 21"
 ROMX $16
-	"Maps 12"
-	"Battle Engine 10"
 	"Maps 13"
-	"Battle Engine 11"
+	"Battle Engine 10"
+	"Maps 14"
+	"Saffron Guards"
 	"Garbage 22"
 ROMX $17
-	"Maps 14"
-	"Starter Dex"
 	"Maps 15"
+	"Starter Dex"
+	"Maps 16"
 	"Hidden Objects 3"
 	"Garbage 23"
 ROMX $18
-	"Maps 16"
-	"Cinnabar Lab Fossils"
 	"Maps 17"
+	"Cinnabar Lab Fossils"
+	"Maps 18"
 	"Hidden Objects 4"
 	"Garbage 24"
 ROMX $19
 	"Tilesets 1"
 	"Garbage 25"
 ROMX $1A
+	"Battle Engine 11"
 	"Version GFX"
 	"Tilesets 2"
-	"Battle Engine 12"
 	"Garbage 26"
 ROMX $1B
 	"Tilesets 3"
@@ -165,22 +166,22 @@ ROMX $1C
 	"bank1C"
 	"Garbage 28"
 ROMX $1D
-	"Maps 18"
-	"Itemfinder 1"
 	"Maps 19"
-	"Vending Machine"
+	"Itemfinder 1"
 	"Maps 20"
+	"Vending Machine"
+	"Maps 21"
 	"Itemfinder 2"
 	"Garbage 29"
 ROMX $1E
 	"bank1E"
 	"Garbage 30"
 ROMX $1F
-	"Audio Engine 3"
-	"Music 3"
 	"Sound Effect Headers 3"
 	"Music Headers 3"
 	"Sound Effects 3"
+	"Audio Engine 3"
+	"Music 3"
 	"Garbage 31"
 WRAM0
 	"Audio RAM"

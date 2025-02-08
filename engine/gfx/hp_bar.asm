@@ -6,13 +6,13 @@ HPBarLength:
 GetHPBarLength:
 	push hl
 	xor a
-	ldh [hMultiplicand], a
+	ld hl, hMultiplicand
+	ld [hli], a
 	ld a, b
-	ldh [hMultiplicand + 1], a
+	ld [hli], a
 	ld a, c
-	ldh [hMultiplicand + 2], a
-	ld a, $30
-	ldh [hMultiplier], a
+	ld [hli], a
+	ld [hl], $30
 	call Multiply      ; 48 * bc (hp bar is 48 pixels long)
 	ld a, d
 	and a
@@ -47,14 +47,16 @@ GetHPBarLength:
 ; predef $48
 UpdateHPBar:
 UpdateHPBar2:
-	ld a, [wHPBarOldHP]
+	push hl
+	ld hl, wHPBarOldHP
+	ld a, [hli]
 	ld c, a      ; old HP into bc
-	ld a, [wHPBarOldHP + 1]
+	ld a, [hli]
 	ld b, a
-	ld a, [wHPBarNewHP]
+	ld a, [hli]
 	ld e, a      ; new HP into de
-	ld a, [wHPBarNewHP + 1]
-	ld d, a
+	ld d, [hl]
+	pop hl
 	push de
 	push bc
 	call UpdateHPBar_CalcHPDifference

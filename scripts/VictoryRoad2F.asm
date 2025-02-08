@@ -99,6 +99,44 @@ VictoryRoad2FHikerText:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+VictoryRoad2FSuperNerd1Text:
+	text_asm
+	ld hl, VictoryRoad2F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad2FCooltrainerMText:
+	text_asm
+	ld hl, VictoryRoad2F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad2FSuperNerd2Text:
+	text_asm
+	ld hl, VictoryRoad2F_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad2FSuperNerd3Text:
+	text_asm
+	ld hl, VictoryRoad2F_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad2FMoltresText:
+	text_asm
+	ld hl, VictoryRoad2F_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad2FMoltresBattleText:
+	text "ギヤーオ！@"
+	text_asm
+	ld a, MOLTRES
+	call PlayCry
+	call WaitForSoundToFinish
+	jp TextScriptEnd
+
 VictoryRoad2FHikerBattleText:
 	text "ここがッ！"
 	line "<TRAINER>　さいごの　しれん！"
@@ -115,12 +153,6 @@ VictoryRoad2FHikerAfterBattleText:
 	cont "いわを　おして　みろ！"
 	done
 
-VictoryRoad2FSuperNerd1Text:
-	text_asm
-	ld hl, VictoryRoad2F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 VictoryRoad2FSuperNerd1BattleText:
 	text "ここに　きた　から　には"
 	line "してんのうに　いどむ　つもりだな！"
@@ -134,12 +166,6 @@ VictoryRoad2FSuperNerd1AfterBattleText:
 	text "そうだ！　<RIVAL>も"
 	line "ここを　ぬけてったぜ！"
 	done
-
-VictoryRoad2FCooltrainerMText:
-	text_asm
-	ld hl, VictoryRoad2F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 VictoryRoad2FCooltrainerMBattleText:
 	text "ピシッ　ピシーッ！"
@@ -155,12 +181,6 @@ VictoryRoad2FCooltrainerMAfterBattleText:
 	line "くる　だけの　ことは　あるな<⋯>！"
 	done
 
-VictoryRoad2FSuperNerd2Text:
-	text_asm
-	ld hl, VictoryRoad2F_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
-
 VictoryRoad2FSuperNerd2BattleText:
 	text "ここを　ぶじに　ぬければ"
 	line "してんのうに　あえるぞ！"
@@ -175,12 +195,6 @@ VictoryRoad2FSuperNerd2AfterBattleText:
 	line "ぼくは　まけないと　おもうぞ！"
 	done
 
-VictoryRoad2FSuperNerd3Text:
-	text_asm
-	ld hl, VictoryRoad2F_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
-
 VictoryRoad2FSuperNerd3BattleText:
 	text "どうだ！"
 	line "チャンピオン　ロードは　きついか？"
@@ -194,17 +208,3 @@ VictoryRoad2FSuperNerd3AfterBattleText:
 	text "ここで　へばって"
 	line "ひきかえす　やつも　おおいぜ！"
 	done
-
-VictoryRoad2FMoltresText:
-	text_asm
-	ld hl, VictoryRoad2F_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
-
-VictoryRoad2FMoltresBattleText:
-	text "ギヤーオ！@"
-	text_asm
-	ld a, MOLTRES
-	call PlayCry
-	call WaitForSoundToFinish
-	jp TextScriptEnd

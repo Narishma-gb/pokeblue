@@ -1,14 +1,14 @@
 ; b = new color for BG color 0 (usually white) for 4 frames
 ChangeBGPalColor0_4Frames:
 	call GetPredefRegisters
-	ld a, [rBGP]
+	ldh a, [rBGP]
 	or b
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld c, 4
 	call DelayFrames
-	ld a, [rBGP]
+	ldh a, [rBGP]
 	and %11111100
-	ld [rBGP], a
+	ldh [rBGP], a
 	ret
 
 PredefShakeScreenVertically:

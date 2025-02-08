@@ -5,7 +5,7 @@ DEF NUM_CRED_SCREENS EQU 26
 	const_def
 	const CRED_STAFF          ; $00
 	const CRED_TAJIRI         ; $01
-	const CRED_OOTA           ; $02
+	const CRED_TA_OOTA        ; $02
 	const CRED_MORIMOTO       ; $03
 	const CRED_WATANABE       ; $04
 	const CRED_MASUDE         ; $05
@@ -46,6 +46,10 @@ DEF NUM_CRED_SCREENS EQU 26
 	const CRED_SPECIAL        ; $28
 	const CRED_PRODUCERS      ; $29
 	const CRED_EXECUTIVE      ; $2A
+	const CRED_TAMADA         ; $2B
+	const CRED_SA_OOTA        ; $2C
+	const CRED_YOSHIKAWA      ; $2D
+	const CRED_TO_OOTA        ; $2E
 DEF NUM_CRED_STRINGS EQU const_value
 
 	const_def -1, -1

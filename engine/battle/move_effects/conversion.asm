@@ -19,7 +19,8 @@ ConversionEffect_:
 	inc de
 	ld a, [hl]
 	ld [de], a
-	callfar PlayCurrentMoveAnimation
+	ld hl, PlayCurrentMoveAnimation
+	call CallBankF
 	ld hl, ConvertedTypeText
 	jp PrintText
 
@@ -29,4 +30,7 @@ ConvertedTypeText:
 	prompt
 
 PrintButItFailedText:
-	jpfar PrintButItFailedText_
+	ld hl, PrintButItFailedText_
+CallBankF:
+	ld b, BANK(PrintButItFailedText_)
+	jp Bankswitch

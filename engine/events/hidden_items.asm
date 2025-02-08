@@ -151,8 +151,9 @@ FindHiddenItemOrCoinsIndex:
 	ld e, a
 	ld a, [wCurMap]
 	ld b, a
-	ld c, 0
+	ld c, -1
 .loop
+	inc c
 	ld a, [hli]
 	cp -1 ; end of the list?
 	ret z  ; if so, we're done here
@@ -170,5 +171,4 @@ FindHiddenItemOrCoinsIndex:
 	inc hl
 .next2
 	inc hl
-	inc c
 	jr .loop

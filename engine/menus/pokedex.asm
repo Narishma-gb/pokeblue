@@ -10,7 +10,7 @@ ShowPokedexMenu:
 	ld [wLastMenuItem], a
 	inc a
 	ld [wPokedexNum], a
-	ld [hJoy7], a
+	ldh [hJoy7], a
 .setUpGraphics
 	ld b, SET_PAL_GENERIC
 	call RunPaletteCommand
@@ -35,7 +35,7 @@ ShowPokedexMenu:
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
-	ld [hJoy7], a
+	ldh [hJoy7], a
 	ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ld [wOverrideSimulatedJoypadStatesMask], a
 	pop af
@@ -547,7 +547,7 @@ ShowPokedexDataInternal:
 	call PlayCry
 .waitForButtonPress
 	call JoypadLowSensitivity
-	ld a, [hJoy5]
+	ldh a, [hJoy5]
 	and A_BUTTON | B_BUTTON
 	jr z, .waitForButtonPress
 	pop af

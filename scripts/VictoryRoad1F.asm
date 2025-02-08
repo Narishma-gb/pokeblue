@@ -60,6 +60,12 @@ VictoryRoad1FCooltrainerFText:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+VictoryRoad1FCooltrainerMText:
+	text_asm
+	ld hl, VictoryRoad1F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
 VictoryRoad1FCooltrainerFBattleText:
 	text "ふふ　あたし　じしん　あるわよ"
 	line "あなたの　てに　おえるかな？"
@@ -73,12 +79,6 @@ VictoryRoad1FCooltrainerFAfterBattleText:
 	text "おとこに　まけるの　だけは"
 	line "いや　だったのに！"
 	done
-
-VictoryRoad1FCooltrainerMText:
-	text_asm
-	ld hl, VictoryRoad1F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 VictoryRoad1FCooltrainerMBattleText:
 	text "なかなか　やりての　ようだな"

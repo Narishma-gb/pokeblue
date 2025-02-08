@@ -59,6 +59,7 @@
 	charmap "ぺ",       $47
 	charmap "ぽ",       $48
 	
+	charmap "<GA>",      $4a ; "が　"
 	charmap "<_CONT>",   $4b ; implements "<CONT>"
 	charmap "<SCROLL>",  $4c
 	charmap "<NEXT>",    $4e
@@ -78,6 +79,7 @@
 	charmap "<TM>",      $5c ; "わざマシン"
 	charmap "<TRAINER>", $5d ; "トレーナー"
 	charmap "<ROCKET>",  $5e ; "ロケットだん"
+	charmap "<DEXEND>",  $5f
 
 ; Actual characters (from gfx/font/font_extra.png)
 

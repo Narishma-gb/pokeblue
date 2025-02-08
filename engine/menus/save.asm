@@ -39,7 +39,7 @@ LoadSAV0:
 	ld [MBC1SRamBank], a
 ; This vc_hook does not have to be in any particular location.
 ; It is defined here because it refers to the same labels as the two lines below.
-	vc_hook Unknown_save_limit
+;	vc_hook Unknown_save_limit
 	ld hl, sGameData
 	ld bc, sGameDataEnd - sGameData
 	call SAVCheckSum
@@ -66,15 +66,14 @@ LoadSAV0:
 	ld de, wMainDataStart
 	ld bc, wMainDataEnd - wMainDataStart
 	call CopyData
-	ld a, [wCurMapTileset]
-	set BIT_NO_PREVIOUS_MAP, a
-	ld [wCurMapTileset], a
+	ld hl, wCurMapTileset
+	set BIT_NO_PREVIOUS_MAP, [hl]
 	ld hl, sSpriteData
 	ld de, wSpriteDataStart
 	ld bc, wSpriteDataEnd - wSpriteDataStart
 	call CopyData
 	ld a, [sTileAnimations]
-	ld [hTileAnimations], a
+	ldh [hTileAnimations], a
 	ld hl, sCurBoxData
 	ld de, wBoxDataStart
 	ld bc, wBoxDataEnd - wBoxDataStart
@@ -149,6 +148,9 @@ SaveSAV:
 	ret nz
 	ld c, 40
 	call DelayFrames
+	ld a, [wSaveFileStatus]
+	dec a
+	jr z, .save
 	call SAVCheckRandomID
 	jr z, .save
 	ld hl, OlderFileWillBeErasedText
@@ -215,7 +217,7 @@ SaveSAVtoSRAM0:
 	ld de, sCurBoxData
 	ld bc, wBoxDataEnd - wBoxDataStart
 	call CopyData
-	ld a, [hTileAnimations]
+	ldh a, [hTileAnimations]
 	ld [sTileAnimations], a
 	ld hl, sGameData
 	ld bc, sGameDataEnd - sGameData
@@ -270,6 +272,8 @@ SaveSAVtoSRAM2:
 	ret
 
 SaveSAVtoSRAM::
+	ld a, $2
+	ld [wSaveFileStatus], a
 	call SaveSAVtoSRAM0
 	call SaveSAVtoSRAM1
 	jp SaveSAVtoSRAM2
@@ -642,21 +646,21 @@ ClearSAV:
 	ld a, $1
 	ld [MBC1SRamBankingMode], a
 	xor a
-	call PadSRAM
+	call PadSRAM_FF
 	ld a, $1
-	call PadSRAM
+	call PadSRAM_FF
 	ld a, $2
-	call PadSRAM
+	call PadSRAM_FF
 	ld a, $3
-	call PadSRAM
+	call PadSRAM_FF
 	xor a
 	ld [MBC1SRamBankingMode], a
 	ld [MBC1SRamEnable], a
 	ret
 
-PadSRAM:
+PadSRAM_FF:
 	ld [MBC1SRamBank], a
 	ld hl, STARTOF(SRAM)
 	ld bc, SIZEOF(SRAM)
-	xor a
+	ld a, $ff
 	jp FillMemory
