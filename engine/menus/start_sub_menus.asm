@@ -122,7 +122,7 @@ StartMenu_Pokemon::
 .outOfBattleMovePointers
 	dw .cut
 	dw .fly
-	dw .unused
+	dw .surf
 	dw .surf
 	dw .strength
 	dw .flash
@@ -157,8 +157,6 @@ StartMenu_Pokemon::
 	and a
 	jp z, .loop
 	jp CloseTextDisplay
-.unused
-	jp .loop
 .surf
 	bit BIT_SOULBADGE, a
 	jp z, .newBadgeRequired

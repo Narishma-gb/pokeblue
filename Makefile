@@ -1,11 +1,5 @@
-roms := \
-	pokered.gb \
-	pokegreen.gb \
-	pokered11.gb \
-	pokegreen11.gb
-patches := \
-	pokered11.patch \
-	pokegreen11.patch 
+roms    := pokeblue.gb
+patches := pokeblue.patch
 
 rom_obj := \
 	audio.o \
@@ -18,12 +12,8 @@ rom_obj := \
 	gfx/sprites.o \
 	gfx/tilesets.o
 
-pokered_obj        := $(rom_obj:.o=_red.o)
-pokegreen_obj      := $(rom_obj:.o=_green.o)
-pokered11_obj      := $(rom_obj:.o=_red11.o)
-pokegreen11_obj    := $(rom_obj:.o=_green11.o)
-pokered11_vc_obj   := $(rom_obj:.o=_red11_vc.o)
-pokegreen11_vc_obj := $(rom_obj:.o=_green11_vc.o)
+pokeblue_obj    := $(rom_obj:.o=_blue.o)
+pokeblue_vc_obj := $(rom_obj:.o=_blue_vc.o)
 
 
 ### Build tools
@@ -47,15 +37,11 @@ RGBLINK ?= $(RGBDS)rgblink
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
-.PHONY: all red green red11 green11 clean tidy compare tools
+.PHONY: all blue clean tidy compare tools
 
 all: $(roms)
-red:        pokered.gb
-green:      pokegreen.gb
-red11:      pokered11.gb
-green11:    pokegreen11.gb
-red11_vc:   pokered11.patch
-green11_vc: pokegreen11.patch
+blue:    pokeblue.gb
+blue_vc: pokeblue.patch
 
 clean: tidy
 	find gfx \
@@ -73,12 +59,8 @@ tidy:
 	      $(patches:.patch=_vc.sym) \
 	      $(patches:.patch=_vc.map) \
 	      $(patches:%.patch=vc/%.constants.sym) \
-	      $(pokered_obj) \
-	      $(pokegreen_obj) \
-	      $(pokered11_obj) \
-	      $(pokegreen11_obj) \
-	      $(pokered11_vc_obj) \
-	      $(pokegreen11_vc_obj) \
+	      $(pokeblue_obj) \
+	      $(pokeblue_vc_obj) \
 	      rgbdscheck.o
 	$(MAKE) clean -C tools/
 
@@ -95,12 +77,8 @@ ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E
 endif
 
-$(pokered_obj):        RGBASMFLAGS += -D _RED -D _REV0
-$(pokegreen_obj):      RGBASMFLAGS += -D _GREEN -D _REV0
-$(pokered11_obj):      RGBASMFLAGS += -D _RED -D _REV1
-$(pokegreen11_obj):    RGBASMFLAGS += -D _GREEN -D _REV1
-$(pokered11_vc_obj):   RGBASMFLAGS += -D _RED -D _REV1 -D _RED_VC
-$(pokegreen11_vc_obj): RGBASMFLAGS += -D _GREEN -D _REV1 -D _GREEN_VC
+$(pokeblue_obj):    RGBASMFLAGS += -D _BLUE
+$(pokeblue_vc_obj): RGBASMFLAGS += -D _BLUE_VC
 
 %.patch: %_vc.gb %.gb vc/%.patch.template
 	tools/make_patch $*_vc.sym $^ $@
@@ -123,13 +101,9 @@ $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
 	$$(RGBASM) $$(RGBASMFLAGS) -o $$@ $$<
 endef
 
-# Dependencies for objects (drop _red and _blue from asm file basenames)
-$(foreach obj, $(pokered_obj), $(eval $(call DEP,$(obj),$(obj:_red.o=.asm))))
-$(foreach obj, $(pokegreen_obj), $(eval $(call DEP,$(obj),$(obj:_green.o=.asm))))
-$(foreach obj, $(pokered11_obj), $(eval $(call DEP,$(obj),$(obj:_red11.o=.asm))))
-$(foreach obj, $(pokegreen11_obj), $(eval $(call DEP,$(obj),$(obj:_green11.o=.asm))))
-$(foreach obj, $(pokered11_vc_obj), $(eval $(call DEP,$(obj),$(obj:_red11_vc.o=.asm))))
-$(foreach obj, $(pokegreen11_vc_obj), $(eval $(call DEP,$(obj),$(obj:_green11_vc.o=.asm))))
+# Dependencies for objects (drop _blue from asm file basenames)
+$(foreach obj, $(pokeblue_obj), $(eval $(call DEP,$(obj),$(obj:_blue.o=.asm))))
+$(foreach obj, $(pokeblue_vc_obj), $(eval $(call DEP,$(obj),$(obj:_blue_vc.o=.asm))))
 
 endif
 
@@ -137,19 +111,11 @@ endif
 %.asm: ;
 
 
-pokered_pad        = 0x00
-pokegreen_pad      = 0x00
-pokered11_pad      = 0x00
-pokegreen11_pad    = 0x00
-pokered11_vc_pad   = 0x00
-pokegreen11_vc_pad = 0x00
+pokeblue_pad    = 0x00
+pokeblue_vc_pad = 0x00
 
-pokered_opt        = -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON RED"
-pokegreen_opt      = -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON GREEN"
-pokered11_opt      = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON RED"
-pokegreen11_opt    = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON GREEN"
-pokered11_vc_opt   = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON RED"
-pokegreen11_vc_opt = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON GREEN"
+pokeblue_opt    = -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON BLUE"
+pokeblue_vc_opt = -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON BLUE"
 
 %.gb: $$(%_obj) layout.link
 	$(RGBLINK) -p $($*_pad) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
@@ -161,16 +127,15 @@ pokegreen11_vc_opt = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMO
 gfx/battle/move_anim_0.2bpp: tools/gfx += --trim-whitespace
 gfx/battle/move_anim_1.2bpp: tools/gfx += --trim-whitespace
 
-gfx/intro/rg_nidorino_1.2bpp: rgbgfx += -Z
-gfx/intro/rg_nidorino_2.2bpp: rgbgfx += -Z
-gfx/intro/rg_nidorino_3.2bpp: rgbgfx += -Z
+gfx/intro/blue_jigglypuff_1.2bpp: rgbgfx += -Z
+gfx/intro/blue_jigglypuff_2.2bpp: rgbgfx += -Z
+gfx/intro/blue_jigglypuff_3.2bpp: rgbgfx += -Z
 gfx/intro/gengar.2bpp: rgbgfx += -Z
 gfx/intro/gengar.2bpp: tools/gfx += --remove-duplicates --preserve=0x19,0x76
 
 gfx/credits/the_end.2bpp: tools/gfx += --interleave --png=$<
 
-gfx/slots/red_slots_1.2bpp: tools/gfx += --trim-whitespace
-gfx/slots/green_slots_1.2bpp: tools/gfx += --trim-whitespace
+gfx/slots/blue_slots_1.2bpp: tools/gfx += --trim-whitespace
 
 gfx/tilesets/%.2bpp: tools/gfx += --trim-whitespace
 gfx/tilesets/reds_house.2bpp: tools/gfx += --preserve=0x48

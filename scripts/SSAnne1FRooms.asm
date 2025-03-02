@@ -40,6 +40,31 @@ SSAnne1FRoomsGentleman1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+SSAnne1FRoomsGentleman2Text:
+	text_asm
+	ld hl, SSAnne1FRooms_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnne1FRoomsYoungsterText:
+	text_asm
+	ld hl, SSAnne1FRooms_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnne1FRoomsCooltrainerFText:
+	text_asm
+	ld hl, SSAnne1FRooms_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnne1FRoomsWigglytuffText:
+	text "プクリン『ぷう　ぷぷうー@"
+	text_asm
+	ld a, WIGGLYTUFF
+	call PlayCry
+	jp TextScriptEnd
+
 SSAnne1FRoomsGentleman1BattleText:
 	text "わたしは　たびびと<⋯>！"
 
@@ -56,12 +81,6 @@ SSAnne1FRoomsGentleman1AfterBattleText:
 	line "ともだちは　だいじに　しなさい！"
 	done
 
-SSAnne1FRoomsGentleman2Text:
-	text_asm
-	ld hl, SSAnne1FRooms_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 SSAnne1FRoomsGentleman2BattleText:
 	text "む　きみは？　だまって　はいって"
 	line "しつれいな　こどもだ！"
@@ -76,12 +95,6 @@ SSAnne1FRoomsGentleman2AfterBattleText:
 	text "わたしは　ひとりで　いたいんだ"
 	line "でて　いって　くれ！"
 	done
-
-SSAnne1FRoomsYoungsterText:
-	text_asm
-	ld hl, SSAnne1FRooms_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SSAnne1FRoomsYoungsterBattleText:
 	text "ぼくは　#　だいすきだ！"
@@ -100,12 +113,6 @@ SSAnne1FRoomsYoungsterAfterBattleText:
 	para "それでね！"
 	line "#　こうかんとか　しようよ"
 	done
-
-SSAnne1FRoomsCooltrainerFText:
-	text_asm
-	ld hl, SSAnne1FRooms_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SSAnne1FRoomsCooltrainerFBattleText:
 	text "あたしが　せかい　じゅうから"
@@ -140,13 +147,6 @@ SSAnne1FRoomsLittleGirlText:
 	text "あたしと　プクリンは"
 	line "ずーっと　いっしょ　なの！"
 	done
-
-SSAnne1FRoomsWigglytuffText:
-	text "プクリン『ぷう　ぷぷうー@"
-	text_asm
-	ld a, WIGGLYTUFF
-	call PlayCry
-	jp TextScriptEnd
 
 SSAnne1FRoomsGirl2Text:
 	text "わたくし　こども　たちと"

@@ -396,6 +396,19 @@ Route22Rival1Text:
 .text_script_end
 	jp TextScriptEnd
 
+Route22Rival2Text:
+	text_asm
+	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
+	jr z, .before_battle
+	ld hl, Route22RivalAfterBattleText2
+	call PrintText
+	jr .text_script_end
+.before_battle
+	ld hl, Route22RivalBeforeBattleText2
+	call PrintText
+.text_script_end
+	jp TextScriptEnd
+
 Route22RivalBeforeBattleText1:
 	text "<RIVAL>『あーッ！　<PLAYER>！"
 
@@ -440,19 +453,6 @@ Route22Rival1VictoryText:
 	para "おまえも"
 	line "つかまえれば　いい　じゃん！"
 	prompt
-
-Route22Rival2Text:
-	text_asm
-	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
-	jr z, .before_battle
-	ld hl, Route22RivalAfterBattleText2
-	call PrintText
-	jr .text_script_end
-.before_battle
-	ld hl, Route22RivalBeforeBattleText2
-	call PrintText
-.text_script_end
-	jp TextScriptEnd
 
 Route22RivalBeforeBattleText2:
 	text "<RIVAL>『なんだ？　<PLAYER>！"

@@ -690,6 +690,9 @@ ItemUseSurfboard:
 ; tryToSurf
 	call IsNextTileShoreOrWater
 	jp c, SurfingAttemptFailed
+	ld hl, TilePairCollisionsWater
+	call CheckForTilePairCollisions
+	jp c, SurfingAttemptFailed
 ; surf
 	call .makePlayerMoveForward
 	ld hl, wStatusFlags5
@@ -708,6 +711,9 @@ ItemUseSurfboard:
 	ldh a, [hSpriteIndex]
 	and a ; is there a sprite in the way?
 	jr nz, .cannotStopSurfing
+	ld hl, TilePairCollisionsWater
+	call CheckForTilePairCollisions
+	jr c, .cannotStopSurfing
 	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
 	ld a, [hli]
 	ld h, [hl]
@@ -1213,13 +1219,13 @@ ItemUseMedicine:
 	call PlaySoundWaitForCurrent
 .showHealingItemMessage
 	xor a
-	ld [hAutoBGTransferEnabled], a
+	ldh [hAutoBGTransferEnabled], a
 	call ClearScreen
 	dec a
 	ld [wUpdateSpritesEnabled], a
 	call RedrawPartyMenu ; redraws the party menu and displays the message
 	ld a, 1
-	ld [hAutoBGTransferEnabled], a
+	ldh [hAutoBGTransferEnabled], a
 	ld c, 50
 	call DelayFrames
 	call WaitForTextScrollButtonPress

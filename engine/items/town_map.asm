@@ -10,7 +10,7 @@ DisplayTownMap:
 	ld [hl], $ff
 	push hl
 	ld a, $1
-	ld [hJoy7], a
+	ldh [hJoy7], a
 	ld a, [wCurMap]
 	push af
 	ld b, $0
@@ -81,7 +81,7 @@ DisplayTownMap:
 	jr nz, .pressedDown
 	xor a
 	ld [wTownMapSpriteBlinkingEnabled], a
-	ld [hJoy7], a
+	ldh [hJoy7], a
 	ld [wAnimCounter], a
 	call ExitTownMap
 	pop hl

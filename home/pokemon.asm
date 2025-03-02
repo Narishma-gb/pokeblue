@@ -132,7 +132,7 @@ LoadFrontSpriteByMonIndex::
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	xor a
-	ld [hStartTileID], a
+	ldh [hStartTileID], a
 	call CopyUncompressedPicToHL
 	xor a
 	ld [wSpriteFlipped], a

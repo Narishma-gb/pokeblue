@@ -166,6 +166,24 @@ SilphCo2FScientist1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+SilphCo2FScientist2Text:
+	text_asm
+	ld hl, SilphCo2F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SilphCo2FRocket1Text:
+	text_asm
+	ld hl, SilphCo2F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SilphCo2FRocket2Text:
+	text_asm
+	ld hl, SilphCo2F_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
 SilphCo2FScientist1BattleText:
 	text "た　たすけて！"
 	line "わたしは　シルフ　しゃいん　です"
@@ -181,12 +199,6 @@ SilphCo2FScientist1AfterBattleText:
 	cont "<ROCKET>いん　でも　あるのさ"
 	done
 
-SilphCo2FScientist2Text:
-	text_asm
-	ld hl, SilphCo2F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 SilphCo2FScientist2BattleText:
 	text "ここは　たちいり　きんしだ"
 	line "かえりなさい！"
@@ -200,12 +212,6 @@ SilphCo2FScientist2AfterBattleText:
 	text "ビルの　なかは　ふくざつだぞ"
 	line "きみに　こうりゃく　できるかな？"
 	done
-
-SilphCo2FRocket1Text:
-	text_asm
-	ld hl, SilphCo2F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SilphCo2FRocket1BattleText:
 	text "ここは　こどもの"
@@ -223,12 +229,6 @@ SilphCo2FRocket1AfterBattleText:
 	para "ハイテクな　ビルの　なかでの"
 	line "いどう　しゅだんだぜ"
 	done
-
-SilphCo2FRocket2Text:
-	text_asm
-	ld hl, SilphCo2F_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SilphCo2FRocket2BattleText:
 	text "そこの　こども！"

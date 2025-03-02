@@ -34,6 +34,7 @@ CinnabarGymResetScripts:
 	ld [wJoyIgnore], a
 	ld [wCinnabarGymCurScript], a
 	ld [wCurMapScript], a
+	ld [wOpponentAfterWrongAnswer], a
 	ret
 
 CinnabarGymSetTrainerHeader:

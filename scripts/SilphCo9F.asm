@@ -175,6 +175,18 @@ SilphCo9FRocket1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+SilphCo9FScientistText:
+	text_asm
+	ld hl, SilphCo9F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SilphCo9FRocket2Text:
+	text_asm
+	ld hl, SilphCo9F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
 SilphCo9FRocket1BattleText:
 	text "こどもの　くせに　おまえの"
 	line "#　ずいぶん　なついているな"
@@ -188,12 +200,6 @@ SilphCo9FRocket1AfterBattleText:
 	text "おまえ　くらいの　としから"
 	line "#　やってれば　おれも<⋯>"
 	done
-
-SilphCo9FScientistText:
-	text_asm
-	ld hl, SilphCo9F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SilphCo9FScientistBattleText:
 	text "きみの　#　には"
@@ -211,12 +217,6 @@ SilphCo9FScientistAfterBattleText:
 	line "せめると　いいのは　じじつだ！"
 	cont "タイプの　あいしょう　とか<⋯>"
 	done
-
-SilphCo9FRocket2Text:
-	text_asm
-	ld hl, SilphCo9F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SilphCo9FRocket2BattleText:
 	text "おれこそは"

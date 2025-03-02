@@ -12,10 +12,6 @@ CableClubNPC::
 .receivedPokedex
 	ld a, $1
 	ld [wMenuJoypadPollCount], a
-IF DEF(_REV0)
-	ld a, $10
-	ld [wUnknown_CCE0], a
-ENDC
 	ld a, 90
 	ld [wLinkTimeoutCounter], a
 .establishConnectionLoop
@@ -35,11 +31,11 @@ ENDC
 ; USING_INTERNAL_CLOCK, which allows the player to proceed past the link
 ; receptionist's "Please wait." It assumes that hSerialConnectionStatus is at
 ; its original address.
-	vc_hook Link_fake_connection_status
-	vc_assert hSerialConnectionStatus == $ffaa, \
-		"hSerialConnectionStatus is no longer located at 00:ffaa"
-	vc_assert USING_INTERNAL_CLOCK == $02, \
-		"USING_INTERNAL_CLOCK is no longer equal to $02."
+;	vc_hook Link_fake_connection_status
+;	vc_assert hSerialConnectionStatus == $ffaa, \
+;		"hSerialConnectionStatus is no longer located at 00:ffaa"
+;	vc_assert USING_INTERNAL_CLOCK == $02, \
+;		"USING_INTERNAL_CLOCK is no longer equal to $02."
 	ldh [rSC], a
 	ld a, [wLinkTimeoutCounter]
 	dec a
@@ -67,7 +63,7 @@ ENDC
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .choseNo
-	vc_hook Wireless_TryQuickSave_block_input
+;	vc_hook Wireless_TryQuickSave_block_input
 	callfar SaveSAVtoSRAM
 	call WaitForSoundToFinish
 	ld a, SFX_SAVE
@@ -81,9 +77,9 @@ ENDC
 	ld [hl], a
 	ldh [hSerialReceivedNewData], a
 	ld [wSerialExchangeNybbleSendData], a
-	vc_hook Wireless_prompt
+;	vc_hook Wireless_prompt
 	call Serial_SyncAndExchangeNybble
-	vc_hook Wireless_net_recheck
+;	vc_hook Wireless_net_recheck
 	ld hl, wUnknownSerialCounter
 	ld a, [hli]
 	inc a
@@ -151,16 +147,16 @@ CableClubNPCPleaseWaitText:
 	text_end
 
 CableClubNPCLinkClosedBecauseOfInactivityText:
-	vc_patch Change_link_closed_inactivity_message
-IF DEF(_RED_VC) || DEF(_GREEN_VC)
-	text "それでは　また　おこしください"
-	done
-	text "けを　ちゅうし　いたします！"
-ELSE
+;	vc_patch Change_link_closed_inactivity_message
+;IF DEF(_RED_VC) || DEF(_GREEN_VC)
+;	text "それでは　また　おこしください"
+;	done
+;	text "けを　ちゅうし　いたします！"
+;ELSE
 	text "まち　じかんが　ながいので"
 	line "うけつけを　ちゅうし　いたします！"
-ENDC
-	vc_patch_end
+;ENDC
+;	vc_patch_end
 
 	para "ともだちと　れんらくを　とって"
 	line "もういちど　おこし　ください！"

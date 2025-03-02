@@ -239,7 +239,7 @@ BillsHouseBillSSTicketText:
 
 .WhyDontYouGoInsteadOfMeText:
 	text "いま　クチバの　みなとに"
-	line "サントアンヌ　ごうが　きとんのや"
+	line "サント·アンヌ　ごうが　きとんのや"
 	cont "#　<TRAINER>も"
 	cont "ぎょうさん　くる　らしいで"
 

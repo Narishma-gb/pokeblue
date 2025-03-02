@@ -43,6 +43,54 @@ Route21Fisher1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+Route21Fisher2Text:
+	text_asm
+	ld hl, Route21_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route21Swimmer1Text:
+	text_asm
+	ld hl, Route21_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route21Swimmer2Text:
+	text_asm
+	ld hl, Route21_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route21Swimmer3Text:
+	text_asm
+	ld hl, Route21_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route21Swimmer4Text:
+	text_asm
+	ld hl, Route21_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route21Swimmer5Text:
+	text_asm
+	ld hl, Route21_TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route21Fisher3Text:
+	text_asm
+	ld hl, Route21_TrainerHeader7
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route21Fisher4Text:
+	text_asm
+	ld hl, Route21_TrainerHeader8
+	call TalkToTrainer
+	jp TextScriptEnd
+
 Route21Fisher1BattleText:
 	text "「つれますか？」とか　おまえは"
 	line "ききたいんじゃないの？"
@@ -56,12 +104,6 @@ Route21Fisher1AfterBattleText:
 	text "いい　#　つれねーよ！"
 	line "ぜんぜん！"
 	done
-
-Route21Fisher2Text:
-	text_asm
-	ld hl, Route21_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route21Fisher2BattleText:
 	text "たいりょう！　たいりょう！"
@@ -78,12 +120,6 @@ Route21Fisher2AfterBattleText:
 	line "ばっかり　つれるんだよ！"
 	done
 
-Route21Swimmer1Text:
-	text_asm
-	ld hl, Route21_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route21Swimmer1BattleText:
 	text "うみはーッ"
 	line "おとこの　ロマンだーッ！"
@@ -97,12 +133,6 @@ Route21Swimmer1AfterBattleText:
 	text "うみも　いいけど"
 	line "じつは　やまも　すきだな！"
 	done
-
-Route21Swimmer2Text:
-	text_asm
-	ld hl, Route21_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route21Swimmer2BattleText:
 	text "おれだって　たまには"
@@ -118,12 +148,6 @@ Route21Swimmer2AfterBattleText:
 	line "うるせー　おおきな　おせわだッ！"
 	done
 
-Route21Swimmer3Text:
-	text_asm
-	ld hl, Route21_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route21Swimmer3BattleText:
 	text "ウチの　#は"
 	line "うみで　とって　きました"
@@ -137,12 +161,6 @@ Route21Swimmer3AfterBattleText:
 	text "きみの　#は"
 	line "どこで　とって　きたのかな？"
 	done
-
-Route21Swimmer4Text:
-	text_asm
-	ld hl, Route21_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route21Swimmer4BattleText:
 	text "じつは　いま　トライアスロンの"
@@ -159,12 +177,6 @@ Route21Swimmer4AfterBattleText:
 	cont "マラソンが　あるのに<⋯>！"
 	done
 
-Route21Swimmer5Text:
-	text_asm
-	ld hl, Route21_TrainerHeader6
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route21Swimmer5BattleText:
 	text "あーッ！"
 	line "ひざしが　きもちいーぜ！"
@@ -177,12 +189,6 @@ Route21Swimmer5EndBattleText:
 Route21Swimmer5AfterBattleText:
 	text "やけた　やけた！　まっくろだ！"
 	done
-
-Route21Fisher3Text:
-	text_asm
-	ld hl, Route21_TrainerHeader7
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route21Fisher3BattleText:
 	text "こまるなー　きみ！"
@@ -199,12 +205,6 @@ Route21Fisher3AfterBattleText:
 	line "まさか　ここは　おっきな"
 	cont "プール　だったり　して"
 	done
-
-Route21Fisher4Text:
-	text_asm
-	ld hl, Route21_TrainerHeader8
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route21Fisher4BattleText:
 	text "アタリが　くるまで"

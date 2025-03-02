@@ -5,7 +5,7 @@ DisplayListMenuID::
 	xor a
 	ldh [hAutoBGTransferEnabled], a ; disable auto-transfer
 	ld a, 1
-	ld [hJoy7], a ; joypad state update flag
+	ldh [hJoy7], a ; joypad state update flag
 	ld a, [wBattleType]
 	and a ; is it the Old Man battle?
 	jr nz, .specialBattleType
@@ -165,7 +165,7 @@ DisplayListMenuIDLoop::
 	ld a, [wCurrentMenuItem]
 	ld [wChosenMenuItem], a
 	xor a
-	ld [hJoy7], a ; joypad state update flag
+	ldh [hJoy7], a ; joypad state update flag
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 	jp BankswitchBack
@@ -325,7 +325,7 @@ ExitListMenu::
 	ld [wMenuExitMethod], a
 	ld [wMenuWatchMovingOutOfBounds], a
 	xor a
-	ld [hJoy7], a
+	ldh [hJoy7], a
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 	call BankswitchBack

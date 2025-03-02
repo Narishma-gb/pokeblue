@@ -15,7 +15,7 @@
 ;    ([hJoy7] == 1, [hJoy6] == 0)
 JoypadLowSensitivity::
 	call Joypad
-	ld a, [hJoy7] ; flag
+	ldh a, [hJoy7] ; flag
 	and a ; get all currently pressed buttons or only newly pressed buttons?
 	ldh a, [hJoyPressed] ; newly pressed buttons
 	jr z, .storeButtonState

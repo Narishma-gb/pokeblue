@@ -43,13 +43,13 @@ DisplayDiploma::
 	call PlaceString
 	farcall DrawPlayerCharacter
 
-; Move the player 75 pixels right and set the priority bit so he appears
+; Move the player 33 pixels right and set the priority bit so he appears
 ; behind the background layer.
 	ld hl, wShadowOAMSprite00XCoord
 	lb bc, $80, $28
 .adjustPlayerGfxLoop
 	ld a, [hl] ; X
-	add 75
+	add 33
 	ld [hli], a
 	inc hl
 	ld a, b

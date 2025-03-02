@@ -45,42 +45,11 @@ SSAnne2FRoomsGentleman1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SSAnne2FRoomsGentleman1BattleText:
-	text "わかもの　との　しょうぶ　こそ"
-	line "じんせいの　たのしみ！"
-	done
-
-SSAnne2FRoomsGentleman1EndBattleText:
-	text "いい　しょうぶ！"
-	line "わかがえる　ようだ"
-	prompt
-
-SSAnne2FRoomsGentleman1AfterBattleText:
-	text "１５ねん　まえ　なら"
-	line "わたしが　かって　いた　だろう！"
-	done
-
 SSAnne2FRoomsFisherText:
 	text_asm
 	ld hl, SSAnne2FRooms_TrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
-
-SSAnne2FRoomsFisherBattleText:
-	text "おれが　つった"
-	line "じまんの　さかなを　みろ！"
-	done
-
-SSAnne2FRoomsFisherEndBattleText:
-	text "もう　からっぽ！"
-	prompt
-
-SSAnne2FRoomsFisherAfterBattleText:
-	text "<⋯>　パーティ？"
-
-	para "せんじょう　パーティは"
-	line "もう　おわった　ころ　じゃないかな"
-	done
 
 SSAnne2FRoomsGentleman2Text:
 	text_asm
@@ -88,40 +57,11 @@ SSAnne2FRoomsGentleman2Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SSAnne2FRoomsGentleman2BattleText:
-	text "きみは<⋯>　つよい　#と"
-	line "めずらしい　#"
-	cont "どっちに　かちを　かんじるかね？"
-	done
-
-SSAnne2FRoomsGentleman2EndBattleText:
-	text "やる　ものだね！"
-	prompt
-
-SSAnne2FRoomsGentleman2AfterBattleText:
-	text "わたしは<⋯>　めずらしくて"
-	line "つよい　#が　ほしいねえ"
-	done
-
 SSAnne2FRoomsCooltrainerFText:
 	text_asm
 	ld hl, SSAnne2FRooms_TrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
-
-SSAnne2FRoomsCooltrainerFBattleText:
-	text "あら　せんじょう　パーティでは"
-	line "みかけ　なかった　けど<⋯>？"
-	done
-
-SSAnne2FRoomsCooltrainerFEndBattleText:
-	text "てかげん　してよ"
-	prompt
-
-SSAnne2FRoomsCooltrainerFAfterBattleText:
-	text "いいな　つよい　#！"
-	line "いいな<⋯>　いいな<⋯>！"
-	done
 
 SSAnne2FRoomsGentleman3Text:
 	text_asm
@@ -212,4 +152,64 @@ SSAnne2FRoomsBeautyText:
 .Text:
 	text "けっこう　おおい　らしいわ！"
 	line "ふなよい　する　ひと！"
+	done
+
+SSAnne2FRoomsGentleman1BattleText:
+	text "わかもの　との　しょうぶ　こそ"
+	line "じんせいの　たのしみ！"
+	done
+
+SSAnne2FRoomsGentleman1EndBattleText:
+	text "いい　しょうぶ！"
+	line "わかがえる　ようだ"
+	prompt
+
+SSAnne2FRoomsGentleman1AfterBattleText:
+	text "１５ねん　まえ　なら"
+	line "わたしが　かって　いた　だろう！"
+	done
+
+SSAnne2FRoomsFisherBattleText:
+	text "おれが　つった"
+	line "じまんの　さかなを　みろ！"
+	done
+
+SSAnne2FRoomsFisherEndBattleText:
+	text "もう　からっぽ！"
+	prompt
+
+SSAnne2FRoomsFisherAfterBattleText:
+	text "<⋯>　パーティ？"
+
+	para "せんじょう　パーティは"
+	line "もう　おわった　ころ　じゃないかな"
+	done
+
+SSAnne2FRoomsGentleman2BattleText:
+	text "きみは<⋯>　つよい　#と"
+	line "めずらしい　#"
+	cont "どっちに　かちを　かんじるかね？"
+	done
+
+SSAnne2FRoomsGentleman2EndBattleText:
+	text "やる　ものだね！"
+	prompt
+
+SSAnne2FRoomsGentleman2AfterBattleText:
+	text "わたしは<⋯>　めずらしくて"
+	line "つよい　#が　ほしいねえ"
+	done
+
+SSAnne2FRoomsCooltrainerFBattleText:
+	text "あら　せんじょう　パーティでは"
+	line "みかけ　なかった　けど<⋯>？"
+	done
+
+SSAnne2FRoomsCooltrainerFEndBattleText:
+	text "てかげん　してよ"
+	prompt
+
+SSAnne2FRoomsCooltrainerFAfterBattleText:
+	text "いいな　つよい　#！"
+	line "いいな<⋯>　いいな<⋯>！"
 	done

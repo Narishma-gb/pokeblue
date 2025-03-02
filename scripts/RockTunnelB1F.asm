@@ -41,6 +41,48 @@ RockTunnelB1FCooltrainerF1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+RockTunnelB1FHiker1Text:
+	text_asm
+	ld hl, RockTunnelB1F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RockTunnelB1FSuperNerd1Text:
+	text_asm
+	ld hl, RockTunnelB1F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RockTunnelB1FSuperNerd2Text:
+	text_asm
+	ld hl, RockTunnelB1F_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RockTunnelB1FHiker2Text:
+	text_asm
+	ld hl, RockTunnelB1F_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RockTunnelB1FCooltrainerF2Text:
+	text_asm
+	ld hl, RockTunnelB1F_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RockTunnelB1FHiker3Text:
+	text_asm
+	ld hl, RockTunnelB1F_TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RockTunnelB1FSuperNerd3Text:
+	text_asm
+	ld hl, RockTunnelB1F_TrainerHeader7
+	call TalkToTrainer
+	jp TextScriptEnd
+
 RockTunnelB1FCooltrainerF1BattleText:
 	text "ガールスカウトは　やまで"
 	line "まよわない　ように　めじるしの"
@@ -56,12 +98,6 @@ RockTunnelB1FCooltrainerF1AfterBattleText:
 	text "まけちゃったし"
 	line "きょうは　おうちに　かえろう"
 	done
-
-RockTunnelB1FHiker1Text:
-	text_asm
-	ld hl, RockTunnelB1F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 RockTunnelB1FHiker1BattleText:
 	text "はははーッ！"
@@ -79,12 +115,6 @@ RockTunnelB1FHiker1AfterBattleText:
 	cont "にがて　だからだ！"
 	done
 
-RockTunnelB1FSuperNerd1Text:
-	text_asm
-	ld hl, RockTunnelB1F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
-
 RockTunnelB1FSuperNerd1BattleText:
 	text "#　ずかん　つくってる？"
 	line "くそう！　ぼくも　やりたい！"
@@ -100,12 +130,6 @@ RockTunnelB1FSuperNerd1AfterBattleText:
 	cont "ぼくに　くれない？"
 	done
 
-RockTunnelB1FSuperNerd2Text:
-	text_asm
-	ld hl, RockTunnelB1F_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
-
 RockTunnelB1FSuperNerd2BattleText:
 	text "あの<⋯>"
 	line "#　コスプレ　しってます？"
@@ -120,12 +144,6 @@ RockTunnelB1FSuperNerd2AfterBattleText:
 	line "ピッピの　きぐるみ　とか　つくって"
 	cont "#に　なりきるんです"
 	done
-
-RockTunnelB1FHiker2Text:
-	text_asm
-	ld hl, RockTunnelB1F_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
 
 RockTunnelB1FHiker2BattleText:
 	text "おれの"
@@ -144,12 +162,6 @@ RockTunnelB1FHiker2AfterBattleText:
 	cont "いわ　タイプが　おおいぞ"
 	done
 
-RockTunnelB1FCooltrainerF2Text:
-	text_asm
-	ld hl, RockTunnelB1F_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
-
 RockTunnelB1FCooltrainerF2BattleText:
 	text "たたかっても　いいけど<⋯>"
 	line "この　あたりには"
@@ -165,12 +177,6 @@ RockTunnelB1FCooltrainerF2AfterBattleText:
 	line "おっきいのは　こわい　から　いや"
 	done
 
-RockTunnelB1FHiker3Text:
-	text_asm
-	ld hl, RockTunnelB1F_TrainerHeader6
-	call TalkToTrainer
-	jp TextScriptEnd
-
 RockTunnelB1FHiker3BattleText:
 	text "おとこ　なら"
 	line "どーんと　ぶつかって　こい！"
@@ -185,12 +191,6 @@ RockTunnelB1FHiker3AfterBattleText:
 	text "おれも　ぼうずに　まけない"
 	line "#を　そだてて　おくぜ！"
 	done
-
-RockTunnelB1FSuperNerd3Text:
-	text_asm
-	ld hl, RockTunnelB1F_TrainerHeader7
-	call TalkToTrainer
-	jp TextScriptEnd
 
 RockTunnelB1FSuperNerd3BattleText:
 	text "いえに　いる　ときは"

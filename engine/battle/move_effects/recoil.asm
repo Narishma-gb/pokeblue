@@ -1,5 +1,5 @@
 RecoilEffect_:
-	ld a, [hWhoseTurn]
+	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveNum]
 	ld hl, wBattleMonMaxHP

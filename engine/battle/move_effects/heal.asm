@@ -113,8 +113,8 @@ StartedSleepingEffect:
 	done
 
 FellAsleepBecameHealthyText:
-	text "<USER>は　けんこうになって"
-	line "ねむりはじめた！"
+	text "<USER>は"
+	line "けんこうになって　ねむりはじめた！"
 	done
 
 RegainedHealthText:

@@ -22,24 +22,27 @@ InitPlayerData2:
 	call InitializeEmptyList
 
 DEF START_MONEY EQU $3000
-	xor a
+	ld hl, wPlayerMoney + 1
+	ld a, HIGH(START_MONEY)
+	ld [hld], a
+	xor a ; LOW(START_MONEY)
+	ld [hli], a
+	inc hl
+	ld [hl], a
 
 	ld [wMonDataLocation], a
 
-	ld [wObtainedBadges], a
-	ld [wUnusedObtainedBadges], a
+	ld hl, wObtainedBadges
+	ld [hli], a
+	ASSERT wObtainedBadges + 1 == wUnusedObtainedBadges
+	ld [hl], a
 
-	ld [wPlayerCoins], a
-	ld [wPlayerCoins + 1], a
-
-	ld [wPlayerMoney], a
-	ld [wPlayerMoney + 2], a
-	ld a, HIGH(START_MONEY)
-	ld [wPlayerMoney + 1], a
+	ld hl, wPlayerCoins
+	ld [hli], a
+	ld [hl], a
 
 	ld hl, wGameProgressFlags
 	ld bc, wGameProgressFlagsEnd - wGameProgressFlags
-	xor a
 	call FillMemory ; clear all game progress flags
 
 	jp InitializeMissableObjectsFlags

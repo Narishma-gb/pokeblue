@@ -462,13 +462,7 @@ wLinkBattleRandomNumberListIndex:: db
 ; number of times remaining that AI action can occur
 wAICount:: db
 
-IF DEF(_REV0)
-	wUnknown_CCE0:: db
-	ds 1
-ENDC
-IF DEF(_REV1)
 	ds 2
-ENDC
 
 wEnemyMoveListIndex:: db
 
@@ -1006,7 +1000,8 @@ wSavedCoordIndex::
 wOakWalkedToPlayer::
 wNextSafariZoneGateScript:: db
 
-	ds 1
+; used in CheckForTilePairCollisions2 to store the tile the player is on
+wTilePlayerStandingOn:: db
 
 wNPCNumScriptedSteps:: db
 
@@ -1693,13 +1688,6 @@ ENDU
 
 wSerialPlayerDataBlock:: ; ds $1a8
 
-UNION
-IF DEF(_REV0)
-	wUnknownSerialCounter3:: dw
-	wUnknownSerialByte:: db
-ENDC
-
-NEXTU
 ; When a real item is being used, this is 0.
 ; When a move is acting as an item, this is the ID of the item it's acting as.
 ; For example, out-of-battle Dig is executed using a fake Escape Rope item. In
@@ -1709,7 +1697,6 @@ wPseudoItemID:: db
 wUnusedAlreadyOwnedFlag:: db
 
 	ds 2
-ENDU
 
 wEvoStoneItemID:: db
 

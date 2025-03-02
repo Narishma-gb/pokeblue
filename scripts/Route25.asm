@@ -73,6 +73,54 @@ Route25Youngster1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+Route25Youngster2Text:
+	text_asm
+	ld hl, Route25_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route25CooltrainerMText:
+	text_asm
+	ld hl, Route25_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route25CooltrainerF1Text:
+	text_asm
+	ld hl, Route25_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route25Youngster3Text:
+	text_asm
+	ld hl, Route25_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route25CooltrainerF2Text:
+	text_asm
+	ld hl, Route25_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route25Hiker1Text:
+	text_asm
+	ld hl, Route25_TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route25Hiker2Text:
+	text_asm
+	ld hl, Route25_TrainerHeader7
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route25Hiker3Text:
+	text_asm
+	ld hl, Route25_TrainerHeader8
+	call TalkToTrainer
+	jp TextScriptEnd
+
 Route25Youngster1BattleText:
 	text "この　はやしは　きんじょの"
 	line "<TRAINER>が"
@@ -89,15 +137,9 @@ Route25Youngster1AfterBattleText:
 	cont "たくさん　そだてる　ほうが　いいよ"
 	done
 
-Route25Youngster2Text:
-	text_asm
-	ld hl, Route25_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route25Youngster2BattleText:
 	text "クチバ　みなとの"
-	line "サントアンヌ　ごうの　パーティ"
+	line "サント·アンヌ　ごうの　パーティ"
 	cont "パパと　いったぜ　いいだろー！"
 	done
 
@@ -106,16 +148,10 @@ Route25Youngster2EndBattleText:
 	prompt
 
 Route25Youngster2AfterBattleText:
-	text "サントアンヌ　ごう　は"
+	text "サント·アンヌ　ごう　は"
 	line "せかいの　<TRAINER>が"
 	cont "いっぱい　いたよ"
 	done
-
-Route25CooltrainerMText:
-	text_asm
-	ld hl, Route25_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route25CooltrainerMBattleText:
 	text "ぼくは　ボーイスカウト"
@@ -131,12 +167,6 @@ Route25CooltrainerMAfterBattleText:
 	line "かのじょに　なぐさめて　もらおう"
 	done
 
-Route25CooltrainerF1Text:
-	text_asm
-	ld hl, Route25_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route25CooltrainerF1BattleText:
 	text "わたしは　ミニスカート"
 	line "かれは　ボーイスカウト！"
@@ -150,12 +180,6 @@ Route25CooltrainerF1AfterBattleText:
 	text "わたしの　かれも"
 	line "きみ　くらい　つよいと　いいのに"
 	done
-
-Route25Youngster3Text:
-	text_asm
-	ld hl, Route25_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route25Youngster3BattleText:
 	text "む<⋯>！"
@@ -173,12 +197,6 @@ Route25Youngster3AfterBattleText:
 	cont "さくせんも　いいね"
 	done
 
-Route25CooltrainerF2Text:
-	text_asm
-	ld hl, Route25_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route25CooltrainerF2BattleText:
 	text "ともだちが　かわいい　#"
 	line "いっぱい　もってるの"
@@ -194,12 +212,6 @@ Route25CooltrainerF2AfterBattleText:
 	line "じゃ　あたし　ピッピ　ほしーい！"
 	cont "ねえ　ちょうだい"
 	done
-
-Route25Hiker1Text:
-	text_asm
-	ld hl, Route25_TrainerHeader6
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route25Hiker1BattleText:
 	text "オツキミ　やま　から"
@@ -217,12 +229,6 @@ Route25Hiker1AfterBattleText:
 	cont "ズバットに　かまれちまった"
 	done
 
-Route25Hiker2Text:
-	text_asm
-	ld hl, Route25_TrainerHeader7
-	call TalkToTrainer
-	jp TextScriptEnd
-
 Route25Hiker2BattleText:
 	text "みさきに　すんでる"
 	line "#　マニアの　コレクション"
@@ -238,12 +244,6 @@ Route25Hiker2AfterBattleText:
 	line "いろいろ　めずらしい　#を"
 	cont "もってる　らしい"
 	done
-
-Route25Hiker3Text:
-	text_asm
-	ld hl, Route25_TrainerHeader8
-	call TalkToTrainer
-	jp TextScriptEnd
 
 Route25Hiker3BattleText:
 	text "マサキの　いえに　いくのか？"

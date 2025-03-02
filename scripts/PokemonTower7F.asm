@@ -206,68 +206,17 @@ PokemonTower7FRocket1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-PokemonTower7FRocket1BattleText:
-	text "む！　なんだ　おまえは？"
-	line "なにしに　ここへ　きた？"
-	done
-
-PokemonTower7FRocket1EndBattleText:
-	text "ま　まいった！"
-	prompt
-
-PokemonTower7FRocket1AfterBattleText:
-	text "お！　おぼえて　やがれ！"
-	done
-
 PokemonTower7FRocket2Text:
 	text_asm
 	ld hl, PokemonTower7F_TrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
 
-PokemonTower7FRocket2BattleText:
-	text "この　じいさん"
-	line "<ROCKET>　アジトに　くるなり"
-
-	para "#を　いじめたり"
-	line "ころしたり　するなって　うるさくて"
-
-	para "ここで　おとなの　はなし　あいを"
-	line "してた　ところだ！"
-	done
-
-PokemonTower7FRocket2EndBattleText:
-	text "かんべん　してくれ<⋯>"
-	prompt
-
-PokemonTower7FRocket2AfterBattleText:
-	text "#なんて"
-	line "しょうばい　どうぐに　すぎない！"
-
-	para "おれたちの"
-	line "じゃま　するんじゃ　ないぜ！"
-	done
-
 PokemonTower7FRocket3Text:
 	text_asm
 	ld hl, PokemonTower7F_TrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
-
-PokemonTower7FRocket3BattleText:
-	text "おれたちを　たおさなきゃ"
-	line "じいさんは　たすけられないぜ！"
-	done
-
-PokemonTower7FRocket3EndBattleText:
-	text "<ROCKET>に"
-	line "はむかう　とはな！"
-	prompt
-
-PokemonTower7FRocket3AfterBattleText:
-	text "くそー<⋯>！"
-	line "このままで　すむと　おもうなよ！"
-	done
 
 PokemonTower7FMrFujiText:
 	text_asm
@@ -311,4 +260,55 @@ PokemonTower7FMrFujiText:
 
 	para "#ハウスは"
 	line "この　タワーの　ふもとです！"
+	done
+
+PokemonTower7FRocket1BattleText:
+	text "む！　なんだ　おまえは？"
+	line "なにしに　ここへ　きた？"
+	done
+
+PokemonTower7FRocket1EndBattleText:
+	text "ま　まいった！"
+	prompt
+
+PokemonTower7FRocket1AfterBattleText:
+	text "お！　おぼえて　やがれ！"
+	done
+
+PokemonTower7FRocket2BattleText:
+	text "この　じいさん"
+	line "<ROCKET>　アジトに　くるなり"
+
+	para "#を　いじめたり"
+	line "ころしたり　するなって　うるさくて"
+
+	para "ここで　おとなの　はなし　あいを"
+	line "してた　ところだ！"
+	done
+
+PokemonTower7FRocket2EndBattleText:
+	text "かんべん　してくれ<⋯>"
+	prompt
+
+PokemonTower7FRocket2AfterBattleText:
+	text "#なんて"
+	line "しょうばい　どうぐに　すぎない！"
+
+	para "おれたちの"
+	line "じゃま　するんじゃ　ないぜ！"
+	done
+
+PokemonTower7FRocket3BattleText:
+	text "おれたちを　たおさなきゃ"
+	line "じいさんは　たすけられないぜ！"
+	done
+
+PokemonTower7FRocket3EndBattleText:
+	text "<ROCKET>に"
+	line "はむかう　とはな！"
+	prompt
+
+PokemonTower7FRocket3AfterBattleText:
+	text "くそー<⋯>！"
+	line "このままで　すむと　おもうなよ！"
 	done

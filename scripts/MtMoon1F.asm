@@ -46,6 +46,42 @@ MtMoon1FHikerText:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+MtMoon1FYoungster1Text:
+	text_asm
+	ld hl, MtMoon1F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+MtMoon1FCooltrainerF1Text:
+	text_asm
+	ld hl, MtMoon1F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+MtMoon1FSuperNerdText:
+	text_asm
+	ld hl, MtMoon1F_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+MtMoon1FCooltrainerF2Text:
+	text_asm
+	ld hl, MtMoon1F_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+MtMoon1FYoungster2Text:
+	text_asm
+	ld hl, MtMoon1F_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
+MtMoon1FYoungster3Text:
+	text_asm
+	ld hl, MtMoon1F_TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+
 MtMoon1FHikerBattleText:
 	text "うわーッ！"
 	line "びっくり　した！"
@@ -61,12 +97,6 @@ MtMoon1FHikerAfterBattleText:
 	line "こんな　くらい　ところを"
 	cont "ウロウロ　しちゃ　いかん　なあ"
 	done
-
-MtMoon1FYoungster1Text:
-	text_asm
-	ld hl, MtMoon1F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 MtMoon1FYoungster1BattleText:
 	text "きみも"
@@ -84,12 +114,6 @@ MtMoon1FYoungster1AfterBattleText:
 	cont "こんな　とこ　まで　きちゃった"
 	done
 
-MtMoon1FCooltrainerF1Text:
-	text_asm
-	ld hl, MtMoon1F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
-
 MtMoon1FCooltrainerF1BattleText:
 	text "わあーッ！"
 	line "どうくつの　なかって"
@@ -105,12 +129,6 @@ MtMoon1FCooltrainerF1AfterBattleText:
 	line "どっちが　でぐちか　まよっちゃう"
 	done
 
-MtMoon1FSuperNerdText:
-	text_asm
-	ld hl, MtMoon1F_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
-
 MtMoon1FSuperNerdBattleText:
 	text "うわッ！　なんだ？"
 	line "きゅうに　こえを　かけるな！"
@@ -125,12 +143,6 @@ MtMoon1FSuperNerdAfterBattleText:
 	text "えーと<⋯>！　どこかに"
 	line "つよい　#　いないか<⋯>　な"
 	done
-
-MtMoon1FCooltrainerF2Text:
-	text_asm
-	ld hl, MtMoon1F_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
 
 MtMoon1FCooltrainerF2BattleText:
 	text "なによー！"
@@ -148,12 +160,6 @@ MtMoon1FCooltrainerF2AfterBattleText:
 	cont "あるって　きいて　きたの"
 	done
 
-MtMoon1FYoungster2Text:
-	text_asm
-	ld hl, MtMoon1F_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
-
 MtMoon1FYoungster2BattleText:
 	text "あやしい　おとこが"
 	line "どうくつを　うろついてるんだ"
@@ -169,12 +175,6 @@ MtMoon1FYoungster2AfterBattleText:
 	line "まちがい　ない！"
 	cont "あいつ　<ROCKET>　だぜ！"
 	done
-
-MtMoon1FYoungster3Text:
-	text_asm
-	ld hl, MtMoon1F_TrainerHeader6
-	call TalkToTrainer
-	jp TextScriptEnd
 
 MtMoon1FYoungster3BattleText:
 	text "ハナダ　シティに　いくには"

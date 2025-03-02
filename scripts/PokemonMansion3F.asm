@@ -103,6 +103,12 @@ PokemonMansion3FSuperNerdText:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+PokemonMansion3FScientistText:
+	text_asm
+	ld hl, PokemonMansion3F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
 PokemonMansion3FSuperNerdBattleText:
 	text "それに　しても"
 	line "でっけー　やしき　だねえ！"
@@ -116,12 +122,6 @@ PokemonMansion3FSuperNerdAfterBattleText:
 	text "<⋯>　あいぼうが　いたんだ"
 	line "どこ　いったんだろ？"
 	done
-
-PokemonMansion3FScientistText:
-	text_asm
-	ld hl, PokemonMansion3F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 PokemonMansion3FScientistBattleText:
 	text "ここは　かつて"

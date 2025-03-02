@@ -16,17 +16,9 @@ CableClub_DoBattleOrTrade:
 	hlcoord 4, 10
 	ld de, PleaseWaitString
 	call PlaceString
-IF DEF(_REV0)
-	xor a
-	ld hl, wPlayerNumHits
-	ld [hli], a
-	ld [wUnknown_CCE0], a
-ENDC
-IF DEF(_REV1)
 	ld hl, wPlayerNumHits
 	xor a
 	ld [hli], a
-ENDC
 	ld [hl], $50
 	; fall through
 
@@ -109,9 +101,6 @@ CableClub_DoBattleOrTradeAgain:
 .finishedPatchingPlayerData
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a ; end of part 2
-IF DEF(_REV0)
-	xor a
-ENDC
 	call Serial_SyncAndExchangeNybble
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
@@ -119,22 +108,12 @@ ENDC
 ; if using internal clock
 ; send two zero bytes for syncing purposes?
 	call Delay3
-IF DEF(_REV0)
-	ld a, [wUnknown_CCE0]
-ENDC
-IF DEF(_REV1)
 	xor a
-ENDC
 	ldh [hSerialSendData], a
 	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ldh [rSC], a
 	call DelayFrame
-IF DEF(_REV0)
-	ld a, [wUnknown_CCE0]
-ENDC
-IF DEF(_REV1)
 	xor a
-ENDC
 	ldh [hSerialSendData], a
 	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ldh [rSC], a
@@ -145,21 +124,21 @@ ENDC
 	ld hl, wSerialRandomNumberListBlock
 	ld de, wSerialOtherGameboyRandomNumberListBlock
 	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
-	vc_hook Wireless_ExchangeBytes_RNG_state_unknown_Type5
+;	vc_hook Wireless_ExchangeBytes_RNG_state_unknown_Type5
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
 	ld hl, wSerialPlayerDataBlock
 	ld de, wSerialEnemyDataBlock
 	ld bc, SERIAL_PREAMBLE_LENGTH + NAME_LENGTH + 1 + PARTY_LENGTH + 1 + (PARTYMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH + 3
-	vc_hook Wireless_ExchangeBytes_party_structs
+;	vc_hook Wireless_ExchangeBytes_party_structs
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
 	ld hl, wSerialPartyMonsPatchList
 	ld de, wSerialEnemyMonsPatchList
 	ld bc, 200
-	vc_hook Wireless_ExchangeBytes_patch_lists
+;	vc_hook Wireless_ExchangeBytes_patch_lists
 	call Serial_ExchangeBytes
 	ld a, (1 << SERIAL) | (1 << TIMER) | (1 << VBLANK)
 	ldh [rIE], a
@@ -279,25 +258,6 @@ ENDC
 	ld hl, wEnemyMons + (SERIAL_PREAMBLE_BYTE - 1)
 	dec c
 	jr nz, .unpatchEnemyMonsLoop
-IF DEF(_REV0)
-	ld a, [wPlayerName]
-	cp "A"
-	jr nz, .checkEnemyName
-	ld de, .MyString
-	jr .displayErrorText
-.checkEnemyName
-	ld a, [wLinkEnemyTrainerName]
-	cp "A"
-	jr nz, .continue
-	ld de, .PartnersString
-.displayErrorText
-	call CopyToStringBuffer
-	ld hl, .DataCorruptedText
-	call PrintText
-.endlessLoop
-	jr .endlessLoop
-.continue
-ENDC
 	ld a, LOW(wEnemyMonOT)
 	ld [wUnusedNamePointer], a
 	ld a, HIGH(wEnemyMonOT)
@@ -331,21 +291,6 @@ ENDC
 	ld a, MUSIC_GAME_CORNER
 	call PlayMusic
 	jr CallCurrentTradeCenterFunction
-
-IF DEF(_REV0)
-.DataCorruptedText
-	text_ram wStringBuffer
-	text "の　データが"
-	line "こわれています！"
-	_cnt "でんげんを　きって"
-	scrl "やりなおしてください。"
-	done
-
-.MyString
-	db "じぶん@"
-.PartnersString
-	db "あいて@"
-ENDC
 
 PleaseWaitString:
 	db "つうしんじゅんびちゅう！@"
@@ -583,7 +528,7 @@ TradeCenter_SelectMon:
 	ldcoord_a 1, 16
 .cancelMenuItem_JoypadLoop
 	call JoypadLowSensitivity
-	ld a, [hJoy5]
+	ldh a, [hJoy5]
 	and a ; pressed anything?
 	jr z, .cancelMenuItem_JoypadLoop
 	bit BIT_A_BUTTON, a
@@ -869,7 +814,7 @@ TradeCenter_Trade:
 	call LoadHpBarAndStatusTilePatterns
 	xor a
 	ld [wUnusedFlag], a
-	ld a, [hSerialConnectionStatus]
+	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .usingExternalClock
 	predef InternalClockTradeAnim
@@ -891,7 +836,7 @@ TradeCenter_Trade:
 	ld de, TradeCompleted
 	call PlaceString
 	predef SaveSAVtoSRAM2
-	vc_hook Trade_save_game_end
+;	vc_hook Trade_save_game_end
 	ld c, 50
 	call DelayFrames
 	xor a
@@ -951,7 +896,7 @@ CableClub_Run:
 	ld [wGrassRate], a
 	inc a ; LINK_STATE_IN_CABLE_CLUB
 	ld [wLinkState], a
-	ld [hJoy5], a
+	ldh [hJoy5], a
 	ld a, 10
 	ld [wAudioFadeOutControl], a
 	ld a, BANK(Music_Celadon)

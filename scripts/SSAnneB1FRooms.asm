@@ -42,6 +42,43 @@ SSAnneB1FRoomsSailor1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+SSAnneB1FRoomsSailor2Text:
+	text_asm
+	ld hl, SSAnneB1FRooms_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnneB1FRoomsSailor3Text:
+	text_asm
+	ld hl, SSAnneB1FRooms_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnneB1FRoomsSailor4Text:
+	text_asm
+	ld hl, SSAnneB1FRooms_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnneB1FRoomsSailor5Text:
+	text_asm
+	ld hl, SSAnneB1FRooms_TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnneB1FRoomsFisherText:
+	text_asm
+	ld hl, SSAnneB1FRooms_TrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnneB1FRoomsMachokeText:
+	text "ゴーリキー『ごおー　ごごごー@"
+	text_asm
+	ld a, MACHOKE
+	call PlayCry
+	jp TextScriptEnd
+
 SSAnneB1FRoomsSailor1BattleText:
 	text "ふなのりに"
 	line "ケンカは　つきものだ　やるか！"
@@ -57,12 +94,6 @@ SSAnneB1FRoomsSailor1AfterBattleText:
 	line "ぼうずも　ふなのりに　ならんか？"
 	done
 
-SSAnneB1FRoomsSailor2Text:
-	text_asm
-	ld hl, SSAnneB1FRooms_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 SSAnneB1FRoomsSailor2BattleText:
 	text "そら　こい！"
 	line "ふなのり　だましいに　かけて　かつ"
@@ -77,12 +108,6 @@ SSAnneB1FRoomsSailor2AfterBattleText:
 	text "クチバの　みなと　といえば"
 	line "つりおやじは　げんき　かなー？"
 	done
-
-SSAnneB1FRoomsSailor3Text:
-	text_asm
-	ld hl, SSAnneB1FRooms_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SSAnneB1FRoomsSailor3BattleText:
 	text "ふなのり　だって"
@@ -100,12 +125,6 @@ SSAnneB1FRoomsSailor3AfterBattleText:
 	cont "じぶんで　とった　もの　ばかり　だぜ"
 	done
 
-SSAnneB1FRoomsSailor4Text:
-	text_asm
-	ld hl, SSAnneB1FRooms_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
-
 SSAnneB1FRoomsSailor4BattleText:
 	text "こういう　げんきな　こども"
 	line "おれは　すきだぜ！@"
@@ -122,12 +141,6 @@ SSAnneB1FRoomsSailor4AfterBattleText:
 	cont "つりざおで　つり　あげるんだ！"
 	done
 
-SSAnneB1FRoomsSailor5Text:
-	text_asm
-	ld hl, SSAnneB1FRooms_TrainerHeader4
-	call TalkToTrainer
-	jp TextScriptEnd
-
 SSAnneB1FRoomsSailor5BattleText:
 	text "うっしゃー！"
 	line "まけたら　うみ　に　おとすぞー！"
@@ -142,12 +155,6 @@ SSAnneB1FRoomsSailor5AfterBattleText:
 	line "たまーに　クラゲ　#が"
 	cont "ながれて　くるぜ"
 	done
-
-SSAnneB1FRoomsFisherText:
-	text_asm
-	ld hl, SSAnneB1FRooms_TrainerHeader5
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SSAnneB1FRoomsFisherBattleText:
 	text "うみのもの　とも　やまのもの　とも"
@@ -174,10 +181,3 @@ SSAnneB1FRoomsSuperNerdText:
 	para "すごく　おもい　いわ　だって"
 	line "かいりきで　うごかせるぜ！"
 	done
-
-SSAnneB1FRoomsMachokeText:
-	text "ゴーリキー『ごおー　ごごごー@"
-	text_asm
-	ld a, MACHOKE
-	call PlayCry
-	jp TextScriptEnd

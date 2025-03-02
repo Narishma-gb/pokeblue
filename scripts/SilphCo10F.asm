@@ -60,40 +60,11 @@ SilphCo10FRocketText:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SilphCo10FRocketBattleText:
-	text "１０かいに　ようこそ！"
-	line "よく　ここまで　たどり　ついたな！"
-	done
-
-SilphCo10FRocketEndBattleText:
-	text "なんてこった"
-	prompt
-
-SilphCo10FRocketAfterBattleText:
-	text "ここまで　きたのは　ほめるが"
-	line "しゃちょう　しつは"
-	cont "さらに　うえの　かい　だぜ"
-	done
-
 SilphCo10FScientistText:
 	text_asm
 	ld hl, SilphCo10F_TrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
-
-SilphCo10FScientistBattleText:
-	text "もう<⋯>"
-	line "あそびは　おわりに　しよう！"
-	done
-
-SilphCo10FScientistEndBattleText:
-	text "あうーん"
-	prompt
-
-SilphCo10FScientistAfterBattleText:
-	text "おれに　かって　まんぞくか"
-	line "じゃ　おうちに　かえんな"
-	done
 
 SilphCo10FSilphWorkerFText:
 	text_asm
@@ -113,4 +84,33 @@ SilphCo10FSilphWorkerFText:
 .QuietAboutMyCryingText:
 	text "あたしが　ないてた　こと<⋯>"
 	cont "ないしょに　してね"
+	done
+
+SilphCo10FRocketBattleText:
+	text "１０かいに　ようこそ！"
+	line "よく　ここまで　たどり　ついたな！"
+	done
+
+SilphCo10FRocketEndBattleText:
+	text "なんてこった"
+	prompt
+
+SilphCo10FRocketAfterBattleText:
+	text "ここまで　きたのは　ほめるが"
+	line "しゃちょう　しつは"
+	cont "さらに　うえの　かい　だぜ"
+	done
+
+SilphCo10FScientistBattleText:
+	text "もう<⋯>"
+	line "あそびは　おわりに　しよう！"
+	done
+
+SilphCo10FScientistEndBattleText:
+	text "あうーん"
+	prompt
+
+SilphCo10FScientistAfterBattleText:
+	text "おれに　かって　まんぞくか"
+	line "じゃ　おうちに　かえんな"
 	done

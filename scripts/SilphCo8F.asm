@@ -114,6 +114,18 @@ SilphCo8FRocket1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+SilphCo8FScientistText:
+	text_asm
+	ld hl, SilphCo8F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SilphCo8FRocket2Text:
+	text_asm
+	ld hl, SilphCo8F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
 SilphCo8FRocket1BattleText:
 	text "ここから　さきは　いかせ　ないぜ！"
 	done
@@ -126,12 +138,6 @@ SilphCo8FRocket1AfterBattleText:
 	text "はやく　ひきかえさないと"
 	line "<⋯>　なかまを　よぶぜ！"
 	done
-
-SilphCo8FScientistText:
-	text_asm
-	ld hl, SilphCo8F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SilphCo8FScientistBattleText:
 	text "すき　かって　やられちゃ"
@@ -147,12 +153,6 @@ SilphCo8FScientistAfterBattleText:
 	line "めいろの　ような"
 	cont "シルフ　ビルの　かんそうは？"
 	done
-
-SilphCo8FRocket2Text:
-	text_asm
-	ld hl, SilphCo8F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 SilphCo8FRocket2BattleText:
 	text "おれこそは"

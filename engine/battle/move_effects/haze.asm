@@ -24,12 +24,7 @@ HazeEffect_:
 .cureStatuses
 	ld a, [hl]
 	ld [hl], $0
-IF DEF(_REV0)
-	and SLP_MASK
-ENDC
-IF DEF(_REV1)
 	and (1 << FRZ) | SLP_MASK
-ENDC
 	jr z, .cureVolatileStatuses
 ; prevent the Pokemon from executing a move if it was asleep or frozen
 	ld a, $ff
@@ -43,30 +38,26 @@ ENDC
 	ld [hli], a
 	ld [hl], a ; wEnemyDisabledMoveNumber
 	ld hl, wPlayerBattleStatus1
-	res CONFUSED, [hl]
-	inc hl
-	ld a, [hl] ; wPlayerBattleStatus2
-	; clear USING_X_ACCURACY, PROTECTED_BY_MIST, GETTING_PUMPED, and SEEDED statuses
-	and ~((1 << USING_X_ACCURACY) | (1 << PROTECTED_BY_MIST) | (1 << GETTING_PUMPED) | (1 << SEEDED))
-	ld [hli], a
-	ld a, [hl] ; wPlayerBattleStatus3
-	; clear Bad Poison, Reflect and Light Screen statuses
-	and ~((1 << BADLY_POISONED) | (1 << HAS_LIGHT_SCREEN_UP) | (1 << HAS_REFLECT_UP))
-	ld [hl], a
+	call CureVolatileStatuses
 	ld hl, wEnemyBattleStatus1
-	res CONFUSED, [hl]
-	inc hl
-	ld a, [hl] ; wEnemyBattleStatus2
-	; clear USING_X_ACCURACY, PROTECTED_BY_MIST, GETTING_PUMPED, and SEEDED statuses
-	and ~((1 << USING_X_ACCURACY) | (1 << PROTECTED_BY_MIST) | (1 << GETTING_PUMPED) | (1 << SEEDED))
-	ld [hli], a
-	ld a, [hl] ; wEnemyBattleStatus3
-	; clear Bad Poison, Reflect and Light Screen statuses
-	and ~((1 << BADLY_POISONED) | (1 << HAS_LIGHT_SCREEN_UP) | (1 << HAS_REFLECT_UP))
-	ld [hl], a
-	callfar PlayCurrentMoveAnimation
+	call CureVolatileStatuses
+	ld hl, PlayCurrentMoveAnimation
+	call CallBankF
 	ld hl, StatusChangesEliminatedText
 	jp PrintText
+
+CureVolatileStatuses:
+	res CONFUSED, [hl]
+	inc hl
+	ld a, [hl] ; wPlayerBattleStatus2 or wEnemyBattleStatus2
+	; clear USING_X_ACCURACY, PROTECTED_BY_MIST, GETTING_PUMPED, and SEEDED statuses
+	and ~((1 << USING_X_ACCURACY) | (1 << PROTECTED_BY_MIST) | (1 << GETTING_PUMPED) | (1 << SEEDED))
+	ld [hli], a
+	ld a, [hl] ; wPlayerBattleStatus3 or wEnemyBattleStatus3
+	; clear Bad Poison, Reflect and Light Screen statuses
+	and ~((1 << BADLY_POISONED) | (1 << HAS_LIGHT_SCREEN_UP) | (1 << HAS_REFLECT_UP))
+	ld [hl], a
+	ret
 
 ResetStatMods:
 	ld b, $8

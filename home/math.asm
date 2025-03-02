@@ -26,7 +26,7 @@ Divide::
 	push hl
 	push de
 	push bc
-	homecall_ld _Divide
+	homecall _Divide
 	pop bc
 	pop de
 	pop hl

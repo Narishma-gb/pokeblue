@@ -2,7 +2,7 @@ SaffronGym_Script:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_2, [hl]
 	res BIT_CUR_MAP_LOADED_2, [hl]
-	jr nz, .LoadNames
+	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
 	ld hl, SaffronGym_TrainerHeaders
 	ld de, SaffronGym_ScriptPointers
@@ -203,46 +203,11 @@ SaffronGymChanneler1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SaffronGymChanneler1BattleText:
-	text "ナツメは<⋯>　わたし　より"
-	line "だいぶ　としした　だが！"
-	cont "かのじょを　そんけい　している！"
-	done
-
-SaffronGymChanneler1EndBattleText:
-	text "およばなかったか！"
-	prompt
-
-SaffronGymChanneler1AfterBattleText:
-	text "しょうぶが　ごかくの　ときは"
-	line "きもちが　つよい　ほうが　かつ！"
-
-	para "ナツメに　かちたい　なら"
-	line "きみも　かちたいッ！　と"
-	cont "つよく　ねんじた　ほうが　いい"
-	done
-
 SaffronGymYoungster1Text:
 	text_asm
 	ld hl, SaffronGym_TrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
-
-SaffronGymYoungster1BattleText:
-	text "みえない　ちからを　つかう"
-	line "エスパーを　こわいと　おもうか！"
-	done
-
-SaffronGymYoungster1EndBattleText:
-	text "こういう　ことも"
-	line "あるのか<⋯>"
-	prompt
-
-SaffronGymYoungster1AfterBattleText:
-	text "エスパーに　ゆうりな　もの？"
-	line "<⋯>　はははーッ！"
-	cont "ゆうれい　や　むし　くらい　だぜ！"
-	done
 
 SaffronGymChanneler2Text:
 	text_asm
@@ -250,46 +215,11 @@ SaffronGymChanneler2Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SaffronGymChanneler2BattleText:
-	text "#は"
-	line "かいぬしに　にるって　しってるか？"
-
-	para "という　ことは<⋯>"
-	line "おまえの　#は　つよいかな？"
-	done
-
-SaffronGymChanneler2EndBattleText:
-	text "わかった！"
-	prompt
-
-SaffronGymChanneler2AfterBattleText:
-	text "わたしも　まだ　まだ　だ<⋯>"
-	line "サイコキネシス　マスター　して"
-	cont "#に　おしえて　なくては！"
-	done
-
 SaffronGymYoungster2Text:
 	text_asm
 	ld hl, SaffronGym_TrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
-
-SaffronGymYoungster2BattleText:
-	text "きみは　わかってる　だろ？"
-	line "#は　パワー　だけ"
-	cont "あったって　かて　ない　ことを！"
-	done
-
-SaffronGymYoungster2EndBattleText:
-	text "<⋯>　おれが"
-	line "まける　なんて　ばかな！"
-	prompt
-
-SaffronGymYoungster2AfterBattleText:
-	text "となりの　カラテ　だいおう　だって"
-	line "うちの　ナツメさんに"
-	cont "コテンパンに　やられたんだぜ"
-	done
 
 SaffronGymChanneler3Text:
 	text_asm
@@ -297,75 +227,17 @@ SaffronGymChanneler3Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SaffronGymChanneler3BattleText:
-	text "きみは　わたしと"
-	line "#を　たたかわせる<⋯>！"
-	done
-
-SaffronGymChanneler3EndBattleText:
-	text "くっ<⋯>！"
-	line "やはり　わたしが　やぶれたか"
-	prompt
-
-SaffronGymChanneler3AfterBattleText:
-	text "こういう　けっかは　わかってた<⋯>"
-	line "<⋯>　そう！"
-	cont "これが　よち　のうりょく　だ"
-	done
-
 SaffronGymYoungster3Text:
 	text_asm
 	ld hl, SaffronGym_TrainerHeader5
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SaffronGymYoungster3BattleText:
-	text "ナツメさんは　わかく　して"
-	line "この　#　ジムを　しきる"
-	cont "じつりょくしゃ！"
-
-	para "かんたん　には　あわせ　ないぜ！"
-	done
-
-SaffronGymYoungster3EndBattleText:
-	text "まけて　しまった！"
-	prompt
-
-SaffronGymYoungster3AfterBattleText:
-	text "おしえて　やろう<⋯>"
-	line "かつて　ヤマブキ　には"
-	cont "ふたつの　#　ジムが　あった"
-
-	para "とういつ　しあいに　まけた　のが"
-	line "となりの　かくとう　どうじょうだ！"
-	done
-
 SaffronGymYoungster4Text:
 	text_asm
 	ld hl, SaffronGym_TrainerHeader6
 	call TalkToTrainer
 	jp TextScriptEnd
-
-SaffronGymYoungster4BattleText:
-	text "ヤマブキ　ジム！"
-	cont "またの　なを"
-	cont "エスパー　ようせい　じょ"
-	cont "おまえ<⋯>"
-
-	para "<⋯>　ナツメに　あおうと　してるな？"
-	line "そうだろ！"
-	cont "わかってるんだ！"
-	done
-
-SaffronGymYoungster4EndBattleText:
-	text "ぐわああ<⋯>！"
-	prompt
-
-SaffronGymYoungster4AfterBattleText:
-	text "<⋯>　そうだ！"
-	line "ひとの　こころを　よむ"
-	cont "のうりょくを　テレパス　という！"
-	done
 
 SaffronGymGymGuideText:
 	text_asm
@@ -400,4 +272,132 @@ SaffronGymGymGuideText:
 
 	para "おれに　そんな　ものが　あったら"
 	line "スロットで　あてほうだい　だぜ！"
+	done
+
+SaffronGymChanneler1BattleText:
+	text "ナツメは<⋯>　わたし　より"
+	line "だいぶ　としした　だが！"
+	cont "かのじょを　そんけい　している！"
+	done
+
+SaffronGymChanneler1EndBattleText:
+	text "およばなかったか！"
+	prompt
+
+SaffronGymChanneler1AfterBattleText:
+	text "しょうぶが　ごかくの　ときは"
+	line "きもちが　つよい　ほうが　かつ！"
+
+	para "ナツメに　かちたい　なら"
+	line "きみも　かちたいッ！　と"
+	cont "つよく　ねんじた　ほうが　いい"
+	done
+
+SaffronGymYoungster1BattleText:
+	text "みえない　ちからを　つかう"
+	line "エスパーを　こわいと　おもうか！"
+	done
+
+SaffronGymYoungster1EndBattleText:
+	text "こういう　ことも"
+	line "あるのか<⋯>"
+	prompt
+
+SaffronGymYoungster1AfterBattleText:
+	text "エスパーに　ゆうりな　もの？"
+	line "<⋯>　はははーッ！"
+	cont "ゆうれい　や　むし　くらい　だぜ！"
+	done
+
+SaffronGymChanneler2BattleText:
+	text "#は"
+	line "かいぬしに　にるって　しってるか？"
+
+	para "という　ことは<⋯>"
+	line "おまえの　#は　つよいかな？"
+	done
+
+SaffronGymChanneler2EndBattleText:
+	text "わかった！"
+	prompt
+
+SaffronGymChanneler2AfterBattleText:
+	text "わたしも　まだ　まだ　だ<⋯>"
+	line "サイコキネシス　マスター　して"
+	cont "#に　おしえて　なくては！"
+	done
+
+SaffronGymYoungster2BattleText:
+	text "きみは　わかってる　だろ？"
+	line "#は　パワー　だけ"
+	cont "あったって　かて　ない　ことを！"
+	done
+
+SaffronGymYoungster2EndBattleText:
+	text "<⋯>　おれが"
+	line "まける　なんて　ばかな！"
+	prompt
+
+SaffronGymYoungster2AfterBattleText:
+	text "となりの　カラテ　だいおう　だって"
+	line "うちの　ナツメさんに"
+	cont "コテンパンに　やられたんだぜ"
+	done
+
+SaffronGymChanneler3BattleText:
+	text "きみは　わたしと"
+	line "#を　たたかわせる<⋯>！"
+	done
+
+SaffronGymChanneler3EndBattleText:
+	text "くっ<⋯>！"
+	line "やはり　わたしが　やぶれたか"
+	prompt
+
+SaffronGymChanneler3AfterBattleText:
+	text "こういう　けっかは　わかってた<⋯>"
+	line "<⋯>　そう！"
+	cont "これが　よち　のうりょく　だ"
+	done
+
+SaffronGymYoungster3BattleText:
+	text "ナツメさんは　わかく　して"
+	line "この　#　ジムを　しきる"
+	cont "じつりょくしゃ！"
+
+	para "かんたん　には　あわせ　ないぜ！"
+	done
+
+SaffronGymYoungster3EndBattleText:
+	text "まけて　しまった！"
+	prompt
+
+SaffronGymYoungster3AfterBattleText:
+	text "おしえて　やろう<⋯>"
+	line "かつて　ヤマブキ　には"
+	cont "ふたつの　#　ジムが　あった"
+
+	para "とういつ　しあいに　まけた　のが"
+	line "となりの　かくとう　どうじょうだ！"
+	done
+
+SaffronGymYoungster4BattleText:
+	text "ヤマブキ　ジム！"
+	cont "またの　なを"
+	cont "エスパー　ようせい　じょ"
+	cont "おまえ<⋯>"
+
+	para "<⋯>　ナツメに　あおうと　してるな？"
+	line "そうだろ！"
+	cont "わかってるんだ！"
+	done
+
+SaffronGymYoungster4EndBattleText:
+	text "ぐわああ<⋯>！"
+	prompt
+
+SaffronGymYoungster4AfterBattleText:
+	text "<⋯>　そうだ！"
+	line "ひとの　こころを　よむ"
+	cont "のうりょくを　テレパス　という！"
 	done

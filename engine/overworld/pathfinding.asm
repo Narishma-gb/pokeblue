@@ -1,11 +1,12 @@
 FindPathToPlayer:
+	xor a
+	ld hl, hFindPathNumSteps
+	ld [hli], a ; hFindPathNumSteps
+	ld [hli], a ; hFindPathFlags
+	ld [hli], a ; hFindPathYProgress
+	ld [hl], a  ; hFindPathXProgress
 	ld hl, wNPCMovementDirections2
 	ld de, $0
-	xor a
-	ldh [hFindPathNumSteps], a
-	ldh [hFindPathFlags], a
-	ldh [hFindPathYProgress], a
-	ldh [hFindPathXProgress], a
 .loop
 	ldh a, [hFindPathYProgress]
 	ld b, a
@@ -135,11 +136,11 @@ CalcPositionOfPlayerRelativeToNPC:
 	res BIT_PLAYER_LOWER_X, [hl]
 	pop hl
 .divideXDistance
-	ld [hDividend2], a
+	ldh [hDividend2], a
 	ld a, 16
-	ld [hDivisor2], a
+	ldh [hDivisor2], a
 	call DivideBytes ; divide X absolute distance by 16
-	ld a, [hQuotient2]
+	ldh a, [hQuotient2]
 	ldh [hNPCPlayerXDistance], a
 	ldh a, [hNPCPlayerRelativePosPerspective]
 	and a

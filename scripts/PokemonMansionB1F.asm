@@ -82,6 +82,12 @@ PokemonMansionB1FBurglarText:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+PokemonMansionB1FScientistText:
+	text_asm
+	ld hl, PokemonMansionB1F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
 PokemonMansionB1FBurglarBattleText:
 	text "<⋯>　ありゃ　こまった"
 	line "みちに　まよったぞ"
@@ -95,12 +101,6 @@ PokemonMansionB1FBurglarAfterBattleText:
 	text "まえに　すんでた　ひとの"
 	line "どうぐが　けっこう　おちてるぜ"
 	done
-
-PokemonMansionB1FScientistText:
-	text_asm
-	ld hl, PokemonMansionB1F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 PokemonMansionB1FScientistBattleText:
 	text "ここは　ひろくて"

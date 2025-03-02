@@ -209,7 +209,6 @@ INCLUDE "audio/music/defeated_gym_leader.asm"
 
 SECTION "Audio Engine 3", ROMX
 
-INCLUDE "audio/music/credits.asm"
 INCLUDE "audio/pokedex_rating_sfx.asm"
 INCLUDE "audio/engine_3.asm"
 
@@ -299,3 +298,4 @@ INCLUDE "audio/music/intro_battle.asm"
 INCLUDE "audio/music/surfing.asm"
 INCLUDE "audio/music/jigglypuff_song.asm"
 INCLUDE "audio/music/hall_of_fame.asm"
+INCLUDE "audio/music/credits.asm"

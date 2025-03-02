@@ -50,6 +50,18 @@ ViridianForestYoungster2Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+ViridianForestYoungster3Text:
+	text_asm
+	ld hl, ViridianForest_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+ViridianForestYoungster4Text:
+	text_asm
+	ld hl, ViridianForest_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
 ViridianForestYoungster2BattleText:
 	text "よーしッ！"
 	line "きみは　#　もってるな？"
@@ -66,12 +78,6 @@ ViridianForestYoungster2AfterBattleText:
 	line "むしが　にげる　から　またな！"
 	done
 
-ViridianForestYoungster3Text:
-	text_asm
-	ld hl, ViridianForest_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
-
 ViridianForestYoungster3BattleText:
 	text "おーいッ！"
 	line "#　<TRAINER>なら"
@@ -87,12 +93,6 @@ ViridianForestYoungster3AfterBattleText:
 	text "くやしいな！"
 	line "つよいのを　つかまえて　こよう！"
 	done
-
-ViridianForestYoungster4Text:
-	text_asm
-	ld hl, ViridianForest_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
 
 ViridianForestYoungster4BattleText:
 	text "ちょっと　まったあ！"

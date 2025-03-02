@@ -31,14 +31,7 @@ HallOfFamePC:
 	xor a
 	ld [wCreditsScreenIndex], a
 	ld [wNumCreditsMonsDisplayed], a
-	ld c, NUM_CRED_SCREENS
-.loop
-	push bc
-	call Credits
-	pop bc
-	dec c
-	jr nz, .loop
-	ret
+	jp Credits
 
 FadeInCreditsText:
 	ld hl, HoFGBPalettes
@@ -179,25 +172,18 @@ CreditsDelay:
 	jp DelayFrames
 
 Credits:
-	ld hl, wCreditsScreenIndex
-	ld e, [hl]
-	inc [hl]
-	ld d, 0
-	ld hl, CreditsRollPointers
-	add hl, de
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
+	ld de, CreditsOrder
+	push de
+.nextCreditsScreen
+	pop de
 	hlcoord 9, 6
 	push hl
-	push de
 	call FillMiddleOfScreenWithWhite
-	pop de
 	pop hl
 .nextCreditsCommand
 	ld a, [de]
 	inc de
+	push de
 	cp CRED_TEXT_FADE_MON
 	jr z, .fadeInTextAndShowMon
 	cp CRED_TEXT_MON
@@ -210,10 +196,8 @@ Credits:
 	jr z, .showCopyrightText
 	cp CRED_THE_END
 	jr z, .showTheEnd
-	push de
 	push hl
 	push hl
-	push af
 	ld hl, CreditsTextPointers
 	add a
 	ld c, a
@@ -222,12 +206,9 @@ Credits:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	pop af
-	ld hl, CreditsTextOffsets
+	ld a, [de]
+	inc de
 	ld c, a
-	ld b, 0
-	add hl, bc
-	ld c, [hl]
 	ld b, -1
 	pop hl
 	add hl, bc
@@ -241,36 +222,39 @@ Credits:
 	call FadeInCreditsText
 .showTextAndShowMon
 	call CreditsDelay
-	jp DisplayCreditsMon
+	call DisplayCreditsMon
+	jr .nextCreditsScreen
 .fadeInText
 	call FadeInCreditsText
 .showText
-	jp CreditsDelay
+	call CreditsDelay
+	jr .nextCreditsScreen
 .showCopyrightText
 	push de
 	farcall LoadCopyrightTiles
+	pop de
 	pop de
 	jr .nextCreditsCommand
 .showTheEnd
 	ld c, 16
 	call DelayFrames
 	call FillMiddleOfScreenWithWhite
+	pop de
 	ld de, TheEndGfx
 	ld hl, vChars2 tile $60
 	lb bc, BANK(TheEndGfx), (TheEndGfxEnd - TheEndGfx) / $10
 	call CopyVideoData
 	hlcoord 4, 8
-	ld de, TheEndUpperTextString
+	ld de, TheEndTextString
 	call PlaceString
 	hlcoord 4, 9
-	ld de, TheEndLowerTextString
+	inc de
 	call PlaceString
 	jp FadeInCreditsText
 
-TheEndUpperTextString:
+TheEndTextString:
 ; "T H E  E N D"
 	db $60, "　", $62, "　", $64, "　　", $64, "　", $66, "　", $68, "@"
-TheEndLowerTextString:
 	db $61, "　", $63, "　", $65, "　　", $65, "　", $67, "　", $69, "@"
 
 INCLUDE "data/credits/credits_order.asm"

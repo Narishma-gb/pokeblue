@@ -5,11 +5,11 @@
 
 DEF ANIMATION_END EQU 80
 
-PlayIntro:
-	ld a, 1
-	ldh [hAutoBGTransferEnabled], a
+PlayIntro:	
 	xor a
 	ldh [hJoyHeld], a
+	inc a
+	ldh [hAutoBGTransferEnabled], a
 	call PlayShootingStar
 	call PlayIntroScene
 	call GBFadeOutToWhite
@@ -31,7 +31,7 @@ PlayIntroScene:
 	ldh [hSCX], a
 	ld b, TILEMAP_GENGAR_INTRO_1
 	call IntroCopyTiles
-	ld a, 8
+	ld a, 0
 	ld [wBaseCoordX], a
 	ld a, 80
 	ld [wBaseCoordY], a
@@ -115,8 +115,8 @@ PlayIntroScene:
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation4
 	call AnimateIntroNidorino
-; hip
-	ld a, SFX_INTRO_HIP
+; hop
+	ld a, SFX_INTRO_HOP
 	call PlaySound
 	ld de, IntroNidorinoAnimation5
 	call AnimateIntroNidorino
@@ -138,9 +138,7 @@ PlayIntroScene:
 	ld a, (FightIntroFrontMon3 - FightIntroFrontMon) / LEN_2BPP_TILE
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation7
-	call AnimateIntroNidorino
-	ld c, 80
-	jp CheckForUserInterruption
+	jp AnimateIntroNidorino
 
 AnimateIntroNidorino:
 	ld a, [de]
@@ -452,11 +450,11 @@ FightIntroBackMon:
 FightIntroBackMonEnd:
 
 FightIntroFrontMon:
-	INCBIN "gfx/intro/rg_nidorino_1.2bpp"
+	INCBIN "gfx/intro/blue_jigglypuff_1.2bpp"
 FightIntroFrontMon2:
-	INCBIN "gfx/intro/rg_nidorino_2.2bpp"
+	INCBIN "gfx/intro/blue_jigglypuff_2.2bpp"
 FightIntroFrontMon3:
-	INCBIN "gfx/intro/rg_nidorino_3.2bpp"
+	INCBIN "gfx/intro/blue_jigglypuff_3.2bpp"
 FightIntroFrontMonEnd:
 
 	ds 16, $00 ; blank tile

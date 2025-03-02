@@ -101,6 +101,24 @@ VictoryRoad3FCooltrainerM1Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+VictoryRoad3FCooltrainerF1Text:
+	text_asm
+	ld hl, VictoryRoad3F_TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad3FCooltrainerM2Text:
+	text_asm
+	ld hl, VictoryRoad3F_TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad3FCooltrainerF2Text:
+	text_asm
+	ld hl, VictoryRoad3F_TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
 VictoryRoad3FCooltrainerM1BattleText:
 	text "やたらと　つよい　こどもが　いると"
 	line "ウワサは　きいて　いるよ"
@@ -114,12 +132,6 @@ VictoryRoad3FCooltrainerM1AfterBattleText:
 	text "ロケットだんの　サカキを"
 	line "たおしたのは　<⋯>　きみか！"
 	done
-
-VictoryRoad3FCooltrainerF1Text:
-	text_asm
-	ld hl, VictoryRoad3F_TrainerHeader1
-	call TalkToTrainer
-	jp TextScriptEnd
 
 VictoryRoad3FCooltrainerF1BattleText:
 	text "うえには　うえが　いるって"
@@ -135,12 +147,6 @@ VictoryRoad3FCooltrainerF1AfterBattleText:
 	line "うえには　うえが　いるって　ことか"
 	done
 
-VictoryRoad3FCooltrainerM2Text:
-	text_asm
-	ld hl, VictoryRoad3F_TrainerHeader2
-	call TalkToTrainer
-	jp TextScriptEnd
-
 VictoryRoad3FCooltrainerM2BattleText:
 	text "えらばれた　もの　だけが"
 	line "ここを　ぬけられるのだ！"
@@ -155,12 +161,6 @@ VictoryRoad3FCooltrainerM2AfterBattleText:
 	line "#　リーグを　めざしている"
 	cont "ゆだん　しない　ほうが　いいぜ！"
 	done
-
-VictoryRoad3FCooltrainerF2Text:
-	text_asm
-	ld hl, VictoryRoad3F_TrainerHeader3
-	call TalkToTrainer
-	jp TextScriptEnd
 
 VictoryRoad3FCooltrainerF2BattleText:
 	text "つよい　あいてを　もとめるのは"

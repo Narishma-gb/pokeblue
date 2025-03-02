@@ -85,7 +85,7 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	ld a, $31
-	ld [hStartTileID], a
+	ldh [hStartTileID], a
 	hlcoord 1, 5
 	predef CopyUncompressedPicToTilemap
 	xor a
@@ -151,7 +151,7 @@ StartBattle:
 	ld [wSerialExchangeNybbleReceiveData], a
 	ld a, [wIsInBattle]
 	dec a ; is it a trainer battle?
-	call nz, EnemySendOut ; if it is a trainer battle, send out enemy mon
+	call nz, EnemySendOutFirstMon ; if it is a trainer battle, send out enemy mon
 	ld c, 40
 	call DelayFrames
 	call SaveScreenTilesToBuffer1
@@ -305,15 +305,8 @@ MainInBattleLoop:
 	res FLINCHED, [hl] ; reset flinch bit
 	ld hl, wPlayerBattleStatus1
 	res FLINCHED, [hl] ; reset flinch bit
-IF DEF(_REV0)
-	bit CHARGING_UP, [hl]
-	jr nz, .selectEnemyMove
-	bit THRASHING_ABOUT, [hl]
-ENDC
-IF DEF(_REV1)
 	ld a, [hl]
 	and (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) ; check if the player is thrashing about or charging for an attack
-ENDC
 	jr nz, .selectEnemyMove ; if so, jump
 ; the player is neither thrashing about nor charging for an attack
 	call DisplayBattleMenu ; show battle menu
@@ -329,31 +322,18 @@ ENDC
 	jr nz, .selectEnemyMove ; if so, jump
 	ld a, [wEnemyBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; check if enemy is using a multi-turn attack like wrap
-IF DEF(_REV0)
-	jr nz, .selectEnemyMove
-ENDC
-IF DEF(_REV1)
 	jr z, .selectPlayerMove ; if not, jump
 ; enemy is using a multi-turn attack like wrap, so player is trapped and cannot execute a move
 	ld a, $ff
 	ld [wPlayerSelectedMove], a
 	jr .selectEnemyMove
 .selectPlayerMove
-ENDC
 	ld a, [wActionResultOrTookBattleTurn]
 	and a ; has the player already used the turn (e.g. by using an item, trying to run or switching pokemon)
 	jr nz, .selectEnemyMove
-IF DEF(_REV0)
-	ld a, 1
-	ld [wAnimationID], a
-	xor a
-	ld [wMoveMenuType], a
-ENDC
-IF DEF(_REV1)
 	ld [wMoveMenuType], a
 	inc a
 	ld [wAnimationID], a
-ENDC
 	call MoveSelectionMenu
 	push af
 	call LoadScreenTilesFromBuffer1
@@ -371,16 +351,10 @@ ENDC
 	jp z, EnemyRan
 	cp LINKBATTLE_STRUGGLE
 	jr z, .noLinkBattle
-IF DEF(_REV1)
 	cp LINKBATTLE_NO_ACTION
 	jr z, .noLinkBattle
-ENDC
 	sub 4
 	jr c, .noLinkBattle
-IF DEF(_REV0)
-	cp LINKBATTLE_STRUGGLE
-	jr z, .noLinkBattle
-ENDC
 ; the link battle enemy has switched mons
 	ld a, [wPlayerBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; check if using multi-turn move like Wrap
@@ -1141,12 +1115,7 @@ ChooseNextMon:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr nz, .notLinkBattle
-IF DEF(_REV0)
-	ld a, 1
-ENDC
-IF DEF(_REV1)
 	inc a ; 1
-ENDC
 	ld [wActionResultOrTookBattleTurn], a
 	call LinkBattleExchangeData
 .notLinkBattle
@@ -1338,6 +1307,9 @@ EnemySendOut:
 	ld [hl], a
 	pop bc
 	predef FlagActionPredef
+	; fallthrough
+; don't change wPartyGainExpFlags or wPartyFoughtCurrentEnemyFlags
+EnemySendOutFirstMon:
 	xor a
 	ld hl, wEnemyStatsToDouble ; clear enemy statuses
 	ld [hli], a
@@ -1475,7 +1447,7 @@ EnemySendOut:
 	ld de, vFrontPic
 	call LoadMonFrontSprite
 	ld a, -$31
-	ld [hStartTileID], a
+	ldh [hStartTileID], a
 	hlcoord 15, 6
 	predef AnimateSendingOutMon
 	ld a, [wEnemyMonSpecies2]
@@ -1707,15 +1679,8 @@ LoadBattleMonFromParty:
 	ld [wCurSpecies], a
 	call GetMonHeader
 	ld hl, wPartyMonNicks
-IF DEF(_REV0)
-	ld bc, NAME_LENGTH
-	ld a, [wPlayerMonNumber]
-	call AddNTimes
-ENDC
-IF DEF(_REV1)
 	ld a, [wPlayerMonNumber]
 	call SkipFixedLengthTextEntries
-ENDC
 	ld de, wBattleMonNick
 	ld bc, NAME_LENGTH
 	call CopyData
@@ -1758,15 +1723,8 @@ LoadEnemyMonFromParty:
 	ld [wCurSpecies], a
 	call GetMonHeader
 	ld hl, wEnemyMonNicks
-IF DEF(_REV0)
-	ld bc, NAME_LENGTH
-	ld a, [wWhichPokemon]
-	call AddNTimes
-ENDC
-IF DEF(_REV1)
 	ld a, [wWhichPokemon]
 	call SkipFixedLengthTextEntries
-ENDC
 	ld de, wEnemyMonNick
 	ld bc, NAME_LENGTH
 	call CopyData
@@ -1806,16 +1764,10 @@ SendOutMon:
 	call DrawPlayerHUDAndHPBar
 	predef LoadMonBackPic
 	xor a
-	ld [hStartTileID], a
-IF DEF(_REV0)
-	ld [wPlayerMoveListIndex], a
-	ld [wBattleAndStartSavedMenuItem], a
-ENDC
-IF DEF(_REV1)
+	ldh [hStartTileID], a
 	ld hl, wBattleAndStartSavedMenuItem
 	ld [hli], a
 	ld [hl], a
-ENDC
 	ld [wBoostExpByExpAll], a
 	ld [wDamageMultipliers], a
 	ld [wPlayerMoveNum], a
@@ -2296,9 +2248,7 @@ DisplayBagMenu:
 	ld [wBagSavedMenuItem], a
 	ld a, $0
 	ld [wMenuWatchMovingOutOfBounds], a
-IF DEF(_REV1)
 	ld [wMenuItemToSwap], a
-ENDC
 	jp c, DisplayBattleMenu ; go back to battle menu if an item was not selected
 
 UseBagItem:
@@ -2406,9 +2356,6 @@ PartyMenuOrRockOrRun:
 	ld hl, wTopMenuItemY
 	ld a, $c
 	ld [hli], a ; wTopMenuItemY
-IF DEF(_REV0)
-	ld a, $c
-ENDC
 	ld [hli], a ; wTopMenuItemX
 	xor a
 	ld [hli], a ; wCurrentMenuItem
@@ -2965,21 +2912,13 @@ SelectEnemyMove:
 	ld a, [wSerialExchangeNybbleReceiveData]
 	cp LINKBATTLE_STRUGGLE
 	jp z, .linkedOpponentUsedStruggle
-IF DEF(_REV1)
 	cp LINKBATTLE_NO_ACTION
 	jr z, .unableToSelectMove
-ENDC
 	cp 4
 	ret nc
 	ld [wEnemyMoveListIndex], a
-IF DEF(_REV0)
-	ld hl, wEnemyMonMoves
-	ld c, a
-ENDC
-IF DEF(_REV1)
 	ld c, a
 	ld hl, wEnemyMonMoves
-ENDC
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
@@ -2989,15 +2928,8 @@ ENDC
 	and (1 << NEEDS_TO_RECHARGE) | (1 << USING_RAGE) ; need to recharge or using rage
 	ret nz
 	ld hl, wEnemyBattleStatus1
-IF DEF(_REV0)
-	bit CHARGING_UP, [hl]
-	ret nz
-	bit THRASHING_ABOUT, [hl]
-ENDC
-IF DEF(_REV1)
 	ld a, [hl]
 	and (1 << CHARGING_UP) | (1 << THRASHING_ABOUT) ; using a charging move or thrash/petal dance
-ENDC
 	ret nz
 	ld a, [wEnemyMonStatus]
 	and (1 << FRZ) | SLP_MASK
@@ -3005,12 +2937,6 @@ ENDC
 	ld a, [wEnemyBattleStatus1]
 	and (1 << USING_TRAPPING_MOVE) | (1 << STORING_ENERGY) ; using a trapping move like wrap or bide
 	ret nz
-IF DEF(_REV0)
-	ld a, [wEnemyBattleStatus1] ; bug? Did not check if caught in player's trapping move
-	bit USING_TRAPPING_MOVE, a
-	ret nz
-ENDC
-IF DEF(_REV1)
 	ld a, [wPlayerBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; caught in player's trapping move (e.g. wrap)
 	jr z, .canSelectMove
@@ -3018,7 +2944,6 @@ IF DEF(_REV1)
 	ld a, $ff
 	jr .done
 .canSelectMove
-ENDC
 	ld hl, wEnemyMonMoves + 1 ; 2nd enemy move
 	ld a, [hld]
 	and a
@@ -3078,16 +3003,6 @@ LinkBattleExchangeData:
 ; the player used a move
 	ld a, [wPlayerSelectedMove]
 	cp STRUGGLE
-IF DEF(_REV0)
-	ld a, LINKBATTLE_STRUGGLE
-	jr z, .doExchange
-	ld a, [wPlayerMoveListIndex]
-	jr .doExchange
-.switching
-	ld a, [wWhichPokemon]
-	add 4
-ENDC
-IF DEF(_REV1)
 	ld b, LINKBATTLE_STRUGGLE
 	jr z, .next
 	dec b ; LINKBATTLE_NO_ACTION
@@ -3101,10 +3016,9 @@ IF DEF(_REV1)
 	ld b, a
 .next
 	ld a, b
-ENDC
 .doExchange
 	ld [wSerialExchangeNybbleSendData], a
-	vc_hook Wireless_start_exchange
+;	vc_hook Wireless_start_exchange
 	callfar PrintWaitingText
 .syncLoop1
 	call Serial_ExchangeNybble
@@ -3112,41 +3026,42 @@ ENDC
 	ld a, [wSerialExchangeNybbleReceiveData]
 	inc a
 	jr z, .syncLoop1
-	vc_hook Wireless_end_exchange
-	vc_patch Wireless_net_delay_1
-IF DEF(_RED_VC) || DEF(_GREEN_VC)
-	ld b, 26
-ELSE
+;	vc_hook Wireless_end_exchange
+;	vc_patch Wireless_net_delay_1
+;IF DEF(_RED_VC) || DEF(_GREEN_VC)
+;	ld b, 26
+;ELSE
 	ld b, 10
-ENDC
-	vc_patch_end
+;ENDC
+;	vc_patch_end
 .syncLoop2
 	call DelayFrame
 	call Serial_ExchangeNybble
 	dec b
 	jr nz, .syncLoop2
-	vc_hook Wireless_start_send_zero_bytes
-	vc_patch Wireless_net_delay_2
-IF DEF(_RED_VC) || DEF(_GREEN_VC)
-	ld b, 26
-ELSE
+;	vc_hook Wireless_start_send_zero_bytes
+;	vc_patch Wireless_net_delay_2
+;IF DEF(_RED_VC) || DEF(_GREEN_VC)
+;	ld b, 26
+;ELSE
 	ld b, 10
-ENDC
-	vc_patch_end
+;ENDC
+;	vc_patch_end
 .syncLoop3
 	call DelayFrame
 	call Serial_SendZeroByte
 	dec b
 	jr nz, .syncLoop3
-	vc_hook Wireless_end_send_zero_bytes
+;	vc_hook Wireless_end_send_zero_bytes
 	ret
 
 ExecutePlayerMove:
+	xor a
+	ldh [hWhoseTurn], a ; set player's turn
 	ld a, [wPlayerSelectedMove]
 	inc a
 	jp z, ExecutePlayerMoveDone ; for selected move = FF, skip most of player's turn
 	xor a
-	ldh [hWhoseTurn], a
 	ld [wMoveMissed], a
 	ld [wMonIsDisobedient], a
 	ld [wMoveDidntMiss], a
@@ -3482,14 +3397,8 @@ CheckPlayerStatusConditions:
 
 .ConfusedCheck
 	ld a, [wPlayerBattleStatus1]
-IF DEF(_REV0)
-	bit CONFUSED, a
-	jr z, .TriedToUseDisabledMoveCheck
-ENDC
-IF DEF(_REV1)
 	add a ; is player confused?
 	jr nc, .TriedToUseDisabledMoveCheck
-ENDC
 	ld hl, wPlayerConfusedCounter
 	dec [hl]
 	jr nz, .IsConfused
@@ -5977,14 +5886,8 @@ CheckEnemyStatusConditions:
 	call PrintText
 .checkIfConfused
 	ld a, [wEnemyBattleStatus1]
-IF DEF (_REV0)
-	bit CONFUSED, a
-	jp z, .checkIfTriedToUseDisabledMove
-ENDC
-IF DEF(_REV1)
 	add a ; check if enemy mon is confused
 	jp nc, .checkIfTriedToUseDisabledMove
-ENDC
 	ld hl, wEnemyConfusedCounter
 	dec [hl]
 	jr nz, .isConfused
@@ -6490,7 +6393,7 @@ LoadPlayerBackPic:
 	xor a
 	ld [MBC1SRamEnable], a
 	ld a, $31
-	ld [hStartTileID], a
+	ldh [hStartTileID], a
 	hlcoord 1, 5
 	predef_jump CopyUncompressedPicToTilemap
 
@@ -6743,14 +6646,8 @@ LoadHudAndHpBarAndStatusTilePatterns:
 
 LoadHudTilePatterns:
 	ldh a, [rLCDC]
-IF DEF(_REV0)
-	bit rLCDC_ENABLE, a
-	jr nz, .lcdEnabled
-ENDC
-IF DEF(_REV1)
 	add a ; is LCD disabled?
 	jr c, .lcdEnabled
-ENDC
 .lcdDisabled
 	ld hl, BattleHudTiles1
 	ld de, vChars2 tile $6d
@@ -6800,14 +6697,14 @@ BattleRandom:
 	ld a, [hl]
 	pop bc
 	pop hl
-	vc_hook Unknown_BattleRandom_ret_c
-	vc_patch BattleRandom_ret
-IF DEF(_RED_VC) || DEF(_GREEN_VC)
-	ret
-ELSE
+;	vc_hook Unknown_BattleRandom_ret_c
+;	vc_patch BattleRandom_ret
+;IF DEF(_RED_VC) || DEF(_GREEN_VC)
+;	ret
+;ELSE
 	ret c
-ENDC
-	vc_patch_end
+;ENDC
+;	vc_patch_end
 
 ; if we picked the last seed, we need to recalculate the nine seeds
 	push hl
@@ -6919,7 +6816,7 @@ InitBattleCommon:
 	call _LoadTrainerPic
 	xor a
 	ld [wEnemyMonSpecies2], a
-	ld [hStartTileID], a
+	ldh [hStartTileID], a
 	dec a
 	ld [wAICount], a
 	hlcoord 12, 0
@@ -6973,7 +6870,7 @@ InitWildBattle:
 .spriteLoaded
 	xor a
 	ld [wTrainerClass], a
-	ld [hStartTileID], a
+	ldh [hStartTileID], a
 	hlcoord 12, 0
 	predef CopyUncompressedPicToTilemap
 
@@ -6989,12 +6886,12 @@ _InitBattleCommon:
 	call SaveScreenTilesToBuffer1
 	call ClearScreen
 	ld a, $98
-	ld [hAutoBGTransferDest + 1], a
+	ldh [hAutoBGTransferDest + 1], a
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	call Delay3
 	ld a, $9c
-	ld [hAutoBGTransferDest + 1], a
+	ldh [hAutoBGTransferDest + 1], a
 	call LoadScreenTilesFromBuffer1
 	hlcoord 9, 7
 	lb bc, 5, 10
@@ -7049,7 +6946,7 @@ AnimateSendingOutMon:
 	ld h, a
 	ld a, [wPredefHL + 1]
 	ld l, a
-	ld a, [hStartTileID]
+	ldh a, [hStartTileID]
 	ldh [hBaseTileID], a
 	ld b, $4c
 	ld a, [wIsInBattle]
@@ -7089,7 +6986,7 @@ CopyUncompressedPicToTilemap:
 	ld h, a
 	ld a, [wPredefHL + 1]
 	ld l, a
-	ld a, [hStartTileID]
+	ldh a, [hStartTileID]
 CopyUncompressedPicToHL::
 	lb bc, 7, 7
 	ld de, SCREEN_WIDTH
