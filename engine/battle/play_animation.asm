@@ -176,14 +176,10 @@ PlayAnimation:
 	ld h, [hl]
 	ld l, a
 .animationLoop
-;	vc_hook_red Stop_reducing_move_anim_flashing_Guillotine_Spore
-;	vc_hook_green Stop_reducing_move_anim_flashing_Guillotine_Mega_Punch
+	vc_hook Stop_reducing_move_anim_flashing_Thunderbolt
 	ld a, [hli]
-;	vc_hook_red Stop_reducing_move_anim_flashing_Mega_Punch_Mega_Kick
-;	vc_hook_green Stop_reducing_move_anim_flashing_Mega_Kick
 	cp -1
-;	vc_hook_red Stop_reducing_move_anim_flashing_Bubblebeam
-;	vc_hook_green Stop_reducing_move_anim_flashing_Bubblebeam_Selfdestruct
+	vc_hook Stop_reducing_move_anim_flashing_Explosion
 	jr z, .AnimationOver
 	cp FIRST_SE_ID ; is this subanimation or a special effect?
 	jr c, .playSubanimation
@@ -250,63 +246,61 @@ PlayAnimation:
 	ldh a, [rOBP0]
 	push af
 	ld a, [wAnimPalette]
+	vc_hook Reduce_move_anim_flashing_Self_Destruct
 	ldh [rOBP0], a
 	call LoadMoveAnimationTiles
 	call LoadSubanimation
 	call PlaySubanimation
-;	vc_hook Stop_reducing_move_anim_flashing_Reflect
+	vc_hook Stop_reducing_move_anim_flashing_Mega_Punch
 	pop af
-;	vc_hook Stop_reducing_move_anim_flashing_Thunderbolt
+	vc_hook Stop_reducing_move_anim_flashing_Guillotine_Mega_Kick
 	ldh [rOBP0], a
 .nextAnimationCommand
-;	vc_hook_red Stop_reducing_move_anim_flashing_Self_Destruct_Explosion
-;	vc_hook_green Stop_reducing_move_anim_flashing_Spore_Explosion
+	vc_hook Stop_reducing_move_anim_flashing_Hyper_Beam
 	pop hl
-;	vc_hook_red Stop_reducing_move_anim_flashing_Blizzard_Hyper_Beam
-;	vc_hook_green Stop_reducing_move_anim_flashing_Hyper_Beam
+	vc_hook Stop_reducing_move_anim_flashing_Reflect
 	jr .animationLoop
 .AnimationOver
+	vc_hook Stop_reducing_move_anim_flashing_Self_Destruct_Spore
 	ret
 
 LoadSubanimation:
 	ld a, [wSubAnimAddrPtr + 1]
 	ld h, a
-;	vc_hook Reduce_move_anim_flashing_Self_Destruct
 	ld a, [wSubAnimAddrPtr]
-;	vc_hook Reduce_move_anim_flashing_Mega_Kick
 	ld l, a
-;	vc_hook Reduce_move_anim_flashing_Mega_Punch_Self_Destruct_Explosion
 	ld a, [hli]
-;	vc_hook Reduce_move_anim_flashing_Blizzard
 	ld e, a
-;	vc_hook Reduce_move_anim_flashing_Guillotine
 	ld a, [hl]
-;	vc_hook Reduce_move_anim_flashing_Hyper_Beam
 	ld d, a ; de = address of subanimation
-;	vc_hook Reduce_move_anim_flashing_Explosion
 	ld a, [de]
-;	vc_hook Reduce_move_anim_flashing_Rock_Slide
 	ld b, a
-;	vc_hook Reduce_move_anim_flashing_Thunderbolt
 	and %00011111
-;	vc_hook Reduce_move_anim_flashing_Reflect
+	vc_hook Reduce_move_anim_flashing_Hyper_Beam
 	ld [wSubAnimCounter], a ; number of frame blocks
-;	vc_hook Reduce_move_anim_flashing_Spore
+	vc_hook Reduce_move_anim_flashing_Guillotine
 	ld a, b
+	vc_hook Reduce_move_anim_flashing_Mega_Kick
 	and %11100000
-;	vc_hook Reduce_move_anim_flashing_Bubblebeam
+	vc_hook Reduce_move_anim_flashing_Mega_Punch_Self_Destruct
 	cp SUBANIMTYPE_ENEMY << 5
+	vc_hook Reduce_move_anim_flashing_Thunderbolt
 	jr nz, .isNotType5
 ; isType5
 	call GetSubanimationTransform2
 	jr .saveTransformation
 .isNotType5
+	vc_hook Reduce_move_anim_flashing_Reflect
 	call GetSubanimationTransform1
 .saveTransformation
 ; place the upper 3 bits of a into bits 0-2 of a before storing
+	vc_hook Reduce_move_anim_flashing_Explosion
 	srl a
+	vc_hook Reduce_move_anim_flashing_Rock_Slide
 	swap a
+	vc_hook Reduce_move_anim_flashing_Blizzard
 	ld [wSubAnimTransform], a
+	vc_hook Reduce_move_anim_flashing_Bubblebeam
 	cp SUBANIMTYPE_REVERSE
 	ld hl, 0
 	jr nz, .storeSubentryAddr
@@ -331,6 +325,7 @@ LoadSubanimation:
 ; sets the transform to SUBANIMTYPE_NORMAL if it's the player's turn
 ; sets the transform to the subanimation type if it's the enemy's turn
 GetSubanimationTransform1:
+	vc_hook Reduce_move_anim_flashing_Spore
 	ld b, a
 	ldh a, [hWhoseTurn]
 	and a

@@ -3018,7 +3018,7 @@ LinkBattleExchangeData:
 	ld a, b
 .doExchange
 	ld [wSerialExchangeNybbleSendData], a
-;	vc_hook Wireless_start_exchange
+	vc_hook Wireless_start_exchange
 	callfar PrintWaitingText
 .syncLoop1
 	call Serial_ExchangeNybble
@@ -3026,33 +3026,33 @@ LinkBattleExchangeData:
 	ld a, [wSerialExchangeNybbleReceiveData]
 	inc a
 	jr z, .syncLoop1
-;	vc_hook Wireless_end_exchange
-;	vc_patch Wireless_net_delay_1
-;IF DEF(_RED_VC) || DEF(_GREEN_VC)
-;	ld b, 26
-;ELSE
+	vc_hook Wireless_end_exchange
+	vc_patch Wireless_net_delay_1
+IF DEF(_BLUE_VC)
+	ld b, 26
+ELSE
 	ld b, 10
-;ENDC
-;	vc_patch_end
+ENDC
+	vc_patch_end
 .syncLoop2
 	call DelayFrame
 	call Serial_ExchangeNybble
 	dec b
 	jr nz, .syncLoop2
-;	vc_hook Wireless_start_send_zero_bytes
-;	vc_patch Wireless_net_delay_2
-;IF DEF(_RED_VC) || DEF(_GREEN_VC)
-;	ld b, 26
-;ELSE
+	vc_hook Wireless_start_send_zero_bytes
+	vc_patch Wireless_net_delay_2
+IF DEF(_BLUE_VC)
+	ld b, 26
+ELSE
 	ld b, 10
-;ENDC
-;	vc_patch_end
+ENDC
+	vc_patch_end
 .syncLoop3
 	call DelayFrame
 	call Serial_SendZeroByte
 	dec b
 	jr nz, .syncLoop3
-;	vc_hook Wireless_end_send_zero_bytes
+	vc_hook Wireless_end_send_zero_bytes
 	ret
 
 ExecutePlayerMove:
@@ -6697,14 +6697,14 @@ BattleRandom:
 	ld a, [hl]
 	pop bc
 	pop hl
-;	vc_hook Unknown_BattleRandom_ret_c
-;	vc_patch BattleRandom_ret
-;IF DEF(_RED_VC) || DEF(_GREEN_VC)
-;	ret
-;ELSE
+	vc_hook Unknown_BattleRandom_ret_c
+	vc_patch BattleRandom_ret
+IF DEF(_BLUE_VC)
+	ret
+ELSE
 	ret c
-;ENDC
-;	vc_patch_end
+ENDC
+	vc_patch_end
 
 ; if we picked the last seed, we need to recalculate the nine seeds
 	push hl

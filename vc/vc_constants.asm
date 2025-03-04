@@ -1,4 +1,4 @@
-; These are all the asm constants needed to make the Virtual Console patches.
+; These are all the asm constants needed to make the Virtual Console patch.
 
 EXPORT DEF H_I_CHAR EQU "い"
 EXPORT DEF H_KA_CHAR EQU "か"
@@ -46,9 +46,7 @@ EXPORT DEF END_CHAR EQU "@"
 EXPORT MEGA_PUNCH
 EXPORT GUILLOTINE
 EXPORT MEGA_KICK
-;IF DEF(_GREEN_VC)
-;	EXPORT BLIZZARD
-;ENDC
+EXPORT BLIZZARD
 EXPORT BUBBLEBEAM
 EXPORT HYPER_BEAM
 EXPORT THUNDERBOLT

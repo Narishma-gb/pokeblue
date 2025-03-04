@@ -23,6 +23,7 @@ MoveAnimation:
 	jr nz, .animationsDisabled
 	call ShareMoveAnimations
 	call PlayAnimation
+	vc_hook Stop_reducing_move_anim_flashing_Blizzard_Bubblebeam_Rock_Slide
 	jr .next
 .animationsDisabled
 	ld c, 30
@@ -69,8 +70,6 @@ ShareMoveAnimations:
 PlayApplyingAttackAnimation:
 ; Generic animation that shows after the move's individual animation
 ; Different animation depending on whether the move has an additional effect and on whose turn it is
-;	vc_hook_red Stop_reducing_move_anim_flashing_Rock_Slide
-;	vc_hook_green Stop_reducing_move_anim_flashing_Blizzard_Rock_Slide
 	ld a, [wAnimationType]
 	and a
 	ret z
