@@ -5,7 +5,7 @@
 
 DEF ANIMATION_END EQU 80
 
-PlayIntro:	
+PlayIntro:
 	xor a
 	ldh [hJoyHeld], a
 	inc a

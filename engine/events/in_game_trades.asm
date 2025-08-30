@@ -375,7 +375,7 @@ WannaTrade3Text:
 	text_ram wInGameTradeGiveMonName
 	text "　もってる？"
 
-	para "わたしの　@"	
+	para "わたしの　@"
 	text_ram wInGameTradeReceiveMonName
 	text "と"
 	line "とりかえて　くれない？"

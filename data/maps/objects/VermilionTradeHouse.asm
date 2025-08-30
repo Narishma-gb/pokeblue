@@ -1,5 +1,5 @@
 	object_const_def
-	const_export VERMILIONTRADEHOUSE_GENTLEMAN
+	const_export VERMILIONTRADEHOUSE_LITTLE_GIRL
 
 VermilionTradeHouse_Object:
 	db $a ; border block

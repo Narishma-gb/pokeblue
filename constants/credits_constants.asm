@@ -1,6 +1,3 @@
-; Number of entries in CreditsRollPointers (see data/credits/credits.order.asm)
-DEF NUM_CRED_SCREENS EQU 26
-
 ; CreditsTextPointers indexes (see data/credits/credits_text.asm)
 	const_def
 	const CRED_STAFF          ; $00

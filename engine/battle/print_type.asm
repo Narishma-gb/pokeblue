@@ -1,25 +1,3 @@
-IF DEF(_REV0)
-UnusedSerialFunction:
-	ld a, [wLinkState]
-	bit 7, a
-	ret z
-	ld a, [wUnknownSerialCounter3]
-	dec a
-	ld [wUnknownSerialCounter3], a
-	ret nz
-	ld a, [wUnknownSerialCounter3 + 1]
-	dec a
-	ld [wUnknownSerialCounter3 + 1], a
-	ret nz
-	ld a, $0a
-	ld [wUnknownSerialCounter3 + 1], a
-	ld a, [wUnknownSerialByte]
-	xor $01
-	ld [wUnknownSerialByte], a
-	jp z, LoadScreenTilesFromBuffer1
-	; bug: fallthrough
-ENDC
-
 ; [wCurSpecies] = pokemon ID
 ; hl = dest addr
 PrintMonType:

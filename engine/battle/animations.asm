@@ -608,7 +608,7 @@ FlashScreenLongSGB:
 	dc 3, 2, 1, 0
 	db 1 ; end
 
-; causes a delay of 4 frames for the first cycle, 3 frames for the second cycle, 
+; causes a delay of 4 frames for the first cycle, 3 frames for the second cycle,
 ; 2 frames for the third cycle and 1 frame for the fourth cycle
 FlashScreenLongDelay:
 	ld a, [wFlashScreenLongCounter]

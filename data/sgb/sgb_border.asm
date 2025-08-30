@@ -3,7 +3,7 @@ BorderPalettes:
 
 	ds $100
 
-	RGB 00,00,00, 10,17,26, 05,09,20, 16,20,27 ; PAL_SGB1 
+	RGB 00,00,00, 10,17,26, 05,09,20, 16,20,27 ; PAL_SGB1
 	; the first color is not defined, but if used, turns up as 30,29,29
 	ds $18
 

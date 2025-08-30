@@ -2,11 +2,10 @@
 ; SFX_Headers_(1|2|3) indexes (see audio/headers/*.asm)
 
 MACRO music_const
-	DEF \1 EQUS "((\2 - SFX_Headers_{d:audio_engine}) / 3)"
+	DEF \1 EQUS "((\2 - SFX_Headers_1) / 3)"
 ENDM
 
 	; AUDIO_1
-	audio_def 1
 	music_const MUSIC_PALLET_TOWN,         Music_PalletTown
 	music_const MUSIC_POKECENTER,          Music_Pokecenter
 	music_const MUSIC_GYM,                 Music_Gym
@@ -29,7 +28,6 @@ ENDM
 	music_const MUSIC_INDIGO_PLATEAU,      Music_IndigoPlateau
 
 	; AUDIO_2
-	audio_def 2
 	music_const MUSIC_GYM_LEADER_BATTLE,   Music_GymLeaderBattle
 	music_const MUSIC_TRAINER_BATTLE,      Music_TrainerBattle
 	music_const MUSIC_WILD_BATTLE,         Music_WildBattle
@@ -39,7 +37,6 @@ ENDM
 	music_const MUSIC_DEFEATED_GYM_LEADER, Music_DefeatedGymLeader
 
 	; AUDIO_3
-	audio_def 3
 	music_const MUSIC_TITLE_SCREEN,        Music_TitleScreen
 	music_const MUSIC_CREDITS,             Music_Credits
 	music_const MUSIC_HALL_OF_FAME,        Music_HallOfFame
@@ -60,7 +57,6 @@ ENDM
 	music_const MUSIC_MEET_MALE_TRAINER,   Music_MeetMaleTrainer
 
 	; AUDIO_1 AUDIO_2 AUDIO_3
-	audio_def 1
 DEF NOISE_INSTRUMENTS_START EQUS "SFX_NOISE_INSTRUMENT01"
 	music_const SFX_NOISE_INSTRUMENT01, SFX_Noise_Instrument01_1
 	music_const SFX_NOISE_INSTRUMENT02, SFX_Noise_Instrument02_1
@@ -170,7 +166,6 @@ DEF CRY_SFX_END EQUS "SFX_CRY_25 + 3"
 DEF MAX_SFX_ID_1 EQUS "SFX_SAFARI_ZONE_PA"
 
 	; AUDIO_2
-	audio_def 2
 	music_const SFX_LEVEL_UP,           SFX_Level_Up
 
 	music_const SFX_BALL_TOSS,          SFX_Ball_Toss
@@ -234,7 +229,6 @@ DEF BATTLE_SFX_END   EQUS "SFX_SILPH_SCOPE + 1"
 DEF MAX_SFX_ID_2 EQUS "SFX_SILPH_SCOPE"
 
 	; AUDIO_3
-	audio_def 3
 	music_const SFX_INTRO_LUNGE,        SFX_Intro_Lunge
 	music_const SFX_INTRO_HIP,          SFX_Intro_Hip
 	music_const SFX_INTRO_HOP,          SFX_Intro_Hop
