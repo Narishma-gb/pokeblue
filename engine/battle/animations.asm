@@ -320,7 +320,7 @@ DoBallTossSpecialEffects:
 	dec b
 	jr nz, .loop
 	ld a, %00001000
-	ldh [rNR10], a ; Channel 1 sweep register
+	ldh [rAUD1SWEEP], a ; Channel 1 sweep register
 	ret
 .isTrainerBattle ; if it's a trainer battle, shorten the animation by one frame
 	ld a, [wSubAnimCounter]
@@ -550,7 +550,7 @@ CallWithTurnFlipped:
 	ldh [hWhoseTurn], a
 	ret
 
-; flashes the screen for an extended period (48 frames)
+; flashes the screen for an extended period (120 frames)
 AnimationFlashScreenLong:
 	ld a, 4 ; cycle through the palettes 4 times
 	ld [wFlashScreenLongCounter], a
@@ -1993,7 +1993,7 @@ FallingObjects_UpdateOAMEntry:
 	sub b
 	ld [hli], a ; X
 	inc hl
-	ld a, OAM_HFLIP
+	ld a, OAM_XFLIP
 .next2
 	ld [hl], a ; attribute
 	ret
@@ -2076,7 +2076,7 @@ AnimationShakeEnemyHUD:
 
 ; Copy wTileMap to VRAM such that the row below the enemy HUD (in wTileMap) is
 ; lined up with row 0 of the window.
-	ld hl, vBGMap1 - BG_MAP_WIDTH * 7
+	ld hl, vBGMap1 - TILEMAP_WIDTH * 7
 	call BattleAnimCopyTileMapToVRAM
 
 ; Move the window so that the row below the enemy HUD (in BG map 0) lines up
