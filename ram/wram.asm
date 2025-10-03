@@ -1225,10 +1225,10 @@ wMissableObjectCounter:: db
 
 	ds 1
 
-; 13 bytes for the letters of the opposing trainer
+; 11 bytes for the letters of the opposing trainer
 ; the name is terminated with $50 with possible
 ; unused trailing letters
-wTrainerName:: ds 11
+wTrainerName:: ds TRAINER_NAME_LENGTH
 
 ; lost battle, this is -1
 ; no battle, this is 0

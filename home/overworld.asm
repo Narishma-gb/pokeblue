@@ -320,7 +320,7 @@ OverworldLoopLessDelay::
 .newBattle
 	call NewBattle
 	ld hl, wMovementFlags
-	res BIT_STANDING_ON_WARP, [hl] ; standing on warp flag
+	res BIT_STANDING_ON_WARP, [hl]
 	jp nc, CheckWarpsNoCollision ; check for warps if there was no battle
 .battleOccurred
 	ld hl, wStatusFlags3
@@ -410,7 +410,7 @@ CheckWarpsNoCollisionLoop::
 	push hl
 	push bc
 	ld hl, wMovementFlags
-	set BIT_STANDING_ON_WARP, [hl] ; standing on warp flag
+	set BIT_STANDING_ON_WARP, [hl]
 	farcall IsPlayerStandingOnDoorTileOrWarpTile
 	pop bc
 	pop hl
