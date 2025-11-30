@@ -30,6 +30,11 @@ RGBFIX  ?= $(RGBDS)rgbfix
 RGBGFX  ?= $(RGBDS)rgbgfx
 RGBLINK ?= $(RGBDS)rgblink
 
+RGBASMFLAGS  ?= -Weverything -Wtruncation=1
+RGBLINKFLAGS ?= -Weverything -Wtruncation=1
+RGBFIXFLAGS  ?= -Weverything
+RGBGFXFLAGS  ?= -Weverything
+
 
 ### Build targets
 
@@ -37,7 +42,14 @@ RGBLINK ?= $(RGBDS)rgblink
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
-.PHONY: all blue clean tidy compare tools
+.PHONY: \
+	all \
+	blue \
+	blue_vc \
+	clean \
+	tidy \
+	compare \
+	tools
 
 all: $(roms)
 blue:    pokeblue.gb
@@ -71,7 +83,7 @@ tools:
 	$(MAKE) -C tools/
 
 
-RGBASMFLAGS = -Q8 -P includes.asm -Weverything -Wtruncation=1
+RGBASMFLAGS += -Q8 -P includes.asm
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
 ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E
@@ -108,15 +120,13 @@ $(foreach obj, $(pokeblue_vc_obj), $(eval $(call DEP,$(obj),$(obj:_blue_vc.o=.as
 endif
 
 
-pokeblue_pad    = 0x00
-pokeblue_vc_pad = 0x00
+RGBLINKFLAGS += -d -p 0
 
-pokeblue_opt    = -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON BLUE"
-pokeblue_vc_opt = -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON BLUE"
+RGBFIXFLAGS += -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -p 0 -t "POKEMON BLUE"
 
 %.gb: $$(%_obj) layout.link
-	$(RGBLINK) -p $($*_pad) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
-	$(RGBFIX) -p $($*_pad) $($*_opt) $@
+	$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -m $*.map -n $*.sym -o $@ $(filter %.o,$^)
+	$(RGBFIX) $(RGBFIXFLAGS) $@
 
 
 ### Misc file-specific graphics rules
@@ -124,10 +134,10 @@ pokeblue_vc_opt = -sv -n 0 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON B
 gfx/battle/move_anim_0.2bpp: tools/gfx += --trim-whitespace
 gfx/battle/move_anim_1.2bpp: tools/gfx += --trim-whitespace
 
-gfx/intro/blue_jigglypuff_1.2bpp: rgbgfx += -Z
-gfx/intro/blue_jigglypuff_2.2bpp: rgbgfx += -Z
-gfx/intro/blue_jigglypuff_3.2bpp: rgbgfx += -Z
-gfx/intro/gengar.2bpp: rgbgfx += -Z
+gfx/intro/blue_jigglypuff_1.2bpp: RGBGFXFLAGS += --columns
+gfx/intro/blue_jigglypuff_2.2bpp: RGBGFXFLAGS += --columns
+gfx/intro/blue_jigglypuff_3.2bpp: RGBGFXFLAGS += --columns
+gfx/intro/gengar.2bpp: RGBGFXFLAGS += --columns
 gfx/intro/gengar.2bpp: tools/gfx += --remove-duplicates --preserve=0x19,0x76
 
 gfx/credits/the_end.2bpp: tools/gfx += --interleave --png=$<
@@ -143,12 +153,12 @@ gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
 ### Catch-all graphics rules
 
 %.2bpp: %.png
-	$(RGBGFX) --colors dmg=e4 $(rgbgfx) -o $@ $<
+	$(RGBGFX) --colors dmg $(RGBGFXFLAGS) -o $@ $<
 	$(if $(tools/gfx),\
 		tools/gfx $(tools/gfx) -o $@ $@ || $$($(RM) $@ && false))
 
 %.1bpp: %.png
-	$(RGBGFX) --colors dmg=e4 $(rgbgfx) --depth 1 -o $@ $<
+	$(RGBGFX) --colors dmg $(RGBGFXFLAGS) --depth 1 -o $@ $<
 	$(if $(tools/gfx),\
 		tools/gfx $(tools/gfx) --depth 1 -o $@ $@ || $$($(RM) $@ && false))
 

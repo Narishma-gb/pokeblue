@@ -152,7 +152,7 @@ BillsPCMenu:
 	call TextBoxBorder
 	ld a, [wCurrentBoxNum]
 	and BOX_NUM_MASK
-	add "１"
+	add '１'
 	ldcoord_a 18, 16
 	hlcoord 10, 16
 	ld de, BoxNoPCText
@@ -227,9 +227,9 @@ BillsPCDeposit:
 	ld a, [wCurrentBoxNum]
 	and BOX_NUM_MASK
 	ld hl, wBoxNumString
-	add "１"
+	add '１'
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 	ld hl, MonWasStoredText
 	call PrintText
 	jp BillsPCMenu
@@ -332,11 +332,11 @@ BoxNoPCText:
 KnowsHMMove::
 ; returns whether mon with party index [wWhichPokemon] knows an HM move
 	ld hl, wPartyMon1Moves
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	jr .next
 ; unreachable
 	ld hl, wBoxMon1Moves
-	ld bc, wBoxMon2 - wBoxMon1
+	ld bc, BOXMON_STRUCT_LENGTH
 .next
 	ld a, [wWhichPokemon]
 	call AddNTimes

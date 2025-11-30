@@ -5,7 +5,7 @@ InGameTrade_CheckForTradeEvo:
 ; ゴローン (Graveler) and ゴースト (Haunter).
 
 	ld a, [wInGameTradeReceiveMonName]
-	cp "ゴ"
+	cp 'ゴ'
 	ret nz
 	ld a, [wPartyCount]
 	dec a

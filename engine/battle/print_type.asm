@@ -25,10 +25,10 @@ PrintType:
 
 ; erase "タイプ２／" if the mon only has 1 type
 EraseType2Text:
-	ld a, "　"
+	ld a, '　'
 	ld bc, SCREEN_WIDTH - 3
 	add hl, bc
-	ld [hl], a ; erase the Handakuten in  タイプ
+	ld [hl], a ; erase the Handakuten in タイプ
 	inc bc ; SCREEN_WIDTH - 2
 	add hl, bc
 	ld bc, 5

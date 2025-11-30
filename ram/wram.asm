@@ -191,7 +191,7 @@ wOverworldMap:: ds 1300
 wOverworldMapEnd::
 
 NEXTU
-wTempPic:: ds 7 * 7 tiles
+wTempPic:: ds PIC_SIZE tiles
 ENDU
 
 
@@ -363,7 +363,7 @@ wFilteredBagItems:: ds 4
 NEXTU
 ; Saved copy of OAM for the first frame of the animation to make it easy to
 ; flip back from the second frame.
-wMonPartySpritesSavedOAM:: ds $60
+wMonPartySpritesSavedOAM:: ds OBJ_SIZE * 4 * PARTY_LENGTH
 
 NEXTU
 wTrainerCardBlkPacket:: ds $40
@@ -401,7 +401,7 @@ wAnimPalette:: db
 NEXTU
 	ds 60
 ; temporary buffer when swapping party mon data
-wSwitchPartyMonTempBuffer:: ds 44 ; party_struct size
+wSwitchPartyMonTempBuffer:: ds PARTYMON_STRUCT_LENGTH
 
 NEXTU
 	ds 120
@@ -686,7 +686,11 @@ NEXTU
 	ds 1
 ; difference in X between the next ball and the current one
 wHUDPokeballGfxOffsetX:: db
-wHUDGraphicsTiles:: ds 3
+wHUDGraphicsTiles::
+wHUDUnusedTopTile:: db
+wHUDCornerTile:: db
+wHUDTriangleTile:: db
+wHUDGraphicsTilesEnd::
 
 NEXTU
 ; the level of the mon at the time it entered day care
@@ -1076,7 +1080,7 @@ wExpAmountGained:: dw
 wGainBoostedExp:: db
 ENDU
 
-wGymCityName:: ds 5
+wGymCityName:: ds GYM_CITY_LENGTH
 
 UNION
 wGymLeaderName:: ds NAME_LENGTH
@@ -1271,6 +1275,7 @@ wCriticalHitOrOHKO:: db
 
 wMoveMissed:: db
 
+wBattleStatusData::
 ; always 0
 wPlayerStatsToDouble:: db
 ; always 0
@@ -1328,6 +1333,7 @@ wPlayerNumHits:: db
 ENDU
 
 	ds 2
+wBattleStatusDataEnd::
 
 ; non-zero when an item or move that allows escape from battle was used
 wEscapedFromBattle:: db
@@ -1553,7 +1559,8 @@ wMoves:: ds NUM_MOVES
 
 wMoveNum:: db
 
-wMovesString:: ds 32
+; concatenated move name list where intermediate '@' are replaced with '<NEXT>'
+wMovesString:: ds NUM_MOVES * MOVE_NAME_LENGTH
 
 wUnusedCurMapTilesetCopy:: db
 

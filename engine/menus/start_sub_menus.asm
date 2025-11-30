@@ -244,7 +244,7 @@ StartMenu_Pokemon::
 .softboiled
 	ld hl, wPartyMon1MaxHP
 	ld a, [wWhichPokemon]
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld a, [hli]
 	ldh [hDividend], a
@@ -254,7 +254,7 @@ StartMenu_Pokemon::
 	ldh [hDivisor], a
 	ld b, 2 ; number of bytes
 	call Divide
-	ld bc, wPartyMon1HP - wPartyMon1MaxHP
+	ld bc, MON_HP - MON_MAXHP
 	add hl, bc
 	ld a, [hld]
 	ld b, a
@@ -298,7 +298,7 @@ ErasePartyMenuCursors::
 	ld bc, 2 * SCREEN_WIDTH ; menu cursor positions are 2 rows apart
 	ld a, 6 ; 6 menu cursor positions
 .loop
-	ld [hl], "　"
+	ld [hl], '　'
 	add hl, bc
 	dec a
 	jr nz, .loop
@@ -338,7 +338,7 @@ StartMenu_Item::
 	jp RedisplayStartMenu
 .choseItem
 ; erase menu cursor (blank each tile in front of an item name)
-	ld a, "　"
+	ld a, '　'
 	ldcoord_a 5, 4
 	ldcoord_a 5, 6
 	ldcoord_a 5, 8
@@ -491,7 +491,7 @@ DrawTrainerInfo:
 	predef DisplayPicCenteredOrUpperRight
 	call DisableLCD
 	hlcoord 0, 2
-	ld a, "　"
+	ld a, '　'
 	call TrainerInfo_DrawVerticalLine
 	hlcoord 1, 2
 	call TrainerInfo_DrawVerticalLine
@@ -521,7 +521,7 @@ DrawTrainerInfo:
 	ld de, 13 tiles
 	add hl, de ; hl = colon tile pattern
 	ld de, vChars1 tile $74
-	ld bc, 1 tiles
+	ld bc, TILE_SIZE
 	ld a, BANK(TextBoxGraphics)
 	push bc
 	call FarCopyData2
@@ -564,7 +564,7 @@ DrawTrainerInfo:
 	ld de, wPlayerMoney
 	ld c, 3 | LEADING_ZEROES | LEFT_ALIGN
 	call PrintBCDNumber
-	ld [hl], "円"
+	ld [hl], '円'
 	hlcoord 9, 6
 	ld de, wPlayTimeHours
 	lb bc, LEFT_ALIGN | 1, 3
@@ -682,19 +682,19 @@ SwitchPartyMon_ClearGfx:
 	ld bc, SCREEN_WIDTH * 2
 	call AddNTimes
 	ld c, SCREEN_WIDTH * 2
-	ld a, "　"
+	ld a, '　'
 .clearMonBGLoop ; clear the mon's row in the party menu
 	ld [hli], a
 	dec c
 	jr nz, .clearMonBGLoop
 	pop af
-	ld hl, wShadowOAM
-	ld bc, $10
+	ld hl, wShadowOAMSprite00YCoord
+	ld bc, OBJ_SIZE * 4
 	call AddNTimes
-	ld de, $4
+	ld de, OBJ_SIZE
 	ld c, e
 .clearMonOAMLoop
-	ld [hl], $a0
+	ld [hl], SCREEN_HEIGHT_PX + OAM_Y_OFS
 	add hl, de
 	dec c
 	jr nz, .clearMonOAMLoop
@@ -754,24 +754,24 @@ SwitchPartyMon_InitVarOrSwapData:
 	ldh a, [hSwapTemp]
 	ld [de], a
 	ld hl, wPartyMons
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurrentMenuItem]
 	call AddNTimes
 	push hl
 	ld de, wSwitchPartyMonTempBuffer
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyData
 	ld hl, wPartyMons
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wMenuItemToSwap]
 	call AddNTimes
 	pop de
 	push hl
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyData
 	pop de
 	ld hl, wSwitchPartyMonTempBuffer
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyData
 	ld hl, wPartyMonOT
 	ld a, [wCurrentMenuItem]

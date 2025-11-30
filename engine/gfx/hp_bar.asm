@@ -216,7 +216,7 @@ UpdateHPBar_PrintHPNumber:
 	ld de, $15
 	add hl, de
 	push hl
-	ld a, "　"
+	ld a, '　'
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
