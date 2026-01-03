@@ -16155,8 +16155,8 @@ WRAM0 bank #0:
 	         $cd3d = wTempSCX
 	         $cd3d = wMoveDownSmallStarsOAMCount
 	         $cd3d = wStoppingWhichSlotMachineWheel
-	         $cd3d = wCoordIndex
 	         $cd3d = wFieldMoves
+	         $cd3d = wCoordIndex
 	         $cd3d = wHoFTeamIndex
 	         $cd3d = wDayCareStartLevel
 	         $cd3d = wBoxMonCounts

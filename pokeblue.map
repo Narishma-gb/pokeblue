@@ -15271,9 +15271,9 @@ WRAM0 bank #0:
 	         $c1da = wSprite13StateData1YAdjusted
 	         $c1db = wSprite13StateData1XAdjusted
 	         $c1dc = wSprite13StateData1CollisionData
-	         $c1e0 = wSprite13StateData1End
-	         $c1e0 = wSprite14StateData1
 	         $c1e0 = wSprite14StateData1PictureID
+	         $c1e0 = wSprite14StateData1
+	         $c1e0 = wSprite13StateData1End
 	         $c1e1 = wSprite14StateData1MovementStatus
 	         $c1e2 = wSprite14StateData1ImageIndex
 	         $c1e3 = wSprite14StateData1YStepVector
@@ -16102,11 +16102,11 @@ WRAM0 bank #0:
 	         $cd3d = wPriceTemp
 	         $cd3d = wTitleMonSpecies
 	         $cd3d = wPlayerSpinWhileMovingUpOrDownAnimDeltaY
-	         $cd3d = wMoveDownSmallStarsOAMCount
-	         $cd3d = wCoordIndex
-	         $cd3d = wFieldMoves
-	         $cd3d = wHoFTeamIndex
 	         $cd3d = wTempSCX
+	         $cd3d = wMoveDownSmallStarsOAMCount
+	         $cd3d = wFieldMoves
+	         $cd3d = wCoordIndex
+	         $cd3d = wHoFTeamIndex
 	         $cd3d = wDayCareStartLevel
 	         $cd3d = wBoxMonCounts
 	         $cd3d = wSavedY
