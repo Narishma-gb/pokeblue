@@ -22,7 +22,7 @@ DrawFrameBlock:
 	jp z, .flipHorizontalTranslateDown ; SUBANIMTYPE_HFLIP
 	dec a
 	jr z, .flipBaseCoords              ; SUBANIMTYPE_COORDFLIP
-; noTransformation
+; no transformation
 	ld a, [wBaseCoordY]
 	add [hl]
 	ld [de], a ; store Y
@@ -130,7 +130,7 @@ DrawFrameBlock:
 	ld a, [wNumFBTiles]
 	cp c
 	jp nz, .loop ; go back up if there are more tiles to draw
-; afterDrawingTiles
+; after drawing tiles
 	ld a, [wFBMode]
 	cp FRAMEBLOCKMODE_02
 	jr z, .advanceFrameBlockDestAddr ; skip delay and don't clean OAM buffer
@@ -183,7 +183,7 @@ PlayAnimation:
 	jr z, .AnimationOver
 	cp FIRST_SE_ID ; is this subanimation or a special effect?
 	jr c, .playSubanimation
-; doSpecialEffect
+; do Special Effect
 	ld c, a
 	ld de, SpecialEffectPointers
 .searchSpecialEffectTableLoop
@@ -285,11 +285,11 @@ LoadSubanimation:
 	vc_hook Reduce_move_anim_flashing_Mega_Punch_Self_Destruct
 	cp SUBANIMTYPE_ENEMY << 5
 	vc_hook Reduce_move_anim_flashing_Thunderbolt
-	jr nz, .isNotType5
-; isType5
+	jr nz, .isNotTypeEnemy
+; subanim type enemy
 	call GetSubanimationTransform2
 	jr .saveTransformation
-.isNotType5
+.isNotTypeEnemy
 	vc_hook Reduce_move_anim_flashing_Reflect
 	call GetSubanimationTransform1
 .saveTransformation

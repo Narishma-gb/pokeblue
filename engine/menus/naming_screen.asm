@@ -383,15 +383,16 @@ PrintNicknameAndUnderscores:
 	jr nz, .placeUnderscoreLoop
 	ld a, [wNamingScreenNameLength]
 	cp NAME_LENGTH - 1
-	jr nz, .emptySpacesRemaining
-; when all spaces are filled, force the cursor onto the ED tile
+	jr nz, .placeRaisedUnderscore ; jump if empty spaces remain
+	; when all spaces are filled, force the cursor onto the ED tile,
+	; and keep the last underscore raised
 	call EraseMenuCursor
 	ld a, $11 ; "ED" x coord
 	ld [wTopMenuItemX], a
 	ld a, $6 ; "ED" y coord
 	ld [wCurrentMenuItem], a
-	ld a, 4 ; keep the last underscore raised
-.emptySpacesRemaining
+	ld a, NAME_LENGTH - 2
+.placeRaisedUnderscore
 	hlcoord 13, 3
 	add l
 	ld l, a

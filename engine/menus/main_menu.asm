@@ -523,7 +523,7 @@ DisplayOptionMenu:
 	jr z, .cursorInBattleStyle
 	cp 16 ; cursor on Cancel?
 	jr z, .loop
-; cursorInTextSpeed
+; cursor in Text Speed
 	bit B_PAD_LEFT, b
 	jp nz, .pressedLeftInTextSpeed
 	jp .pressedRightInTextSpeed
@@ -620,7 +620,7 @@ SetOptionsFromCursorPositions:
 	ld a, [wOptionsBattleAnimCursorX] ; battle animation cursor X coordinate
 	dec a
 	jr z, .battleAnimationOn
-; battleAnimationOff
+; battle animation Off
 	set BIT_BATTLE_ANIMATION, d
 	jr .checkBattleStyle
 .battleAnimationOn
@@ -629,7 +629,7 @@ SetOptionsFromCursorPositions:
 	ld a, [wOptionsBattleStyleCursorX] ; battle style cursor X coordinate
 	dec a
 	jr z, .battleStyleShift
-; battleStyleSet
+; battle style Set
 	set BIT_BATTLE_SHIFT, d
 	jr .storeOptions
 .battleStyleShift

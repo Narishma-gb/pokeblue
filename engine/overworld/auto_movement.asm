@@ -1,5 +1,5 @@
 PlayerStepOutFromDoor::
-	ld hl, wStatusFlags5 ; should this be wMovementFlags?
+	ld hl, wStatusFlags5
 	res BIT_UNKNOWN_5_1, [hl]
 	call IsPlayerStandingOnDoorTile
 	jr nc, .notStandingOnDoor
@@ -148,8 +148,8 @@ PalletMovementScript_Done:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	ld a, HS_PALLET_TOWN_OAK
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_PALLET_TOWN_OAK
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld hl, wStatusFlags5
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]

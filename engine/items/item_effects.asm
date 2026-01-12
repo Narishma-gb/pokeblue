@@ -151,7 +151,7 @@ ItemUseBall:
 	dec a
 	jr nz, .notOldManBattle
 
-; oldManBattle
+; Old Man battle
 	ld hl, wGrassRate
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
@@ -661,7 +661,7 @@ ItemUseBicycle:
 	jp z, ItemUseNotTime
 	dec a ; is player already bicycling?
 	jr nz, .tryToGetOnBike
-; getOffBike
+; get off bike
 	call ItemUseReloadOverworldData
 	xor a
 	ld [wWalkBikeSurfState], a ; change player state to walking
@@ -687,13 +687,13 @@ ItemUseSurfboard:
 	ld [wWalkBikeSurfStateCopy], a
 	cp 2 ; is the player already surfing?
 	jr z, .tryToStopSurfing
-; tryToSurf
+; try to Surf
 	call IsNextTileShoreOrWater
 	jp c, SurfingAttemptFailed
 	ld hl, TilePairCollisionsWater
 	call CheckForTilePairCollisions
 	jp c, SurfingAttemptFailed
-; surf
+; surfing
 	call .makePlayerMoveForward
 	ld hl, wStatusFlags5
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
@@ -1302,7 +1302,7 @@ ItemUseMedicine:
 	jr .statNameLoop
 .gotStatName
 	ld de, wStringBuffer
-	ld bc, ITEM_NAME_LENGTH + 1 ; all VitaminStats are at most 10 bytes
+	ld bc, STAT_NAME_LENGTH
 	call CopyData ; copy the stat's name to wStringBuffer
 	ld a, SFX_HEAL_AILMENT
 	call PlaySound
@@ -1394,15 +1394,15 @@ ItemUseMedicine:
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 	call LoadMonData
-	ld d, $01
-	callfar PrintStatsBox ; display new stats text box
-	call WaitForTextScrollButtonPress ; wait for button press
+	ld d, LEVEL_UP_STATS_BOX
+	callfar PrintStatsBox
+	call WaitForTextScrollButtonPress
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
-	predef LearnMoveFromLevelUp ; learn level up move, if any
+	predef LearnMoveFromLevelUp
 	xor a
 	ld [wForceEvolution], a
-	callfar TryEvolvingMon ; evolve pokemon, if appropriate
+	callfar TryEvolvingMon
 	ld a, $01
 	ld [wUpdateSpritesEnabled], a
 	pop af
@@ -1431,11 +1431,11 @@ INCLUDE "data/battle/stat_names.asm"
 ItemUseBait:
 	ld hl, ThrewBaitText
 	call PrintText
-	ld hl, wEnemyMonActualCatchRate ; catch rate
+	ld hl, wEnemyMonActualCatchRate
 	srl [hl] ; halve catch rate
 	ld a, BAIT_ANIM
-	ld hl, wSafariBaitFactor ; bait factor
-	ld de, wSafariEscapeFactor ; escape factor
+	ld hl, wSafariBaitFactor
+	ld de, wSafariEscapeFactor
 	jr BaitRockCommon
 
 ; for CASCADEBADGE when used from the
@@ -1444,7 +1444,7 @@ ItemUseBait:
 ItemUseRock:
 	ld hl, ThrewRockText
 	call PrintText
-	ld hl, wEnemyMonActualCatchRate ; catch rate
+	ld hl, wEnemyMonActualCatchRate
 	ld a, [hl]
 	add a ; double catch rate
 	jr nc, .noCarry
@@ -1452,8 +1452,8 @@ ItemUseRock:
 .noCarry
 	ld [hl], a
 	ld a, ROCK_ANIM
-	ld hl, wSafariEscapeFactor ; escape factor
-	ld de, wSafariBaitFactor ; bait factor
+	ld hl, wSafariEscapeFactor
+	ld de, wSafariBaitFactor
 
 BaitRockCommon:
 	ld [wAnimationID], a
@@ -1751,7 +1751,7 @@ ItemUsePokeFlute:
 ; OUTPUT:
 ; [wWereAnyMonsAsleep]: set to 1 if any pokemon were asleep
 WakeUpEntireParty:
-	ld de, wPartyMon2 - wPartyMon1
+	ld de, PARTYMON_STRUCT_LENGTH
 	ld c, PARTY_LENGTH
 .loop
 	ld a, [hl]
@@ -2000,7 +2000,7 @@ ItemUsePPRestore:
 	ld a, [wPPRestoreItem]
 	cp ETHER
 	jr nc, .useEther ; if Ether or Max Ether
-;.usePPUp
+; use PP Up
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
 	ld a, [hl] ; move PP
