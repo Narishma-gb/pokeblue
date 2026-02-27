@@ -7356,7 +7356,7 @@ ROMX bank #15:
 	         $782f = UpdateStatDone.notMinimize
 	         $7844 = UpdateStatDone.applyBadgeBoostsAndStatusPenalties
 	         $7856 = RestoreOriginalStatModifier
-	         $7858 = PrintNothingHappenedText
+	         $7858 = PrintNoEffectText
 	         $785e = MonsStatsRoseText
 	         $7878 = MonsStatsRoseText.playerTurn
 	         $787f = GreatlyRoseText
@@ -7468,9 +7468,9 @@ ROMX bank #15:
 	         $7f09 = HealEffect
 	         $7f11 = TransformEffect
 	         $7f19 = ReflectLightScreenEffect
-	         $7f21 = NothingHappenedText
-	         $7f31 = PrintNoEffectText
-	         $7f37 = NoEffectText
+	         $7f21 = NoEffectText
+	         $7f31 = PrintNothingHappenedText
+	         $7f37 = NothingHappenedText
 	         $7f45 = ConditionalPrintButItFailed
 	         $7f4a = PrintButItFailedText_
 	         $7f50 = ButItFailedText
