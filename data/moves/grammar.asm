@@ -1,4 +1,4 @@
-; Used by GetMoveGrammar (see engine/battle/core.asm)
+; Used by GetMoveGrammar (see engine/battle/used_move_text.asm)
 ; Each move is given an identifier for what usedmovetext to use (0-4).
 
 MoveGrammar:

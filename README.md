@@ -1,6 +1,6 @@
 # Japanese Pokémon Blue
 
-This is a disassembly of ポケットモンスター　青, based on pret [**pokered**](https://github.com/pret/pokered) full decompilation.
+This is a disassembly of ポケットモンスター　青.
 
 It builds the following ROMs:
 
@@ -9,7 +9,14 @@ It builds the following ROMs:
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
+## Credits
+
+The whole repository structure, most ASM files, tools and build scripts originate from pret [**pokered**][pokered].
 
 ## See also
 
+- [**Symbols**][symbols]
 - **Wiki** (WIP)
+
+[pokered]: https://github.com/pret/pokered
+[symbols]: https://github.com/Narishma-gb/pokeblue/tree/symbols
