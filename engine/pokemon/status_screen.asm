@@ -314,7 +314,7 @@ StatusScreen2:
 	hlcoord 11, 10
 	ld de, SCREEN_WIDTH * 2
 	ld a, 'Ｐ'
-	call StatusScreen_PrintPP ; Print "PP"
+	call StatusScreen_PrintPP ; Print "ＰＰ"
 	ld a, b
 	and a
 	jr z, .InitPP
@@ -459,7 +459,7 @@ StatusScreen_ClearName:
 	jp FillMemory
 
 StatusScreen_PrintPP:
-; print PP or -- c times, going down two rows each time
+; print ＰＰ or ーー c times, going down two rows each time
 	ld [hli], a
 	ld [hld], a
 	add hl, de

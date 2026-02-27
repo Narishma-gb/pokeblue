@@ -376,7 +376,7 @@ PrintNicknameAndUnderscores:
 	call PlaceString
 	hlcoord 13, 3
 	ld a, $76 ; underscore tile id
-	ld b, 5
+	ld b, NAME_LENGTH - 1
 .placeUnderscoreLoop
 	ld [hli], a
 	dec b
