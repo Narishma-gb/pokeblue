@@ -5078,7 +5078,7 @@ ROMX bank #8:
 	         $42a3 = SFX_Battle_34
 	         $42ac = SFX_Battle_35
 	         $42b2 = SFX_Battle_36
-	         $42bb = SFX_Silph_Scope
+	         $42bb = SFX_Trainer_Appeared
 	SECTION: $42be-$42fc ($003f bytes) ["Music Headers 2"]
 	         $42be = Music_GymLeaderBattle
 	         $42c7 = Music_TrainerBattle
@@ -5119,7 +5119,7 @@ ROMX bank #8:
 	         $43dd = SFX_Tink_2_Ch5
 	         $43ee = SFX_Heal_HP_2_Ch5
 	         $43fd = SFX_Heal_Ailment_2_Ch5
-	         $4412 = SFX_Silph_Scope_Ch5
+	         $4412 = SFX_Trainer_Appeared_Ch5
 	         $442d = SFX_Ball_Toss_Ch5
 	         $4436 = SFX_Ball_Toss_Ch6
 	         $443d = SFX_Ball_Poof_Ch5
@@ -12281,8 +12281,8 @@ ROMX bank #26:
 	         $402f = Version_GFX
 	         $406f = Version_GFXEnd
 	SECTION: $406f-$7fee ($3f80 bytes) ["Tilesets 2"]
-	         $406f = Gym_GFX
 	         $406f = Dojo_GFX
+	         $406f = Gym_GFX
 	         $466f = Gym_Block
 	         $466f = Dojo_Block
 	         $4daf = Pokecenter_GFX
@@ -17971,9 +17971,9 @@ HRAM bank #0:
 	         $ff8b = hPreviousTileset
 	         $ff8b = hOAMTile
 	         $ff8b = hBaseTileID
+	         $ff8b = hItemPrice
 	         $ff8b = hEastWestConnectedMapWidth
 	         $ff8b = hDexWeight
-	         $ff8b = hItemPrice
 	         $ff8b = hRLEByteValue
 	         $ff8c = hNorthSouthConnectedMapWidth
 	         $ff8c = hMapWidth
