@@ -116,7 +116,7 @@ DrawFrameBlock:
 	ld a, [hli]
 	bit B_OAM_XFLIP, a
 	jr nz, .disableHorizontalFlip
-.enableHorizontalFlip
+; enable horizontal flip
 	set B_OAM_XFLIP, a
 	jr .storeFlags2
 .disableHorizontalFlip

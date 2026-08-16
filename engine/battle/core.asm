@@ -3554,7 +3554,7 @@ CheckPlayerStatusConditions:
 	ld [wPlayerNumAttacksLeft], a
 	ld hl, GetPlayerAnimationType ; skip damage calculation (deal damage equal to last hit),
 	                              ; DecrementPP and MoveHitTest
-	jp nz, .returnToHL  ; redundant leftover code, the case wEnemyNumAttacksLeft == 0
+	jp nz, .returnToHL  ; redundant leftover code, the case wPlayerNumAttacksLeft == 0
 						; is handled within CheckNumAttacksLeft
 	jp .returnToHL
 
@@ -6801,8 +6801,7 @@ _LoadTrainerPic:
 	ld c, a
 	jp LoadUncompressedSpriteData
 
-; unreferenced
-ResetCryModifiers:
+ResetCryModifiers: ; unreferenced
 	xor a
 	ld [wFrequencyModifier], a
 	ld [wTempoModifier], a
